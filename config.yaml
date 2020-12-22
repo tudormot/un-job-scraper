@@ -1,0 +1,89 @@
+---
+
+  root_url: https://unjobs.org/
+##using YAML instead of JSON as it supports comments and &referencing
+#  program_behaviour:
+#    draw_pyplot: no
+#    save_layout: yes
+#    save_filename: default
+#    save_directory: default #if not default, directory must exist already
+#    ground_display_mode: yes
+#
+#  resolution_args:
+#    dim_layout_xaxis: 50
+#    dim_layout_yaxis: 50
+#    dim_square_tile: 1
+#    dim_human: 1
+#    dim_forklift: 1
+#
+#  random_block_args: &random_default
+#    - args:
+#        dim_x: 50
+#        dim_y: 50
+#        n_humanonly_halls: 2
+#        n_normal_halls: 2
+#        humanonly_alpha: 25
+#        humanonly_beta: 1
+#        normal_alpha: 10
+#        normal_beta: 1
+#
+#  tempstorage_block_args: &tstorage_default
+#    - args:
+#        padding_tiles: 3
+#        storage_zone_replication:
+#          - 2
+#          - 5
+#        target_storage:
+#          i: 0
+#          j: 1
+#        storage_zone:
+#          length: 6
+#          width: 3
+#
+#  permstorage_block_args: &pstorage_default
+#    - args:
+#        rack_dimension:
+#          - 10
+#          - 2
+#        replication:
+#          - 1
+#          - 7
+#        padding_tiles: 3
+#
+#
+##the 'layout_generation' dictionary specifies the operations #that will be performed to create the final layout. Each #operation takes layout/s or/and other arguments, and returns #a layout.
+##Allowed operations:
+##random <- returns a 'random' block of given dimensions
+##overlap <- overlaps second layout on first. First layout should be bigger. Location of second layout in first is chosen randomly
+##rotate <- randomly rotates layout
+##concat <-resizes and concatenates two layouts
+##pad <-pad block using different modes
+##perm_storage <-returns a permanent storage block
+##temp_storage <-returns a temporary storage block
+#
+#
+#  layout_generation:
+#    - concat:
+#      - rotate:
+#        - overlap:
+#          - random: *random_default
+#          - temp_storage: *tstorage_default
+#          - args:
+#              mode: random
+#      - rotate:
+#          - perm_storage: *pstorage_default
+#      - args:
+#          with_FL_pad: false
+#          mode: random
+#
+#
+#
+#
+#
+#
+##layout_primitives:
+##- id: temp_storage_room
+##  position: random
+##
+##- id: permanent_storage_room
+##  position: random
