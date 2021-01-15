@@ -1,0 +1,18 @@
+{
+    "name": "codexpert/Job_Importer",
+    "authors": [
+        {
+            "name": "codexpert",
+            "email": "hello@codexpert.io"
+        }
+    ],
+    "require": {
+        "codexpert/product": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "codexpert\\Job_Importer\\" : "src/"
+        },
+        "files": [ "functions/helpers.php", "functions/options.php" ]
+    }
+}
