@@ -54,19 +54,45 @@ def _get_info_from_contents_container(soup, job):
     contents = [x.contents for x in soup.find_all("li", class_="list-group-item dropdown-toggle")]
     contents.pop()  # drop twitter button information
 
-    assert contents[0][0] == 'Organization:\n', 'ERROR parsing organization posting the job!'
-    job.organisation = contents[0][1].string.strip('\n')
-    assert contents[1][0] == 'Country:\n', 'ERROR parsing country of job!'
-    job.country = contents[1][1].string.strip('\n')
-    assert contents[2][0] == 'City:\n' or contents[2][0] == 'Field location:\n', 'ERROR parsing city of  job!'
-    job.city = contents[2][1].string.strip('\n')
-    assert contents[3][0] == 'Office:\n', 'ERROR parsing office of job!'
-    job.office = contents[3][1].string.strip('\n')
-    try:
-        assert contents[4][0] == 'Grade:\n', 'ERROR parsing grade of job!'
-        job.grade = contents[4][1].string.strip('\n')
-    except:
-        job.grade = None
+    pattern_org = 'Organization:\n'
+    pattern_country = 'Country:\n'
+    pattern_city_1 = 'City:\n'
+    pattern_city_2 = 'Field location:\n'
+    pattern_office = 'Office:\n'
+    pattern_grade = 'Grade:\n'
+
+    for content in contents:
+        if content[0] == pattern_org:
+            job.organisation = content[1].string.strip('\n')
+        else:
+            job.organisation = None
+            if content[0] == pattern_country:
+                job.country = content[1].string.strip('\n')
+            else:
+                job.country = None
+                if content[0] == pattern_city_1 or content[0] == pattern_city_2:
+                    job.city = content[1].string.strip('\n')
+                else:
+                    job.city = None
+                    if content[0] == pattern_grade:
+                        job.grade = content[1].string.strip('\n')
+                    else:
+                        job.grade = None
+                        if content[0] == pattern_office:
+                            job.office = content[1].string.strip('\n')
+                        else:
+                            job.office = None
+
+    if job.office is None:
+        print('ERROR parsing office! Leaving Blank')
+    if job.country is None:
+        print('ERROR parsing country! Leaving Blank')
+    if job.city is None:
+        print('ERROR parsing city! Leaving Blank')
+    if job.organisation is None:
+        print('ERROR parsing organisation! Leaving Blank')
+    if job.grade is None:
+        print('ERROR parsing grade! Leaving Blank')
 
 
 def _get_text_content(soup, job):

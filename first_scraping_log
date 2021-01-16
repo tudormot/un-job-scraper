@@ -1,0 +1,1410 @@
+(wcproduct) tudor@tudor-pc:~/Workspace/job_scraper$ python main.py 
+/home/tudor/Workspace/job_scraper/config.py:7: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  args = yaml.load(f)
+INFO: last_update_date:  2021-01-15 09:20:06
+INFO. request to :  https://unjobs.org/new/1
+INFO. request to :  https://unjobs.org/new/2
+INFO. request to :  https://unjobs.org/new/3
+INFO. request to :  https://unjobs.org/new/4
+INFO. request to :  https://unjobs.org/new/5
+INFO. request to :  https://unjobs.org/new/6
+INFO. request to :  https://unjobs.org/new/7
+INFO. request to :  https://unjobs.org/new/8
+INFO. request to :  https://unjobs.org/new/9
+INFO. request to :  https://unjobs.org/new/10
+INFO. request to :  https://unjobs.org/new/11
+INFO. request to :  https://unjobs.org/new/12
+INFO. request to :  https://unjobs.org/new/13
+INFO. request to :  https://unjobs.org/new/14
+INFO. request to :  https://unjobs.org/new/15
+INFO. request to :  https://unjobs.org/new/16
+INFO. request to :  https://unjobs.org/new/17
+INFO. request to :  https://unjobs.org/new/18
+INFO. request to :  https://unjobs.org/new/19
+INFO. request to :  https://unjobs.org/new/20
+INFO. request to :  https://unjobs.org/new/21
+INFO. request to :  https://unjobs.org/new/22
+INFO. request to :  https://unjobs.org/new/23
+INFO. request to :  https://unjobs.org/new/24
+INFO. request to :  https://unjobs.org/new/25
+INFO. request to :  https://unjobs.org/new/26
+INFO. request to :  https://unjobs.org/new/27
+INFO. request to :  https://unjobs.org/new/28
+INFO. request to :  https://unjobs.org/new/29
+INFO. request to :  https://unjobs.org/new/30
+INFO. request to :  https://unjobs.org/new/31
+INFO. request to :  https://unjobs.org/new/32
+INFO. request to :  https://unjobs.org/new/33
+INFO. request to :  https://unjobs.org/new/34
+INFO. request to :  https://unjobs.org/new/35
+INFO. request to :  https://unjobs.org/new/36
+INFO. request to :  https://unjobs.org/new/37
+INFO. request to :  https://unjobs.org/new/38
+INFO. request to :  https://unjobs.org/new/39
+INFO. request to :  https://unjobs.org/new/40
+INFO. request to :  https://unjobs.org/new/41
+Did not find any more pages at url:  https://unjobs.org/new/41
+Scraping following url:  https://unjobs.org/vacancies/1610646958529
+Scraping following url:  https://unjobs.org/vacancies/1610562129144
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610658708861
+Scraping following url:  https://unjobs.org/vacancies/1610658707664
+Scraping following url:  https://unjobs.org/vacancies/1610658706457
+[{"id":1610646958529,"success":true,"message":"Job with id:1610646958529 added successfully."},{"id":1610562129144,"success":true,"message":"Job with id:1610562129144 added successfully."},{"id":1610658708861,"success":true,"message":"Job with id:1610658708861 added successfully."},{"id":1610658707664,"success":true,"message":"Job with id:1610658707664 added successfully."},{"id":1610658706457,"success":true,"message":"Job with id:1610658706457 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658703233
+Scraping following url:  https://unjobs.org/vacancies/1610658715709
+Scraping following url:  https://unjobs.org/vacancies/1610658668452
+Scraping following url:  https://unjobs.org/vacancies/1610658714309
+Scraping following url:  https://unjobs.org/vacancies/1610658743152
+[{"id":1610658703233,"success":true,"message":"Job with id:1610658703233 added successfully."},{"id":1610658715709,"success":true,"message":"Job with id:1610658715709 added successfully."},{"id":1610658668452,"success":true,"message":"Job with id:1610658668452 added successfully."},{"id":1610658714309,"success":true,"message":"Job with id:1610658714309 added successfully."},{"id":1610658743152,"success":true,"message":"Job with id:1610658743152 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658712946
+Scraping following url:  https://unjobs.org/vacancies/1610658639835
+Scraping following url:  https://unjobs.org/vacancies/1610658711717
+Scraping following url:  https://unjobs.org/vacancies/1610658158073
+Scraping following url:  https://unjobs.org/vacancies/1610658161958
+[{"id":1610658712946,"success":true,"message":"Job with id:1610658712946 added successfully."},{"id":1610658639835,"success":true,"message":"Job with id:1610658639835 added successfully."},{"id":1610658711717,"success":true,"message":"Job with id:1610658711717 added successfully."},{"id":1610658158073,"success":true,"message":"Job with id:1610658158073 added successfully."},{"id":1610658161958,"success":true,"message":"Job with id:1610658161958 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658219126
+Scraping following url:  https://unjobs.org/vacancies/1610658629891
+Scraping following url:  https://unjobs.org/vacancies/1610658610641
+Scraping following url:  https://unjobs.org/vacancies/1610658561573
+Scraping following url:  https://unjobs.org/vacancies/1610658551751
+[{"id":1610658219126,"success":true,"message":"Job with id:1610658219126 added successfully."},{"id":1610658629891,"success":true,"message":"Job with id:1610658629891 added successfully."},{"id":1610658610641,"success":true,"message":"Job with id:1610658610641 added successfully."},{"id":1610658561573,"success":true,"message":"Job with id:1610658561573 added successfully."},{"id":1610658551751,"success":true,"message":"Job with id:1610658551751 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658102697
+Scraping following url:  https://unjobs.org/vacancies/1610658174530
+Scraping following url:  https://unjobs.org/vacancies/1610655784445
+Scraping following url:  https://unjobs.org/vacancies/1610655786931
+Scraping following url:  https://unjobs.org/vacancies/1610655781927
+[{"id":1610658102697,"success":true,"message":"Job with id:1610658102697 added successfully."},{"id":1610658174530,"success":true,"message":"Job with id:1610658174530 added successfully."},{"id":1610655784445,"success":true,"message":"Job with id:1610655784445 added successfully."},{"id":1610655786931,"success":true,"message":"Job with id:1610655786931 added successfully."},{"id":1610655781927,"success":true,"message":"Job with id:1610655781927 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651267145
+Scraping following url:  https://unjobs.org/vacancies/1610649397062
+Scraping following url:  https://unjobs.org/vacancies/1610649403202
+Scraping following url:  https://unjobs.org/vacancies/1610646956323
+Scraping following url:  https://unjobs.org/vacancies/1610648943851
+[{"id":1610651267145,"success":true,"message":"Job with id:1610651267145 added successfully."},{"id":1610649397062,"success":true,"message":"Job with id:1610649397062 added successfully."},{"id":1610649403202,"success":true,"message":"Job with id:1610649403202 added successfully."},{"id":1610646956323,"success":true,"message":"Job with id:1610646956323 added successfully."},{"id":1610648943851,"success":true,"message":"Job with id:1610648943851 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648937473
+Scraping following url:  https://unjobs.org/vacancies/1610648720872
+Scraping following url:  https://unjobs.org/vacancies/1610648814303
+Scraping following url:  https://unjobs.org/vacancies/1610648930677
+Scraping following url:  https://unjobs.org/vacancies/1610648923516
+[{"id":1610648937473,"success":true,"message":"Job with id:1610648937473 added successfully."},{"id":1610648720872,"success":true,"message":"Job with id:1610648720872 added successfully."},{"id":1610648814303,"success":true,"message":"Job with id:1610648814303 added successfully."},{"id":1610648930677,"success":true,"message":"Job with id:1610648930677 added successfully."},{"id":1610648923516,"success":true,"message":"Job with id:1610648923516 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648909801
+Scraping following url:  https://unjobs.org/vacancies/1610648902898
+Scraping following url:  https://unjobs.org/vacancies/1610648895974
+Scraping following url:  https://unjobs.org/vacancies/1610648807054
+Scraping following url:  https://unjobs.org/vacancies/1610648867573
+[{"id":1610648909801,"success":true,"message":"Job with id:1610648909801 added successfully."},{"id":1610648902898,"success":true,"message":"Job with id:1610648902898 added successfully."},{"id":1610648895974,"success":true,"message":"Job with id:1610648895974 added successfully."},{"id":1610648807054,"success":true,"message":"Job with id:1610648807054 added successfully."},{"id":1610648867573,"success":true,"message":"Job with id:1610648867573 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648800162
+Scraping following url:  https://unjobs.org/vacancies/1610648853941
+Scraping following url:  https://unjobs.org/vacancies/1610648335981
+Scraping following url:  https://unjobs.org/vacancies/1610648793548
+Scraping following url:  https://unjobs.org/vacancies/1610648847095
+[{"id":1610648800162,"success":true,"message":"Job with id:1610648800162 added successfully."},{"id":1610648853941,"success":true,"message":"Job with id:1610648853941 added successfully."},{"id":1610648335981,"success":true,"message":"Job with id:1610648335981 added successfully."},{"id":1610648793548,"success":true,"message":"Job with id:1610648793548 added successfully."},{"id":1610648847095,"success":true,"message":"Job with id:1610648847095 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648786584
+Scraping following url:  https://unjobs.org/vacancies/1610648778698
+Scraping following url:  https://unjobs.org/vacancies/1610648751012
+Scraping following url:  https://unjobs.org/vacancies/1610648765026
+Scraping following url:  https://unjobs.org/vacancies/1610646964950
+[{"id":1610648786584,"success":true,"message":"Job with id:1610648786584 added successfully."},{"id":1610648778698,"success":true,"message":"Job with id:1610648778698 added successfully."},{"id":1610648751012,"success":true,"message":"Job with id:1610648751012 added successfully."},{"id":1610648765026,"success":true,"message":"Job with id:1610648765026 added successfully."},{"id":1610646964950,"success":true,"message":"Job with id:1610646964950 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648833839
+Scraping following url:  https://unjobs.org/vacancies/1610648743994
+Scraping following url:  https://unjobs.org/vacancies/1610648827512
+Scraping following url:  https://unjobs.org/vacancies/1610648758492
+Scraping following url:  https://unjobs.org/vacancies/1610648735334
+[{"id":1610648833839,"success":true,"message":"Job with id:1610648833839 added successfully."},{"id":1610648743994,"success":true,"message":"Job with id:1610648743994 added successfully."},{"id":1610648827512,"success":true,"message":"Job with id:1610648827512 added successfully."},{"id":1610648758492,"success":true,"message":"Job with id:1610648758492 added successfully."},{"id":1610648735334,"success":true,"message":"Job with id:1610648735334 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648325247
+Scraping following url:  https://unjobs.org/vacancies/1610658278607
+Scraping following url:  https://unjobs.org/vacancies/1610646823921
+Scraping following url:  https://unjobs.org/vacancies/1610657844707
+Scraping following url:  https://unjobs.org/vacancies/1610651164221
+[{"id":1610648325247,"success":true,"message":"Job with id:1610648325247 added successfully."},{"id":1610658278607,"success":true,"message":"Job with id:1610658278607 added successfully."},{"id":1610646823921,"success":true,"message":"Job with id:1610646823921 added successfully."},{"id":1610657844707,"success":true,"message":"Job with id:1610657844707 added successfully."},{"id":1610651164221,"success":true,"message":"Job with id:1610651164221 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610648875157
+Scraping following url:  https://unjobs.org/vacancies/1610648728258
+Scraping following url:  https://unjobs.org/vacancies/1610648771923
+Scraping following url:  https://unjobs.org/vacancies/1610662874262
+Not able to parse following url :  https://unjobs.org/vacancies/1610662874262
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663201032
+Not able to parse following url :  https://unjobs.org/vacancies/1610663201032
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+[{"id":1610648875157,"success":true,"message":"Job with id:1610648875157 added successfully."},{"id":1610648728258,"success":true,"message":"Job with id:1610648728258 added successfully."},{"id":1610648771923,"success":true,"message":"Job with id:1610648771923 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610662774676
+Not able to parse following url :  https://unjobs.org/vacancies/1610662774676
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610662808954
+Not able to parse following url :  https://unjobs.org/vacancies/1610662808954
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610662841493
+Not able to parse following url :  https://unjobs.org/vacancies/1610662841493
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610662907308
+Not able to parse following url :  https://unjobs.org/vacancies/1610662907308
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610662939715
+Not able to parse following url :  https://unjobs.org/vacancies/1610662939715
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+{"error":"Provide list of jobs."}
+Scraping following url:  https://unjobs.org/vacancies/1610663005155
+Not able to parse following url :  https://unjobs.org/vacancies/1610663005155
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663037755
+Not able to parse following url :  https://unjobs.org/vacancies/1610663037755
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663070380
+Not able to parse following url :  https://unjobs.org/vacancies/1610663070380
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663103289
+Not able to parse following url :  https://unjobs.org/vacancies/1610663103289
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663135887
+Not able to parse following url :  https://unjobs.org/vacancies/1610663135887
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+{"error":"Provide list of jobs."}
+Scraping following url:  https://unjobs.org/vacancies/1610663168281
+Not able to parse following url :  https://unjobs.org/vacancies/1610663168281
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663266525
+Not able to parse following url :  https://unjobs.org/vacancies/1610663266525
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610663299286
+Not able to parse following url :  https://unjobs.org/vacancies/1610663299286
+Here is the exception :  'NoneType' object has no attribute 'find_all'
+Scraping following url:  https://unjobs.org/vacancies/1610656677831
+Scraping following url:  https://unjobs.org/vacancies/1610656676459
+[{"id":1610656677831,"success":true,"message":"Job with id:1610656677831 added successfully."},{"id":1610656676459,"success":true,"message":"Job with id:1610656676459 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610656674945
+Scraping following url:  https://unjobs.org/vacancies/1610656672297
+Scraping following url:  https://unjobs.org/vacancies/1610656670559
+Scraping following url:  https://unjobs.org/vacancies/1610656667863
+Scraping following url:  https://unjobs.org/vacancies/1610658710435
+[{"id":1610656674945,"success":true,"message":"Job with id:1610656674945 added successfully."},{"id":1610656672297,"success":true,"message":"Job with id:1610656672297 added successfully."},{"id":1610656670559,"success":true,"message":"Job with id:1610656670559 added successfully."},{"id":1610656667863,"success":true,"message":"Job with id:1610656667863 added successfully."},{"id":1610658710435,"success":true,"message":"Job with id:1610658710435 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658704932
+Not able to parse following url :  https://unjobs.org/vacancies/1610658704932
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610658700538
+Not able to parse following url :  https://unjobs.org/vacancies/1610658700538
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610573296860
+Scraping following url:  https://unjobs.org/vacancies/1610656762650
+Scraping following url:  https://unjobs.org/vacancies/1610651408457
+[{"id":1610573296860,"success":true,"message":"Job with id:1610573296860 added successfully."},{"id":1610656762650,"success":true,"message":"Job with id:1610656762650 added successfully."},{"id":1610651408457,"success":true,"message":"Job with id:1610651408457 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651406490
+Scraping following url:  https://unjobs.org/vacancies/1610651393876
+Scraping following url:  https://unjobs.org/vacancies/1610651392131
+Scraping following url:  https://unjobs.org/vacancies/1610651390436
+Scraping following url:  https://unjobs.org/vacancies/1610651388937
+[{"id":1610651406490,"success":true,"message":"Job with id:1610651406490 added successfully."},{"id":1610651393876,"success":true,"message":"Job with id:1610651393876 added successfully."},{"id":1610651392131,"success":true,"message":"Job with id:1610651392131 added successfully."},{"id":1610651390436,"success":true,"message":"Job with id:1610651390436 added successfully."},{"id":1610651388937,"success":true,"message":"Job with id:1610651388937 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651387422
+Scraping following url:  https://unjobs.org/vacancies/1610651385830
+Scraping following url:  https://unjobs.org/vacancies/1610649316236
+Not able to parse following url :  https://unjobs.org/vacancies/1610649316236
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610649298182
+Scraping following url:  https://unjobs.org/vacancies/1610649290082
+Not able to parse following url :  https://unjobs.org/vacancies/1610649290082
+Here is the exception :  list index out of range
+[{"id":1610651387422,"success":true,"message":"Job with id:1610651387422 added successfully."},{"id":1610651385830,"success":true,"message":"Job with id:1610651385830 added successfully."},{"id":1610649298182,"success":true,"message":"Job with id:1610649298182 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610649263442
+Scraping following url:  https://unjobs.org/vacancies/1610649254481
+Not able to parse following url :  https://unjobs.org/vacancies/1610649254481
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610658649340
+Scraping following url:  https://unjobs.org/vacancies/1610658620055
+Scraping following url:  https://unjobs.org/vacancies/1610658591207
+[{"id":1610649263442,"success":true,"message":"Job with id:1610649263442 added successfully."},{"id":1610658649340,"success":true,"message":"Job with id:1610658649340 added successfully."},{"id":1610658620055,"success":true,"message":"Job with id:1610658620055 added successfully."},{"id":1610658591207,"success":true,"message":"Job with id:1610658591207 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658581537
+Scraping following url:  https://unjobs.org/vacancies/1610658542051
+Scraping following url:  https://unjobs.org/vacancies/1610649523137
+Scraping following url:  https://unjobs.org/vacancies/1610654708781
+Scraping following url:  https://unjobs.org/vacancies/1610654169133
+[{"id":1610658581537,"success":true,"message":"Job with id:1610658581537 added successfully."},{"id":1610658542051,"success":true,"message":"Job with id:1610658542051 added successfully."},{"id":1610649523137,"success":true,"message":"Job with id:1610649523137 added successfully."},{"id":1610654708781,"success":true,"message":"Job with id:1610654708781 added successfully."},{"id":1610654169133,"success":true,"message":"Job with id:1610654169133 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658170475
+Scraping following url:  https://unjobs.org/vacancies/1610658138008
+Not able to parse following url :  https://unjobs.org/vacancies/1610658138008
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610658133935
+Scraping following url:  https://unjobs.org/vacancies/1610658114770
+Scraping following url:  https://unjobs.org/vacancies/1610658290247
+[{"id":1610658170475,"success":true,"message":"Job with id:1610658170475 added successfully."},{"id":1610658133935,"success":true,"message":"Job with id:1610658133935 added successfully."},{"id":1610658114770,"success":true,"message":"Job with id:1610658114770 added successfully."},{"id":1610658290247,"success":true,"message":"Job with id:1610658290247 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658284605
+Scraping following url:  https://unjobs.org/vacancies/1610658272234
+Scraping following url:  https://unjobs.org/vacancies/1610658266623
+Scraping following url:  https://unjobs.org/vacancies/1610658260539
+Scraping following url:  https://unjobs.org/vacancies/1610658254824
+[{"id":1610658284605,"success":true,"message":"Job with id:1610658284605 added successfully."},{"id":1610658272234,"success":true,"message":"Job with id:1610658272234 added successfully."},{"id":1610658266623,"success":true,"message":"Job with id:1610658266623 added successfully."},{"id":1610658260539,"success":true,"message":"Job with id:1610658260539 added successfully."},{"id":1610658254824,"success":true,"message":"Job with id:1610658254824 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658248946
+Scraping following url:  https://unjobs.org/vacancies/1610658242912
+Scraping following url:  https://unjobs.org/vacancies/1610658236912
+Scraping following url:  https://unjobs.org/vacancies/1610658166020
+Not able to parse following url :  https://unjobs.org/vacancies/1610658166020
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610658118877
+[{"id":1610658248946,"success":true,"message":"Job with id:1610658248946 added successfully."},{"id":1610658242912,"success":true,"message":"Job with id:1610658242912 added successfully."},{"id":1610658236912,"success":true,"message":"Job with id:1610658236912 added successfully."},{"id":1610658118877,"success":true,"message":"Job with id:1610658118877 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610657646567
+Not able to parse following url :  https://unjobs.org/vacancies/1610657646567
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572893056
+Scraping following url:  https://unjobs.org/vacancies/1610573220181
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573222672
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573224910
+[{"id":1610572893056,"success":true,"message":"Job with id:1610572893056 added successfully."},{"id":1610573220181,"success":true,"message":"Job with id:1610573220181 added successfully."},{"id":1610573222672,"success":true,"message":"Job with id:1610573222672 added successfully."},{"id":1610573224910,"success":true,"message":"Job with id:1610573224910 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573228538
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573230757
+Scraping following url:  https://unjobs.org/vacancies/1610573233223
+Scraping following url:  https://unjobs.org/vacancies/1610573235639
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573240319
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610573228538,"success":true,"message":"Job with id:1610573228538 added successfully."},{"id":1610573230757,"success":true,"message":"Job with id:1610573230757 added successfully."},{"id":1610573233223,"success":true,"message":"Job with id:1610573233223 added successfully."},{"id":1610573235639,"success":true,"message":"Job with id:1610573235639 added successfully."},{"id":1610573240319,"success":true,"message":"Job with id:1610573240319 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573242671
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573244857
+Scraping following url:  https://unjobs.org/vacancies/1610573247202
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573249627
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573251866
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610573242671,"success":true,"message":"Job with id:1610573242671 added successfully."},{"id":1610573244857,"success":true,"message":"Job with id:1610573244857 added successfully."},{"id":1610573247202,"success":true,"message":"Job with id:1610573247202 added successfully."},{"id":1610573249627,"success":true,"message":"Job with id:1610573249627 added successfully."},{"id":1610573251866,"success":true,"message":"Job with id:1610573251866 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573254226
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573256500
+Scraping following url:  https://unjobs.org/vacancies/1610573258794
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573261017
+Scraping following url:  https://unjobs.org/vacancies/1610573263377
+[{"id":1610573254226,"success":true,"message":"Job with id:1610573254226 added successfully."},{"id":1610573256500,"success":true,"message":"Job with id:1610573256500 added successfully."},{"id":1610573258794,"success":true,"message":"Job with id:1610573258794 added successfully."},{"id":1610573261017,"success":true,"message":"Job with id:1610573261017 added successfully."},{"id":1610573263377,"success":true,"message":"Job with id:1610573263377 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573265737
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610644688957
+Scraping following url:  https://unjobs.org/vacancies/1610644701230
+Scraping following url:  https://unjobs.org/vacancies/1610644707943
+Scraping following url:  https://unjobs.org/vacancies/1610644713798
+[{"id":1610573265737,"success":true,"message":"Job with id:1610573265737 added successfully."},{"id":1610644688957,"success":true,"message":"Job with id:1610644688957 added successfully."},{"id":1610644701230,"success":true,"message":"Job with id:1610644701230 added successfully."},{"id":1610644707943,"success":true,"message":"Job with id:1610644707943 added successfully."},{"id":1610644713798,"success":true,"message":"Job with id:1610644713798 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610644788290
+Scraping following url:  https://unjobs.org/vacancies/1610644798633
+Scraping following url:  https://unjobs.org/vacancies/1610646960375
+Scraping following url:  https://unjobs.org/vacancies/1610646962415
+Scraping following url:  https://unjobs.org/vacancies/1610646967453
+[{"id":1610644788290,"success":true,"message":"Job with id:1610644788290 added successfully."},{"id":1610644798633,"success":true,"message":"Job with id:1610644798633 added successfully."},{"id":1610646960375,"success":true,"message":"Job with id:1610646960375 added successfully."},{"id":1610646962415,"success":true,"message":"Job with id:1610646962415 added successfully."},{"id":1610646967453,"success":true,"message":"Job with id:1610646967453 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610646969948
+Scraping following url:  https://unjobs.org/vacancies/1610646973285
+Scraping following url:  https://unjobs.org/vacancies/1610646975838
+Scraping following url:  https://unjobs.org/vacancies/1610647842001
+Scraping following url:  https://unjobs.org/vacancies/1610647845336
+[{"id":1610646969948,"success":true,"message":"Job with id:1610646969948 added successfully."},{"id":1610646973285,"success":true,"message":"Job with id:1610646973285 added successfully."},{"id":1610646975838,"success":true,"message":"Job with id:1610646975838 added successfully."},{"id":1610647842001,"success":true,"message":"Job with id:1610647842001 added successfully."},{"id":1610647845336,"success":true,"message":"Job with id:1610647845336 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610647847847
+Scraping following url:  https://unjobs.org/vacancies/1610647851707
+Scraping following url:  https://unjobs.org/vacancies/1610647853207
+Scraping following url:  https://unjobs.org/vacancies/1610649272104
+Scraping following url:  https://unjobs.org/vacancies/1610649281413
+[{"id":1610647847847,"success":true,"message":"Job with id:1610647847847 added successfully."},{"id":1610647851707,"success":true,"message":"Job with id:1610647851707 added successfully."},{"id":1610647853207,"success":true,"message":"Job with id:1610647853207 added successfully."},{"id":1610649272104,"success":true,"message":"Job with id:1610649272104 added successfully."},{"id":1610649281413,"success":true,"message":"Job with id:1610649281413 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610649306683
+Scraping following url:  https://unjobs.org/vacancies/1610649409318
+Scraping following url:  https://unjobs.org/vacancies/1610649492668
+Scraping following url:  https://unjobs.org/vacancies/1610649500285
+Scraping following url:  https://unjobs.org/vacancies/1610649507750
+[{"id":1610649306683,"success":true,"message":"Job with id:1610649306683 added successfully."},{"id":1610649409318,"success":true,"message":"Job with id:1610649409318 added successfully."},{"id":1610649492668,"success":true,"message":"Job with id:1610649492668 added successfully."},{"id":1610649500285,"success":true,"message":"Job with id:1610649500285 added successfully."},{"id":1610649507750,"success":true,"message":"Job with id:1610649507750 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610649515800
+Scraping following url:  https://unjobs.org/vacancies/1610649530173
+Scraping following url:  https://unjobs.org/vacancies/1610649537308
+Scraping following url:  https://unjobs.org/vacancies/1610649545063
+Not able to parse following url :  https://unjobs.org/vacancies/1610649545063
+Here is the exception :  ERROR parsing country of job!
+Scraping following url:  https://unjobs.org/vacancies/1610651233227
+[{"id":1610649515800,"success":true,"message":"Job with id:1610649515800 added successfully."},{"id":1610649530173,"success":true,"message":"Job with id:1610649530173 added successfully."},{"id":1610649537308,"success":true,"message":"Job with id:1610649537308 added successfully."},{"id":1610651233227,"success":true,"message":"Job with id:1610651233227 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651234625
+Scraping following url:  https://unjobs.org/vacancies/1610651239259
+Scraping following url:  https://unjobs.org/vacancies/1610651243353
+Scraping following url:  https://unjobs.org/vacancies/1610651253728
+Scraping following url:  https://unjobs.org/vacancies/1610651258898
+[{"id":1610651234625,"success":true,"message":"Job with id:1610651234625 added successfully."},{"id":1610651239259,"success":true,"message":"Job with id:1610651239259 added successfully."},{"id":1610651243353,"success":true,"message":"Job with id:1610651243353 added successfully."},{"id":1610651253728,"success":true,"message":"Job with id:1610651253728 added successfully."},{"id":1610651258898,"success":true,"message":"Job with id:1610651258898 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651263213
+Scraping following url:  https://unjobs.org/vacancies/1610651275115
+Scraping following url:  https://unjobs.org/vacancies/1610651278983
+Scraping following url:  https://unjobs.org/vacancies/1610651284327
+Scraping following url:  https://unjobs.org/vacancies/1610651288623
+[{"id":1610651263213,"success":true,"message":"Job with id:1610651263213 added successfully."},{"id":1610651275115,"success":true,"message":"Job with id:1610651275115 added successfully."},{"id":1610651278983,"success":true,"message":"Job with id:1610651278983 added successfully."},{"id":1610651284327,"success":true,"message":"Job with id:1610651284327 added successfully."},{"id":1610651288623,"success":true,"message":"Job with id:1610651288623 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651294000
+Scraping following url:  https://unjobs.org/vacancies/1610651297952
+Scraping following url:  https://unjobs.org/vacancies/1610651302238
+Scraping following url:  https://unjobs.org/vacancies/1610651306737
+Scraping following url:  https://unjobs.org/vacancies/1610651310556
+[{"id":1610651294000,"success":true,"message":"Job with id:1610651294000 added successfully."},{"id":1610651297952,"success":true,"message":"Job with id:1610651297952 added successfully."},{"id":1610651302238,"success":true,"message":"Job with id:1610651302238 added successfully."},{"id":1610651306737,"success":true,"message":"Job with id:1610651306737 added successfully."},{"id":1610651310556,"success":true,"message":"Job with id:1610651310556 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610651314465
+Scraping following url:  https://unjobs.org/vacancies/1610654333706
+Scraping following url:  https://unjobs.org/vacancies/1610655789385
+Scraping following url:  https://unjobs.org/vacancies/1610655832083
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610655838237
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610651314465,"success":true,"message":"Job with id:1610651314465 added successfully."},{"id":1610654333706,"success":true,"message":"Job with id:1610654333706 added successfully."},{"id":1610655789385,"success":true,"message":"Job with id:1610655789385 added successfully."},{"id":1610655832083,"success":true,"message":"Job with id:1610655832083 added successfully."},{"id":1610655838237,"success":true,"message":"Job with id:1610655838237 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610655844579
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610656806102
+Scraping following url:  https://unjobs.org/vacancies/1610658096887
+Scraping following url:  https://unjobs.org/vacancies/1610658107009
+Scraping following url:  https://unjobs.org/vacancies/1610658126426
+[{"id":1610655844579,"success":true,"message":"Job with id:1610655844579 added successfully."},{"id":1610656806102,"success":true,"message":"Job with id:1610656806102 added successfully."},{"id":1610658096887,"success":true,"message":"Job with id:1610658096887 added successfully."},{"id":1610658107009,"success":true,"message":"Job with id:1610658107009 added successfully."},{"id":1610658126426,"success":true,"message":"Job with id:1610658126426 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658142447
+Scraping following url:  https://unjobs.org/vacancies/1610658146776
+Scraping following url:  https://unjobs.org/vacancies/1610658150970
+Scraping following url:  https://unjobs.org/vacancies/1610658202129
+Scraping following url:  https://unjobs.org/vacancies/1610658204719
+[{"id":1610658142447,"success":true,"message":"Job with id:1610658142447 added successfully."},{"id":1610658146776,"success":true,"message":"Job with id:1610658146776 added successfully."},{"id":1610658150970,"success":true,"message":"Job with id:1610658150970 added successfully."},{"id":1610658202129,"success":true,"message":"Job with id:1610658202129 added successfully."},{"id":1610658204719,"success":true,"message":"Job with id:1610658204719 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658212260
+Scraping following url:  https://unjobs.org/vacancies/1610658214946
+Scraping following url:  https://unjobs.org/vacancies/1610658222821
+Scraping following url:  https://unjobs.org/vacancies/1610658225277
+Scraping following url:  https://unjobs.org/vacancies/1610658327397
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610658212260,"success":true,"message":"Job with id:1610658212260 added successfully."},{"id":1610658214946,"success":true,"message":"Job with id:1610658214946 added successfully."},{"id":1610658222821,"success":true,"message":"Job with id:1610658222821 added successfully."},{"id":1610658225277,"success":true,"message":"Job with id:1610658225277 added successfully."},{"id":1610658327397,"success":true,"message":"Job with id:1610658327397 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610658571317
+Scraping following url:  https://unjobs.org/vacancies/1610658601030
+Scraping following url:  https://unjobs.org/vacancies/1610658658902
+Scraping following url:  https://unjobs.org/vacancies/1610658698444
+Scraping following url:  https://unjobs.org/vacancies/1610658740511
+[{"id":1610658571317,"success":true,"message":"Job with id:1610658571317 added successfully."},{"id":1610658601030,"success":true,"message":"Job with id:1610658601030 added successfully."},{"id":1610658658902,"success":true,"message":"Job with id:1610658658902 added successfully."},{"id":1610658698444,"success":true,"message":"Job with id:1610658698444 added successfully."},{"id":1610658740511,"success":true,"message":"Job with id:1610658740511 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610575922451
+Scraping following url:  https://unjobs.org/vacancies/1610575888618
+Scraping following url:  https://unjobs.org/vacancies/1610575971223
+Scraping following url:  https://unjobs.org/vacancies/1610575932017
+Scraping following url:  https://unjobs.org/vacancies/1610572895426
+[{"id":1610575922451,"success":true,"message":"Job with id:1610575922451 added successfully."},{"id":1610575888618,"success":true,"message":"Job with id:1610575888618 added successfully."},{"id":1610575971223,"success":true,"message":"Job with id:1610575971223 added successfully."},{"id":1610575932017,"success":true,"message":"Job with id:1610575932017 added successfully."},{"id":1610572895426,"success":true,"message":"Job with id:1610572895426 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572884599
+Scraping following url:  https://unjobs.org/vacancies/1610573195518
+Scraping following url:  https://unjobs.org/vacancies/1610572791720
+Scraping following url:  https://unjobs.org/vacancies/1610572779701
+Scraping following url:  https://unjobs.org/vacancies/1610572826726
+[{"id":1610572884599,"success":true,"message":"Job with id:1610572884599 added successfully."},{"id":1610573195518,"success":true,"message":"Job with id:1610573195518 added successfully."},{"id":1610572791720,"success":true,"message":"Job with id:1610572791720 added successfully."},{"id":1610572779701,"success":true,"message":"Job with id:1610572779701 added successfully."},{"id":1610572826726,"success":true,"message":"Job with id:1610572826726 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572766436
+Scraping following url:  https://unjobs.org/vacancies/1610572795687
+Scraping following url:  https://unjobs.org/vacancies/1610572674013
+Scraping following url:  https://unjobs.org/vacancies/1610570062759
+Scraping following url:  https://unjobs.org/vacancies/1610572665835
+[{"id":1610572766436,"success":true,"message":"Job with id:1610572766436 added successfully."},{"id":1610572795687,"success":true,"message":"Job with id:1610572795687 added successfully."},{"id":1610572674013,"success":true,"message":"Job with id:1610572674013 added successfully."},{"id":1610570062759,"success":true,"message":"Job with id:1610570062759 added successfully."},{"id":1610572665835,"success":true,"message":"Job with id:1610572665835 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572702890
+Scraping following url:  https://unjobs.org/vacancies/1610570058786
+Scraping following url:  https://unjobs.org/vacancies/1610570056522
+Scraping following url:  https://unjobs.org/vacancies/1610572694613
+Scraping following url:  https://unjobs.org/vacancies/1610570066959
+[{"id":1610572702890,"success":true,"message":"Job with id:1610572702890 added successfully."},{"id":1610570058786,"success":true,"message":"Job with id:1610570058786 added successfully."},{"id":1610570056522,"success":true,"message":"Job with id:1610570056522 added successfully."},{"id":1610572694613,"success":true,"message":"Job with id:1610572694613 added successfully."},{"id":1610570066959,"success":true,"message":"Job with id:1610570066959 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610570047379
+Scraping following url:  https://unjobs.org/vacancies/1610572677969
+Scraping following url:  https://unjobs.org/vacancies/1610570069361
+Scraping following url:  https://unjobs.org/vacancies/1610570052274
+Scraping following url:  https://unjobs.org/vacancies/1610570043244
+[{"id":1610570047379,"success":true,"message":"Job with id:1610570047379 added successfully."},{"id":1610572677969,"success":true,"message":"Job with id:1610572677969 added successfully."},{"id":1610570069361,"success":true,"message":"Job with id:1610570069361 added successfully."},{"id":1610570052274,"success":true,"message":"Job with id:1610570052274 added successfully."},{"id":1610570043244,"success":true,"message":"Job with id:1610570043244 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610570026087
+Scraping following url:  https://unjobs.org/vacancies/1610570035049
+Scraping following url:  https://unjobs.org/vacancies/1610570024273
+Scraping following url:  https://unjobs.org/vacancies/1610570022190
+Scraping following url:  https://unjobs.org/vacancies/1610570033537
+[{"id":1610570026087,"success":true,"message":"Job with id:1610570026087 added successfully."},{"id":1610570035049,"success":true,"message":"Job with id:1610570035049 added successfully."},{"id":1610570024273,"success":true,"message":"Job with id:1610570024273 added successfully."},{"id":1610570022190,"success":true,"message":"Job with id:1610570022190 added successfully."},{"id":1610570033537,"success":true,"message":"Job with id:1610570033537 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610570019590
+Scraping following url:  https://unjobs.org/vacancies/1610570031994
+Scraping following url:  https://unjobs.org/vacancies/1610568521442
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610570030354
+Scraping following url:  https://unjobs.org/vacancies/1610562699983
+[{"id":1610570019590,"success":true,"message":"Job with id:1610570019590 added successfully."},{"id":1610570031994,"success":true,"message":"Job with id:1610570031994 added successfully."},{"id":1610568521442,"success":true,"message":"Job with id:1610568521442 added successfully."},{"id":1610570030354,"success":true,"message":"Job with id:1610570030354 added successfully."},{"id":1610562699983,"success":true,"message":"Job with id:1610562699983 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610048236787
+Scraping following url:  https://unjobs.org/vacancies/1610562109528
+Scraping following url:  https://unjobs.org/vacancies/1610562083112
+Scraping following url:  https://unjobs.org/vacancies/1610475945406
+Scraping following url:  https://unjobs.org/vacancies/1610562142548
+[{"id":1610048236787,"success":true,"message":"Job with id:1610048236787 added successfully."},{"id":1610562109528,"success":true,"message":"Job with id:1610562109528 added successfully."},{"id":1610562083112,"success":true,"message":"Job with id:1610562083112 added successfully."},{"id":1610475945406,"success":true,"message":"Job with id:1610475945406 added successfully."},{"id":1610562142548,"success":true,"message":"Job with id:1610562142548 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610562068582
+Scraping following url:  https://unjobs.org/vacancies/1610564380124
+Scraping following url:  https://unjobs.org/vacancies/1610564389233
+Scraping following url:  https://unjobs.org/vacancies/1608229270499
+Scraping following url:  https://unjobs.org/vacancies/1610216527520
+[{"id":1610562068582,"success":true,"message":"Job with id:1610562068582 added successfully."},{"id":1610564380124,"success":true,"message":"Job with id:1610564380124 added successfully."},{"id":1610564389233,"success":true,"message":"Job with id:1610564389233 added successfully."},{"id":1608229270499,"success":true,"message":"Job with id:1608229270499 added successfully."},{"id":1610216527520,"success":true,"message":"Job with id:1610216527520 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610561896746
+Scraping following url:  https://unjobs.org/vacancies/1610561802012
+Scraping following url:  https://unjobs.org/vacancies/1610561748797
+Not able to parse following url :  https://unjobs.org/vacancies/1610561748797
+Here is the exception :  ERROR parsing office of job!
+Scraping following url:  https://unjobs.org/vacancies/1610561738375
+Scraping following url:  https://unjobs.org/vacancies/1610561717031
+[{"id":1610561896746,"success":true,"message":"Job with id:1610561896746 added successfully."},{"id":1610561802012,"success":true,"message":"Job with id:1610561802012 added successfully."},{"id":1610561738375,"success":true,"message":"Job with id:1610561738375 added successfully."},{"id":1610561717031,"success":true,"message":"Job with id:1610561717031 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610561695214
+Scraping following url:  https://unjobs.org/vacancies/1610569952795
+Scraping following url:  https://unjobs.org/vacancies/1610569950641
+Scraping following url:  https://unjobs.org/vacancies/1610569948140
+Scraping following url:  https://unjobs.org/vacancies/1610562733737
+[{"id":1610561695214,"success":true,"message":"Job with id:1610561695214 added successfully."},{"id":1610569952795,"success":true,"message":"Job with id:1610569952795 added successfully."},{"id":1610569950641,"success":true,"message":"Job with id:1610569950641 added successfully."},{"id":1610569948140,"success":true,"message":"Job with id:1610569948140 added successfully."},{"id":1610562733737,"success":true,"message":"Job with id:1610562733737 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610568684053
+Scraping following url:  https://unjobs.org/vacancies/1610569885117
+Scraping following url:  https://unjobs.org/vacancies/1610560246599
+Scraping following url:  https://unjobs.org/vacancies/1610572754177
+Not able to parse following url :  https://unjobs.org/vacancies/1610572754177
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572710880
+Not able to parse following url :  https://unjobs.org/vacancies/1610572710880
+Here is the exception :  list index out of range
+[{"id":1610568684053,"success":true,"message":"Job with id:1610568684053 added successfully."},{"id":1610569885117,"success":true,"message":"Job with id:1610569885117 added successfully."},{"id":1610560246599,"success":true,"message":"Job with id:1610560246599 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610575951575
+Scraping following url:  https://unjobs.org/vacancies/1610575911617
+Scraping following url:  https://unjobs.org/vacancies/1610575899798
+Scraping following url:  https://unjobs.org/vacancies/1610573200459
+Scraping following url:  https://unjobs.org/vacancies/1610571646077
+[{"id":1610575951575,"success":true,"message":"Job with id:1610575951575 added successfully."},{"id":1610575911617,"success":true,"message":"Job with id:1610575911617 added successfully."},{"id":1610575899798,"success":true,"message":"Job with id:1610575899798 added successfully."},{"id":1610573200459,"success":true,"message":"Job with id:1610573200459 added successfully."},{"id":1610571646077,"success":true,"message":"Job with id:1610571646077 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610571635496
+Scraping following url:  https://unjobs.org/vacancies/1610571614184
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573181918
+Scraping following url:  https://unjobs.org/vacancies/1610562545815
+Scraping following url:  https://unjobs.org/vacancies/1610562520433
+[{"id":1610571635496,"success":true,"message":"Job with id:1610571635496 added successfully."},{"id":1610571614184,"success":true,"message":"Job with id:1610571614184 added successfully."},{"id":1610573181918,"success":true,"message":"Job with id:1610573181918 added successfully."},{"id":1610562545815,"success":true,"message":"Job with id:1610562545815 added successfully."},{"id":1610562520433,"success":true,"message":"Job with id:1610562520433 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610562488261
+Not able to parse following url :  https://unjobs.org/vacancies/1610562488261
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610562512284
+Not able to parse following url :  https://unjobs.org/vacancies/1610562512284
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610562480195
+Scraping following url:  https://unjobs.org/vacancies/1610562472307
+Scraping following url:  https://unjobs.org/vacancies/1610562454584
+[{"id":1610562480195,"success":true,"message":"Job with id:1610562480195 added successfully."},{"id":1610562472307,"success":true,"message":"Job with id:1610562472307 added successfully."},{"id":1610562454584,"success":true,"message":"Job with id:1610562454584 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610562446653
+Not able to parse following url :  https://unjobs.org/vacancies/1610562446653
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610564502398
+Scraping following url:  https://unjobs.org/vacancies/1610564501012
+Scraping following url:  https://unjobs.org/vacancies/1610564499413
+Scraping following url:  https://unjobs.org/vacancies/1610564498027
+[{"id":1610564502398,"success":true,"message":"Job with id:1610564502398 added successfully."},{"id":1610564501012,"success":true,"message":"Job with id:1610564501012 added successfully."},{"id":1610564499413,"success":true,"message":"Job with id:1610564499413 added successfully."},{"id":1610564498027,"success":true,"message":"Job with id:1610564498027 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610564496323
+Scraping following url:  https://unjobs.org/vacancies/1610564494915
+Scraping following url:  https://unjobs.org/vacancies/1610564491953
+Scraping following url:  https://unjobs.org/vacancies/1610564490358
+Scraping following url:  https://unjobs.org/vacancies/1610564488895
+[{"id":1610564496323,"success":true,"message":"Job with id:1610564496323 added successfully."},{"id":1610564494915,"success":true,"message":"Job with id:1610564494915 added successfully."},{"id":1610564491953,"success":true,"message":"Job with id:1610564491953 added successfully."},{"id":1610564490358,"success":true,"message":"Job with id:1610564490358 added successfully."},{"id":1610564488895,"success":true,"message":"Job with id:1610564488895 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610564486915
+Scraping following url:  https://unjobs.org/vacancies/1610568150823
+Scraping following url:  https://unjobs.org/vacancies/1610568527172
+Scraping following url:  https://unjobs.org/vacancies/1610573020960
+Scraping following url:  https://unjobs.org/vacancies/1610573015168
+[{"id":1610564486915,"success":true,"message":"Job with id:1610564486915 added successfully."},{"id":1610568150823,"success":true,"message":"Job with id:1610568150823 added successfully."},{"id":1610568527172,"success":true,"message":"Job with id:1610568527172 added successfully."},{"id":1610573020960,"success":true,"message":"Job with id:1610573020960 added successfully."},{"id":1610573015168,"success":true,"message":"Job with id:1610573015168 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573009592
+Scraping following url:  https://unjobs.org/vacancies/1610573004001
+Scraping following url:  https://unjobs.org/vacancies/1610572998453
+Scraping following url:  https://unjobs.org/vacancies/1610572992731
+Scraping following url:  https://unjobs.org/vacancies/1610572987065
+[{"id":1610573009592,"success":true,"message":"Job with id:1610573009592 added successfully."},{"id":1610573004001,"success":true,"message":"Job with id:1610573004001 added successfully."},{"id":1610572998453,"success":true,"message":"Job with id:1610572998453 added successfully."},{"id":1610572992731,"success":true,"message":"Job with id:1610572992731 added successfully."},{"id":1610572987065,"success":true,"message":"Job with id:1610572987065 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572980864
+Scraping following url:  https://unjobs.org/vacancies/1610572975026
+Scraping following url:  https://unjobs.org/vacancies/1610572969246
+Scraping following url:  https://unjobs.org/vacancies/1610572963528
+Scraping following url:  https://unjobs.org/vacancies/1610572957445
+[{"id":1610572980864,"success":true,"message":"Job with id:1610572980864 added successfully."},{"id":1610572975026,"success":true,"message":"Job with id:1610572975026 added successfully."},{"id":1610572969246,"success":true,"message":"Job with id:1610572969246 added successfully."},{"id":1610572963528,"success":true,"message":"Job with id:1610572963528 added successfully."},{"id":1610572957445,"success":true,"message":"Job with id:1610572957445 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572951449
+Not able to parse following url :  https://unjobs.org/vacancies/1610572951449
+Here is the exception :  ERROR parsing organization posting the job!
+Scraping following url:  https://unjobs.org/vacancies/1610572945920
+Scraping following url:  https://unjobs.org/vacancies/1610572939636
+Scraping following url:  https://unjobs.org/vacancies/1610572931350
+Scraping following url:  https://unjobs.org/vacancies/1610572925417
+[{"id":1610572945920,"success":true,"message":"Job with id:1610572945920 added successfully."},{"id":1610572939636,"success":true,"message":"Job with id:1610572939636 added successfully."},{"id":1610572931350,"success":true,"message":"Job with id:1610572931350 added successfully."},{"id":1610572925417,"success":true,"message":"Job with id:1610572925417 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572919649
+Scraping following url:  https://unjobs.org/vacancies/1610572913537
+Scraping following url:  https://unjobs.org/vacancies/1610572877996
+Scraping following url:  https://unjobs.org/vacancies/1610572812073
+Scraping following url:  https://unjobs.org/vacancies/1610572807988
+[{"id":1610572919649,"success":true,"message":"Job with id:1610572919649 added successfully."},{"id":1610572913537,"success":true,"message":"Job with id:1610572913537 added successfully."},{"id":1610572877996,"success":true,"message":"Job with id:1610572877996 added successfully."},{"id":1610572812073,"success":true,"message":"Job with id:1610572812073 added successfully."},{"id":1610572807988,"success":true,"message":"Job with id:1610572807988 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572787750
+Scraping following url:  https://unjobs.org/vacancies/1610572762267
+Not able to parse following url :  https://unjobs.org/vacancies/1610572762267
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572743120
+Not able to parse following url :  https://unjobs.org/vacancies/1610572743120
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572738990
+Scraping following url:  https://unjobs.org/vacancies/1610572735047
+Not able to parse following url :  https://unjobs.org/vacancies/1610572735047
+Here is the exception :  list index out of range
+[{"id":1610572787750,"success":true,"message":"Job with id:1610572787750 added successfully."},{"id":1610572738990,"success":true,"message":"Job with id:1610572738990 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572730770
+Not able to parse following url :  https://unjobs.org/vacancies/1610572730770
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572719630
+Not able to parse following url :  https://unjobs.org/vacancies/1610572719630
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572698655
+Not able to parse following url :  https://unjobs.org/vacancies/1610572698655
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572682339
+Not able to parse following url :  https://unjobs.org/vacancies/1610572682339
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610572657182
+Not able to parse following url :  https://unjobs.org/vacancies/1610572657182
+Here is the exception :  list index out of range
+{"error":"Provide list of jobs."}
+Scraping following url:  https://unjobs.org/vacancies/1610572646658
+Scraping following url:  https://unjobs.org/vacancies/1610564294403
+Scraping following url:  https://unjobs.org/vacancies/1610564288508
+Scraping following url:  https://unjobs.org/vacancies/1610564282326
+Scraping following url:  https://unjobs.org/vacancies/1610571510505
+[{"id":1610572646658,"success":true,"message":"Job with id:1610572646658 added successfully."},{"id":1610564294403,"success":true,"message":"Job with id:1610564294403 added successfully."},{"id":1610564288508,"success":true,"message":"Job with id:1610564288508 added successfully."},{"id":1610564282326,"success":true,"message":"Job with id:1610564282326 added successfully."},{"id":1610571510505,"success":true,"message":"Job with id:1610571510505 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610571509126
+Scraping following url:  https://unjobs.org/vacancies/1610571507094
+Scraping following url:  https://unjobs.org/vacancies/1610571504999
+Scraping following url:  https://unjobs.org/vacancies/1610558250184
+Scraping following url:  https://unjobs.org/vacancies/1610558274337
+[{"id":1610571509126,"success":true,"message":"Job with id:1610571509126 added successfully."},{"id":1610571507094,"success":true,"message":"Job with id:1610571507094 added successfully."},{"id":1610571504999,"success":true,"message":"Job with id:1610571504999 added successfully."},{"id":1610558250184,"success":true,"message":"Job with id:1610558250184 added successfully."},{"id":1610558274337,"success":true,"message":"Job with id:1610558274337 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610558280317
+Scraping following url:  https://unjobs.org/vacancies/1610560378200
+Scraping following url:  https://unjobs.org/vacancies/1610560379883
+Scraping following url:  https://unjobs.org/vacancies/1610560381513
+Scraping following url:  https://unjobs.org/vacancies/1610560383305
+[{"id":1610558280317,"success":true,"message":"Job with id:1610558280317 added successfully."},{"id":1610560378200,"success":true,"message":"Job with id:1610560378200 added successfully."},{"id":1610560379883,"success":true,"message":"Job with id:1610560379883 added successfully."},{"id":1610560381513,"success":true,"message":"Job with id:1610560381513 added successfully."},{"id":1610560383305,"success":true,"message":"Job with id:1610560383305 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610560385948
+Scraping following url:  https://unjobs.org/vacancies/1610560387909
+Scraping following url:  https://unjobs.org/vacancies/1610560389596
+Scraping following url:  https://unjobs.org/vacancies/1610561199618
+Scraping following url:  https://unjobs.org/vacancies/1610561201529
+[{"id":1610560385948,"success":true,"message":"Job with id:1610560385948 added successfully."},{"id":1610560387909,"success":true,"message":"Job with id:1610560387909 added successfully."},{"id":1610560389596,"success":true,"message":"Job with id:1610560389596 added successfully."},{"id":1610561199618,"success":true,"message":"Job with id:1610561199618 added successfully."},{"id":1610561201529,"success":true,"message":"Job with id:1610561201529 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610561203177
+Scraping following url:  https://unjobs.org/vacancies/1610561204774
+Scraping following url:  https://unjobs.org/vacancies/1610561206467
+Scraping following url:  https://unjobs.org/vacancies/1610562438329
+Scraping following url:  https://unjobs.org/vacancies/1610562463038
+[{"id":1610561203177,"success":true,"message":"Job with id:1610561203177 added successfully."},{"id":1610561204774,"success":true,"message":"Job with id:1610561204774 added successfully."},{"id":1610561206467,"success":true,"message":"Job with id:1610561206467 added successfully."},{"id":1610562438329,"success":true,"message":"Job with id:1610562438329 added successfully."},{"id":1610562463038,"success":true,"message":"Job with id:1610562463038 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610562496392
+Scraping following url:  https://unjobs.org/vacancies/1610562504426
+Scraping following url:  https://unjobs.org/vacancies/1610562528642
+Scraping following url:  https://unjobs.org/vacancies/1610562536579
+Scraping following url:  https://unjobs.org/vacancies/1610562553663
+[{"id":1610562496392,"success":true,"message":"Job with id:1610562496392 added successfully."},{"id":1610562504426,"success":true,"message":"Job with id:1610562504426 added successfully."},{"id":1610562528642,"success":true,"message":"Job with id:1610562528642 added successfully."},{"id":1610562536579,"success":true,"message":"Job with id:1610562536579 added successfully."},{"id":1610562553663,"success":true,"message":"Job with id:1610562553663 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610562707733
+Scraping following url:  https://unjobs.org/vacancies/1610562715139
+Scraping following url:  https://unjobs.org/vacancies/1610562725433
+Scraping following url:  https://unjobs.org/vacancies/1610564364050
+Scraping following url:  https://unjobs.org/vacancies/1610564365465
+[{"id":1610562707733,"success":true,"message":"Job with id:1610562707733 added successfully."},{"id":1610562715139,"success":true,"message":"Job with id:1610562715139 added successfully."},{"id":1610562725433,"success":true,"message":"Job with id:1610562725433 added successfully."},{"id":1610564364050,"success":true,"message":"Job with id:1610564364050 added successfully."},{"id":1610564365465,"success":true,"message":"Job with id:1610564365465 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610564370977
+Scraping following url:  https://unjobs.org/vacancies/1610564375875
+Scraping following url:  https://unjobs.org/vacancies/1610564385264
+Scraping following url:  https://unjobs.org/vacancies/1610564394239
+Scraping following url:  https://unjobs.org/vacancies/1610564398774
+[{"id":1610564370977,"success":true,"message":"Job with id:1610564370977 added successfully."},{"id":1610564375875,"success":true,"message":"Job with id:1610564375875 added successfully."},{"id":1610564385264,"success":true,"message":"Job with id:1610564385264 added successfully."},{"id":1610564394239,"success":true,"message":"Job with id:1610564394239 added successfully."},{"id":1610564398774,"success":true,"message":"Job with id:1610564398774 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610564403093
+Scraping following url:  https://unjobs.org/vacancies/1610564407421
+Scraping following url:  https://unjobs.org/vacancies/1610564411893
+Scraping following url:  https://unjobs.org/vacancies/1610564415690
+Scraping following url:  https://unjobs.org/vacancies/1610568153768
+[{"id":1610564403093,"success":true,"message":"Job with id:1610564403093 added successfully."},{"id":1610564407421,"success":true,"message":"Job with id:1610564407421 added successfully."},{"id":1610564411893,"success":true,"message":"Job with id:1610564411893 added successfully."},{"id":1610564415690,"success":true,"message":"Job with id:1610564415690 added successfully."},{"id":1610568153768,"success":true,"message":"Job with id:1610568153768 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610568307265
+Scraping following url:  https://unjobs.org/vacancies/1610570017033
+Scraping following url:  https://unjobs.org/vacancies/1610570028513
+Scraping following url:  https://unjobs.org/vacancies/1610570037461
+Scraping following url:  https://unjobs.org/vacancies/1610570039244
+[{"id":1610568307265,"success":true,"message":"Job with id:1610568307265 added successfully."},{"id":1610570017033,"success":true,"message":"Job with id:1610570017033 added successfully."},{"id":1610570028513,"success":true,"message":"Job with id:1610570028513 added successfully."},{"id":1610570037461,"success":true,"message":"Job with id:1610570037461 added successfully."},{"id":1610570039244,"success":true,"message":"Job with id:1610570039244 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610570045717
+Scraping following url:  https://unjobs.org/vacancies/1610570054076
+Scraping following url:  https://unjobs.org/vacancies/1610570061199
+Scraping following url:  https://unjobs.org/vacancies/1610570065189
+Scraping following url:  https://unjobs.org/vacancies/1610571578998
+[{"id":1610570045717,"success":true,"message":"Job with id:1610570045717 added successfully."},{"id":1610570054076,"success":true,"message":"Job with id:1610570054076 added successfully."},{"id":1610570061199,"success":true,"message":"Job with id:1610570061199 added successfully."},{"id":1610570065189,"success":true,"message":"Job with id:1610570065189 added successfully."},{"id":1610571578998,"success":true,"message":"Job with id:1610571578998 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572642377
+Scraping following url:  https://unjobs.org/vacancies/1610572650899
+Scraping following url:  https://unjobs.org/vacancies/1610572661572
+Scraping following url:  https://unjobs.org/vacancies/1610572669894
+Scraping following url:  https://unjobs.org/vacancies/1610572686430
+[{"id":1610572642377,"success":true,"message":"Job with id:1610572642377 added successfully."},{"id":1610572650899,"success":true,"message":"Job with id:1610572650899 added successfully."},{"id":1610572661572,"success":true,"message":"Job with id:1610572661572 added successfully."},{"id":1610572669894,"success":true,"message":"Job with id:1610572669894 added successfully."},{"id":1610572686430,"success":true,"message":"Job with id:1610572686430 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572690465
+Scraping following url:  https://unjobs.org/vacancies/1610572706853
+Scraping following url:  https://unjobs.org/vacancies/1610572715157
+Scraping following url:  https://unjobs.org/vacancies/1610572726717
+Scraping following url:  https://unjobs.org/vacancies/1610572750119
+[{"id":1610572690465,"success":true,"message":"Job with id:1610572690465 added successfully."},{"id":1610572706853,"success":true,"message":"Job with id:1610572706853 added successfully."},{"id":1610572715157,"success":true,"message":"Job with id:1610572715157 added successfully."},{"id":1610572726717,"success":true,"message":"Job with id:1610572726717 added successfully."},{"id":1610572750119,"success":true,"message":"Job with id:1610572750119 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572758272
+Scraping following url:  https://unjobs.org/vacancies/1610572770382
+Scraping following url:  https://unjobs.org/vacancies/1610572775712
+Scraping following url:  https://unjobs.org/vacancies/1610572783689
+Scraping following url:  https://unjobs.org/vacancies/1610572799615
+[{"id":1610572758272,"success":true,"message":"Job with id:1610572758272 added successfully."},{"id":1610572770382,"success":true,"message":"Job with id:1610572770382 added successfully."},{"id":1610572775712,"success":true,"message":"Job with id:1610572775712 added successfully."},{"id":1610572783689,"success":true,"message":"Job with id:1610572783689 added successfully."},{"id":1610572799615,"success":true,"message":"Job with id:1610572799615 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572803797
+Scraping following url:  https://unjobs.org/vacancies/1610572836347
+Scraping following url:  https://unjobs.org/vacancies/1610572838779
+Scraping following url:  https://unjobs.org/vacancies/1610572842325
+Scraping following url:  https://unjobs.org/vacancies/1610572845394
+[{"id":1610572803797,"success":true,"message":"Job with id:1610572803797 added successfully."},{"id":1610572836347,"success":true,"message":"Job with id:1610572836347 added successfully."},{"id":1610572838779,"success":true,"message":"Job with id:1610572838779 added successfully."},{"id":1610572842325,"success":true,"message":"Job with id:1610572842325 added successfully."},{"id":1610572845394,"success":true,"message":"Job with id:1610572845394 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572848064
+Scraping following url:  https://unjobs.org/vacancies/1610572850643
+Scraping following url:  https://unjobs.org/vacancies/1610572853181
+Scraping following url:  https://unjobs.org/vacancies/1610572857357
+Scraping following url:  https://unjobs.org/vacancies/1610572860998
+[{"id":1610572848064,"success":true,"message":"Job with id:1610572848064 added successfully."},{"id":1610572850643,"success":true,"message":"Job with id:1610572850643 added successfully."},{"id":1610572853181,"success":true,"message":"Job with id:1610572853181 added successfully."},{"id":1610572857357,"success":true,"message":"Job with id:1610572857357 added successfully."},{"id":1610572860998,"success":true,"message":"Job with id:1610572860998 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572863381
+Scraping following url:  https://unjobs.org/vacancies/1610572865693
+Scraping following url:  https://unjobs.org/vacancies/1610572868891
+Scraping following url:  https://unjobs.org/vacancies/1610572871459
+Scraping following url:  https://unjobs.org/vacancies/1610572874678
+[{"id":1610572863381,"success":true,"message":"Job with id:1610572863381 added successfully."},{"id":1610572865693,"success":true,"message":"Job with id:1610572865693 added successfully."},{"id":1610572868891,"success":true,"message":"Job with id:1610572868891 added successfully."},{"id":1610572871459,"success":true,"message":"Job with id:1610572871459 added successfully."},{"id":1610572874678,"success":true,"message":"Job with id:1610572874678 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610572881856
+Scraping following url:  https://unjobs.org/vacancies/1610572887115
+Scraping following url:  https://unjobs.org/vacancies/1610572890509
+Scraping following url:  https://unjobs.org/vacancies/1610572899371
+Scraping following url:  https://unjobs.org/vacancies/1610572902250
+[{"id":1610572881856,"success":true,"message":"Job with id:1610572881856 added successfully."},{"id":1610572887115,"success":true,"message":"Job with id:1610572887115 added successfully."},{"id":1610572890509,"success":true,"message":"Job with id:1610572890509 added successfully."},{"id":1610572899371,"success":true,"message":"Job with id:1610572899371 added successfully."},{"id":1610572902250,"success":true,"message":"Job with id:1610572902250 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573052661
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573063584
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573084064
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573104561
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573114911
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610573052661,"success":true,"message":"Job with id:1610573052661 added successfully."},{"id":1610573063584,"success":true,"message":"Job with id:1610573063584 added successfully."},{"id":1610573084064,"success":true,"message":"Job with id:1610573084064 added successfully."},{"id":1610573104561,"success":true,"message":"Job with id:1610573104561 added successfully."},{"id":1610573114911,"success":true,"message":"Job with id:1610573114911 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573125330
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610573197124
+Scraping following url:  https://unjobs.org/vacancies/1610573199077
+Scraping following url:  https://unjobs.org/vacancies/1610573202011
+Not able to parse following url :  https://unjobs.org/vacancies/1610573202011
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610573204944
+[{"id":1610573125330,"success":true,"message":"Job with id:1610573125330 added successfully."},{"id":1610573197124,"success":true,"message":"Job with id:1610573197124 added successfully."},{"id":1610573199077,"success":true,"message":"Job with id:1610573199077 added successfully."},{"id":1610573204944,"success":true,"message":"Job with id:1610573204944 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610573206550
+Scraping following url:  https://unjobs.org/vacancies/1610575941759
+Scraping following url:  https://unjobs.org/vacancies/1610575961325
+Scraping following url:  https://unjobs.org/vacancies/1610056728012
+Scraping following url:  https://unjobs.org/vacancies/1610054134726
+[{"id":1610573206550,"success":true,"message":"Job with id:1610573206550 added successfully."},{"id":1610575941759,"success":true,"message":"Job with id:1610575941759 added successfully."},{"id":1610575961325,"success":true,"message":"Job with id:1610575961325 added successfully."},{"id":1610056728012,"success":true,"message":"Job with id:1610056728012 added successfully."},{"id":1610054134726,"success":true,"message":"Job with id:1610054134726 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610056737612
+Scraping following url:  https://unjobs.org/vacancies/1610054094221
+Scraping following url:  https://unjobs.org/vacancies/1610054097329
+Scraping following url:  https://unjobs.org/vacancies/1610054111593
+Scraping following url:  https://unjobs.org/vacancies/1610054130113
+[{"id":1610056737612,"success":true,"message":"Job with id:1610056737612 added successfully."},{"id":1610054094221,"success":true,"message":"Job with id:1610054094221 added successfully."},{"id":1610054097329,"success":true,"message":"Job with id:1610054097329 added successfully."},{"id":1610054111593,"success":true,"message":"Job with id:1610054111593 added successfully."},{"id":1610054130113,"success":true,"message":"Job with id:1610054130113 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610054127037
+Scraping following url:  https://unjobs.org/vacancies/1610054089318
+Scraping following url:  https://unjobs.org/vacancies/1610054106787
+Scraping following url:  https://unjobs.org/vacancies/1610054103634
+Scraping following url:  https://unjobs.org/vacancies/1610054102033
+[{"id":1610054127037,"success":true,"message":"Job with id:1610054127037 added successfully."},{"id":1610054089318,"success":true,"message":"Job with id:1610054089318 added successfully."},{"id":1610054106787,"success":true,"message":"Job with id:1610054106787 added successfully."},{"id":1610054103634,"success":true,"message":"Job with id:1610054103634 added successfully."},{"id":1610054102033,"success":true,"message":"Job with id:1610054102033 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610054114729
+Scraping following url:  https://unjobs.org/vacancies/1610054077463
+Scraping following url:  https://unjobs.org/vacancies/1610054064918
+Scraping following url:  https://unjobs.org/vacancies/1610054061649
+Scraping following url:  https://unjobs.org/vacancies/1610054058437
+[{"id":1610054114729,"success":true,"message":"Job with id:1610054114729 added successfully."},{"id":1610054077463,"success":true,"message":"Job with id:1610054077463 added successfully."},{"id":1610054064918,"success":true,"message":"Job with id:1610054064918 added successfully."},{"id":1610054061649,"success":true,"message":"Job with id:1610054061649 added successfully."},{"id":1610054058437,"success":true,"message":"Job with id:1610054058437 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610054038175
+Scraping following url:  https://unjobs.org/vacancies/1610054039855
+Scraping following url:  https://unjobs.org/vacancies/1610054074286
+Scraping following url:  https://unjobs.org/vacancies/1610054075880
+Scraping following url:  https://unjobs.org/vacancies/1610054032681
+[{"id":1610054038175,"success":true,"message":"Job with id:1610054038175 added successfully."},{"id":1610054039855,"success":true,"message":"Job with id:1610054039855 added successfully."},{"id":1610054074286,"success":true,"message":"Job with id:1610054074286 added successfully."},{"id":1610054075880,"success":true,"message":"Job with id:1610054075880 added successfully."},{"id":1610054032681,"success":true,"message":"Job with id:1610054032681 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610054056897
+Scraping following url:  https://unjobs.org/vacancies/1610054025627
+Scraping following url:  https://unjobs.org/vacancies/1610054020817
+Scraping following url:  https://unjobs.org/vacancies/1610054069600
+Scraping following url:  https://unjobs.org/vacancies/1610054053346
+[{"id":1610054056897,"success":true,"message":"Job with id:1610054056897 added successfully."},{"id":1610054025627,"success":true,"message":"Job with id:1610054025627 added successfully."},{"id":1610054020817,"success":true,"message":"Job with id:1610054020817 added successfully."},{"id":1610054069600,"success":true,"message":"Job with id:1610054069600 added successfully."},{"id":1610054053346,"success":true,"message":"Job with id:1610054053346 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610054019151
+Scraping following url:  https://unjobs.org/vacancies/1610054017393
+Scraping following url:  https://unjobs.org/vacancies/1610050605005
+Scraping following url:  https://unjobs.org/vacancies/1610050598054
+Scraping following url:  https://unjobs.org/vacancies/1610050589501
+[{"id":1610054019151,"success":true,"message":"Job with id:1610054019151 added successfully."},{"id":1610054017393,"success":true,"message":"Job with id:1610054017393 added successfully."},{"id":1610050605005,"success":true,"message":"Job with id:1610050605005 added successfully."},{"id":1610050598054,"success":true,"message":"Job with id:1610050598054 added successfully."},{"id":1610050589501,"success":true,"message":"Job with id:1610050589501 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610050612289
+Scraping following url:  https://unjobs.org/vacancies/1610050585805
+Scraping following url:  https://unjobs.org/vacancies/1610048250753
+Scraping following url:  https://unjobs.org/vacancies/1610048243688
+Scraping following url:  https://unjobs.org/vacancies/1610130861125
+[{"id":1610050612289,"success":true,"message":"Job with id:1610050612289 added successfully."},{"id":1610050585805,"success":true,"message":"Job with id:1610050585805 added successfully."},{"id":1610048250753,"success":true,"message":"Job with id:1610048250753 added successfully."},{"id":1610048243688,"success":true,"message":"Job with id:1610048243688 added successfully."},{"id":1610130861125,"success":true,"message":"Job with id:1610130861125 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610130848593
+Scraping following url:  https://unjobs.org/vacancies/1610130718044
+Scraping following url:  https://unjobs.org/vacancies/1610230897347
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610312020164
+Scraping following url:  https://unjobs.org/vacancies/1610312168984
+[{"id":1610130848593,"success":true,"message":"Job with id:1610130848593 added successfully."},{"id":1610130718044,"success":true,"message":"Job with id:1610130718044 added successfully."},{"id":1610230897347,"success":true,"message":"Job with id:1610230897347 added successfully."},{"id":1610312020164,"success":true,"message":"Job with id:1610312020164 added successfully."},{"id":1610312168984,"success":true,"message":"Job with id:1610312168984 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610309056077
+Scraping following url:  https://unjobs.org/vacancies/1610311116945
+Scraping following url:  https://unjobs.org/vacancies/1610311000263
+Scraping following url:  https://unjobs.org/vacancies/1610404194521
+Scraping following url:  https://unjobs.org/vacancies/1610404184127
+[{"id":1610309056077,"success":true,"message":"Job with id:1610309056077 added successfully."},{"id":1610311116945,"success":true,"message":"Job with id:1610311116945 added successfully."},{"id":1610311000263,"success":true,"message":"Job with id:1610311000263 added successfully."},{"id":1610404194521,"success":true,"message":"Job with id:1610404194521 added successfully."},{"id":1610404184127,"success":true,"message":"Job with id:1610404184127 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610404173896
+Scraping following url:  https://unjobs.org/vacancies/1610403062175
+Scraping following url:  https://unjobs.org/vacancies/1610404071187
+Scraping following url:  https://unjobs.org/vacancies/1610404081793
+Scraping following url:  https://unjobs.org/vacancies/1610404163792
+[{"id":1610404173896,"success":true,"message":"Job with id:1610404173896 added successfully."},{"id":1610403062175,"success":true,"message":"Job with id:1610403062175 added successfully."},{"id":1610404071187,"success":true,"message":"Job with id:1610404071187 added successfully."},{"id":1610404081793,"success":true,"message":"Job with id:1610404081793 added successfully."},{"id":1610404163792,"success":true,"message":"Job with id:1610404163792 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610404153140
+Scraping following url:  https://unjobs.org/vacancies/1610404143312
+Scraping following url:  https://unjobs.org/vacancies/1610404114281
+Scraping following url:  https://unjobs.org/vacancies/1610404133858
+Scraping following url:  https://unjobs.org/vacancies/1610404061023
+[{"id":1610404153140,"success":true,"message":"Job with id:1610404153140 added successfully."},{"id":1610404143312,"success":true,"message":"Job with id:1610404143312 added successfully."},{"id":1610404114281,"success":true,"message":"Job with id:1610404114281 added successfully."},{"id":1610404133858,"success":true,"message":"Job with id:1610404133858 added successfully."},{"id":1610404061023,"success":true,"message":"Job with id:1610404061023 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610404050624
+Scraping following url:  https://unjobs.org/vacancies/1610404091407
+Scraping following url:  https://unjobs.org/vacancies/1610404101716
+Scraping following url:  https://unjobs.org/vacancies/1610404039509
+Scraping following url:  https://unjobs.org/vacancies/1610402808781
+[{"id":1610404050624,"success":true,"message":"Job with id:1610404050624 added successfully."},{"id":1610404091407,"success":true,"message":"Job with id:1610404091407 added successfully."},{"id":1610404101716,"success":true,"message":"Job with id:1610404101716 added successfully."},{"id":1610404039509,"success":true,"message":"Job with id:1610404039509 added successfully."},{"id":1610402808781,"success":true,"message":"Job with id:1610402808781 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397239133
+Scraping following url:  https://unjobs.org/vacancies/1610402795735
+Scraping following url:  https://unjobs.org/vacancies/1610397236034
+Scraping following url:  https://unjobs.org/vacancies/1610397232925
+Scraping following url:  https://unjobs.org/vacancies/1610397242261
+[{"id":1610397239133,"success":true,"message":"Job with id:1610397239133 added successfully."},{"id":1610402795735,"success":true,"message":"Job with id:1610402795735 added successfully."},{"id":1610397236034,"success":true,"message":"Job with id:1610397236034 added successfully."},{"id":1610397232925,"success":true,"message":"Job with id:1610397232925 added successfully."},{"id":1610397242261,"success":true,"message":"Job with id:1610397242261 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397195054
+Scraping following url:  https://unjobs.org/vacancies/1610397224959
+Scraping following url:  https://unjobs.org/vacancies/1610397190240
+Scraping following url:  https://unjobs.org/vacancies/1610397215790
+Scraping following url:  https://unjobs.org/vacancies/1610397187158
+[{"id":1610397195054,"success":true,"message":"Job with id:1610397195054 added successfully."},{"id":1610397224959,"success":true,"message":"Job with id:1610397224959 added successfully."},{"id":1610397190240,"success":true,"message":"Job with id:1610397190240 added successfully."},{"id":1610397215790,"success":true,"message":"Job with id:1610397215790 added successfully."},{"id":1610397187158,"success":true,"message":"Job with id:1610397187158 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397202908
+Scraping following url:  https://unjobs.org/vacancies/1610397210903
+Scraping following url:  https://unjobs.org/vacancies/1610397185528
+Scraping following url:  https://unjobs.org/vacancies/1610397170833
+Scraping following url:  https://unjobs.org/vacancies/1610397180739
+[{"id":1610397202908,"success":true,"message":"Job with id:1610397202908 added successfully."},{"id":1610397210903,"success":true,"message":"Job with id:1610397210903 added successfully."},{"id":1610397185528,"success":true,"message":"Job with id:1610397185528 added successfully."},{"id":1610397170833,"success":true,"message":"Job with id:1610397170833 added successfully."},{"id":1610397180739,"success":true,"message":"Job with id:1610397180739 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397178903
+Scraping following url:  https://unjobs.org/vacancies/1610397165957
+Scraping following url:  https://unjobs.org/vacancies/1610397157750
+Scraping following url:  https://unjobs.org/vacancies/1610397156155
+Scraping following url:  https://unjobs.org/vacancies/1610397141411
+[{"id":1610397178903,"success":true,"message":"Job with id:1610397178903 added successfully."},{"id":1610397165957,"success":true,"message":"Job with id:1610397165957 added successfully."},{"id":1610397157750,"success":true,"message":"Job with id:1610397157750 added successfully."},{"id":1610397156155,"success":true,"message":"Job with id:1610397156155 added successfully."},{"id":1610397141411,"success":true,"message":"Job with id:1610397141411 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610052757229
+Scraping following url:  https://unjobs.org/vacancies/1610393878331
+Scraping following url:  https://unjobs.org/vacancies/1610390086189
+Scraping following url:  https://unjobs.org/vacancies/1610385566515
+Scraping following url:  https://unjobs.org/vacancies/1610488604169
+[{"id":1610052757229,"success":true,"message":"Job with id:1610052757229 added successfully."},{"id":1610393878331,"success":true,"message":"Job with id:1610393878331 added successfully."},{"id":1610390086189,"success":true,"message":"Job with id:1610390086189 added successfully."},{"id":1610385566515,"success":true,"message":"Job with id:1610385566515 added successfully."},{"id":1610488604169,"success":true,"message":"Job with id:1610488604169 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488729637
+Scraping following url:  https://unjobs.org/vacancies/1610488682821
+Scraping following url:  https://unjobs.org/vacancies/1610488385615
+Scraping following url:  https://unjobs.org/vacancies/1610488120767
+Scraping following url:  https://unjobs.org/vacancies/1610488653577
+[{"id":1610488729637,"success":true,"message":"Job with id:1610488729637 added successfully."},{"id":1610488682821,"success":true,"message":"Job with id:1610488682821 added successfully."},{"id":1610488385615,"success":true,"message":"Job with id:1610488385615 added successfully."},{"id":1610488120767,"success":true,"message":"Job with id:1610488120767 added successfully."},{"id":1610488653577,"success":true,"message":"Job with id:1610488653577 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488642593
+Scraping following url:  https://unjobs.org/vacancies/1610488623286
+Scraping following url:  https://unjobs.org/vacancies/1610488613608
+Scraping following url:  https://unjobs.org/vacancies/1610483113202
+Scraping following url:  https://unjobs.org/vacancies/1610488073717
+[{"id":1610488642593,"success":true,"message":"Job with id:1610488642593 added successfully."},{"id":1610488623286,"success":true,"message":"Job with id:1610488623286 added successfully."},{"id":1610488613608,"success":true,"message":"Job with id:1610488613608 added successfully."},{"id":1610483113202,"success":true,"message":"Job with id:1610483113202 added successfully."},{"id":1610488073717,"success":true,"message":"Job with id:1610488073717 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610483096763
+Scraping following url:  https://unjobs.org/vacancies/1610488069146
+Scraping following url:  https://unjobs.org/vacancies/1610483095062
+Scraping following url:  https://unjobs.org/vacancies/1610483093241
+Scraping following url:  https://unjobs.org/vacancies/1610483091559
+[{"id":1610483096763,"success":true,"message":"Job with id:1610483096763 added successfully."},{"id":1610488069146,"success":true,"message":"Job with id:1610488069146 added successfully."},{"id":1610483095062,"success":true,"message":"Job with id:1610483095062 added successfully."},{"id":1610483093241,"success":true,"message":"Job with id:1610483093241 added successfully."},{"id":1610483091559,"success":true,"message":"Job with id:1610483091559 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610483108400
+Scraping following url:  https://unjobs.org/vacancies/1610483116480
+Scraping following url:  https://unjobs.org/vacancies/1610483114777
+Scraping following url:  https://unjobs.org/vacancies/1610483103443
+Scraping following url:  https://unjobs.org/vacancies/1610483088171
+[{"id":1610483108400,"success":true,"message":"Job with id:1610483108400 added successfully."},{"id":1610483116480,"success":true,"message":"Job with id:1610483116480 added successfully."},{"id":1610483114777,"success":true,"message":"Job with id:1610483114777 added successfully."},{"id":1610483103443,"success":true,"message":"Job with id:1610483103443 added successfully."},{"id":1610483088171,"success":true,"message":"Job with id:1610483088171 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610483101681
+Scraping following url:  https://unjobs.org/vacancies/1610476583147
+Not able to parse following url :  https://unjobs.org/vacancies/1610476583147
+Here is the exception :  ERROR parsing office of job!
+Scraping following url:  https://unjobs.org/vacancies/1610483084400
+Scraping following url:  https://unjobs.org/vacancies/1610478244790
+Scraping following url:  https://unjobs.org/vacancies/1610483080539
+[{"id":1610483101681,"success":true,"message":"Job with id:1610483101681 added successfully."},{"id":1610483084400,"success":true,"message":"Job with id:1610483084400 added successfully."},{"id":1610478244790,"success":true,"message":"Job with id:1610478244790 added successfully."},{"id":1610483080539,"success":true,"message":"Job with id:1610483080539 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610388422657
+Scraping following url:  https://unjobs.org/vacancies/1610475484197
+Scraping following url:  https://unjobs.org/vacancies/1610475473240
+Scraping following url:  https://unjobs.org/vacancies/1610475451638
+Scraping following url:  https://unjobs.org/vacancies/1610388416942
+[{"id":1610388422657,"success":true,"message":"Job with id:1610388422657 added successfully."},{"id":1610475484197,"success":true,"message":"Job with id:1610475484197 added successfully."},{"id":1610475473240,"success":true,"message":"Job with id:1610475473240 added successfully."},{"id":1610475451638,"success":true,"message":"Job with id:1610475451638 added successfully."},{"id":1610388416942,"success":true,"message":"Job with id:1610388416942 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610475557390
+Scraping following url:  https://unjobs.org/vacancies/1610474892264
+Scraping following url:  https://unjobs.org/vacancies/1610483006982
+Scraping following url:  https://unjobs.org/vacancies/1610483002445
+Scraping following url:  https://unjobs.org/vacancies/1610478141834
+[{"id":1610475557390,"success":true,"message":"Job with id:1610475557390 added successfully."},{"id":1610474892264,"success":true,"message":"Job with id:1610474892264 added successfully."},{"id":1610483006982,"success":true,"message":"Job with id:1610483006982 added successfully."},{"id":1610483002445,"success":true,"message":"Job with id:1610483002445 added successfully."},{"id":1610478141834,"success":true,"message":"Job with id:1610478141834 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610478135989
+Scraping following url:  https://unjobs.org/vacancies/1610487573971
+Scraping following url:  https://unjobs.org/vacancies/1610487570534
+Scraping following url:  https://unjobs.org/vacancies/1610485503309
+Scraping following url:  https://unjobs.org/vacancies/1610485499542
+[{"id":1610478135989,"success":true,"message":"Job with id:1610478135989 added successfully."},{"id":1610487573971,"success":true,"message":"Job with id:1610487573971 added successfully."},{"id":1610487570534,"success":true,"message":"Job with id:1610487570534 added successfully."},{"id":1610485503309,"success":true,"message":"Job with id:1610485503309 added successfully."},{"id":1610485499542,"success":true,"message":"Job with id:1610485499542 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610485501639
+Scraping following url:  https://unjobs.org/vacancies/1610488415861
+Scraping following url:  https://unjobs.org/vacancies/1610488413709
+Scraping following url:  https://unjobs.org/vacancies/1610488342035
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610488086760
+Not able to parse following url :  https://unjobs.org/vacancies/1610488086760
+Here is the exception :  list index out of range
+[{"id":1610485501639,"success":true,"message":"Job with id:1610485501639 added successfully."},{"id":1610488415861,"success":true,"message":"Job with id:1610488415861 added successfully."},{"id":1610488413709,"success":true,"message":"Job with id:1610488413709 added successfully."},{"id":1610488342035,"success":true,"message":"Job with id:1610488342035 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610475938867
+Scraping following url:  https://unjobs.org/vacancies/1610488739385
+Scraping following url:  https://unjobs.org/vacancies/1610488737668
+Scraping following url:  https://unjobs.org/vacancies/1610488731447
+Not able to parse following url :  https://unjobs.org/vacancies/1610488731447
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610478253534
+[{"id":1610475938867,"success":true,"message":"Job with id:1610475938867 added successfully."},{"id":1610488739385,"success":true,"message":"Job with id:1610488739385 added successfully."},{"id":1610488737668,"success":true,"message":"Job with id:1610488737668 added successfully."},{"id":1610478253534,"success":true,"message":"Job with id:1610478253534 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610478248934
+Scraping following url:  https://unjobs.org/vacancies/1610478241013
+Scraping following url:  https://unjobs.org/vacancies/1610478231473
+Scraping following url:  https://unjobs.org/vacancies/1610478222768
+Scraping following url:  https://unjobs.org/vacancies/1610478217533
+Not able to parse following url :  https://unjobs.org/vacancies/1610478217533
+Here is the exception :  ERROR parsing office of job!
+[{"id":1610478248934,"success":true,"message":"Job with id:1610478248934 added successfully."},{"id":1610478241013,"success":true,"message":"Job with id:1610478241013 added successfully."},{"id":1610478231473,"success":true,"message":"Job with id:1610478231473 added successfully."},{"id":1610478222768,"success":true,"message":"Job with id:1610478222768 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610478333154
+Scraping following url:  https://unjobs.org/vacancies/1610478331627
+Scraping following url:  https://unjobs.org/vacancies/1610478330231
+Scraping following url:  https://unjobs.org/vacancies/1610478328850
+Scraping following url:  https://unjobs.org/vacancies/1610478327474
+[{"id":1610478333154,"success":true,"message":"Job with id:1610478333154 added successfully."},{"id":1610478331627,"success":true,"message":"Job with id:1610478331627 added successfully."},{"id":1610478330231,"success":true,"message":"Job with id:1610478330231 added successfully."},{"id":1610478328850,"success":true,"message":"Job with id:1610478328850 added successfully."},{"id":1610478327474,"success":true,"message":"Job with id:1610478327474 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610478326032
+Not able to parse following url :  https://unjobs.org/vacancies/1610478326032
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610482942014
+Scraping following url:  https://unjobs.org/vacancies/1610474056940
+Scraping following url:  https://unjobs.org/vacancies/1610476358465
+Not able to parse following url :  https://unjobs.org/vacancies/1610476358465
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610476350398
+[{"id":1610482942014,"success":true,"message":"Job with id:1610482942014 added successfully."},{"id":1610474056940,"success":true,"message":"Job with id:1610474056940 added successfully."},{"id":1610476350398,"success":true,"message":"Job with id:1610476350398 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610476342207
+Scraping following url:  https://unjobs.org/vacancies/1610476317229
+Scraping following url:  https://unjobs.org/vacancies/1610476275057
+Scraping following url:  https://unjobs.org/vacancies/1610480708503
+Scraping following url:  https://unjobs.org/vacancies/1610481243595
+[{"id":1610476342207,"success":true,"message":"Job with id:1610476342207 added successfully."},{"id":1610476317229,"success":true,"message":"Job with id:1610476317229 added successfully."},{"id":1610476275057,"success":true,"message":"Job with id:1610476275057 added successfully."},{"id":1610480708503,"success":true,"message":"Job with id:1610480708503 added successfully."},{"id":1610481243595,"success":true,"message":"Job with id:1610481243595 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610485705753
+Scraping following url:  https://unjobs.org/vacancies/1610485695198
+Scraping following url:  https://unjobs.org/vacancies/1610485673566
+Scraping following url:  https://unjobs.org/vacancies/1610485662980
+Scraping following url:  https://unjobs.org/vacancies/1610485652401
+[{"id":1610485705753,"success":true,"message":"Job with id:1610485705753 added successfully."},{"id":1610485695198,"success":true,"message":"Job with id:1610485695198 added successfully."},{"id":1610485673566,"success":true,"message":"Job with id:1610485673566 added successfully."},{"id":1610485662980,"success":true,"message":"Job with id:1610485662980 added successfully."},{"id":1610485652401,"success":true,"message":"Job with id:1610485652401 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610485641601
+Scraping following url:  https://unjobs.org/vacancies/1610491524073
+Scraping following url:  https://unjobs.org/vacancies/1610488702809
+Scraping following url:  https://unjobs.org/vacancies/1610488693002
+Scraping following url:  https://unjobs.org/vacancies/1610488632868
+[{"id":1610485641601,"success":true,"message":"Job with id:1610485641601 added successfully."},{"id":1610491524073,"success":true,"message":"Job with id:1610491524073 added successfully."},{"id":1610488702809,"success":true,"message":"Job with id:1610488702809 added successfully."},{"id":1610488693002,"success":true,"message":"Job with id:1610488693002 added successfully."},{"id":1610488632868,"success":true,"message":"Job with id:1610488632868 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488673187
+Scraping following url:  https://unjobs.org/vacancies/1610488261370
+Scraping following url:  https://unjobs.org/vacancies/1610488254411
+Scraping following url:  https://unjobs.org/vacancies/1610488248829
+Scraping following url:  https://unjobs.org/vacancies/1610488243025
+[{"id":1610488673187,"success":true,"message":"Job with id:1610488673187 added successfully."},{"id":1610488261370,"success":true,"message":"Job with id:1610488261370 added successfully."},{"id":1610488254411,"success":true,"message":"Job with id:1610488254411 added successfully."},{"id":1610488248829,"success":true,"message":"Job with id:1610488248829 added successfully."},{"id":1610488243025,"success":true,"message":"Job with id:1610488243025 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488237398
+Scraping following url:  https://unjobs.org/vacancies/1610488230826
+Scraping following url:  https://unjobs.org/vacancies/1610488224775
+Scraping following url:  https://unjobs.org/vacancies/1610488218529
+Scraping following url:  https://unjobs.org/vacancies/1610488212534
+[{"id":1610488237398,"success":true,"message":"Job with id:1610488237398 added successfully."},{"id":1610488230826,"success":true,"message":"Job with id:1610488230826 added successfully."},{"id":1610488224775,"success":true,"message":"Job with id:1610488224775 added successfully."},{"id":1610488218529,"success":true,"message":"Job with id:1610488218529 added successfully."},{"id":1610488212534,"success":true,"message":"Job with id:1610488212534 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488206856
+Scraping following url:  https://unjobs.org/vacancies/1610488201171
+Scraping following url:  https://unjobs.org/vacancies/1610488195415
+Scraping following url:  https://unjobs.org/vacancies/1610488188857
+Scraping following url:  https://unjobs.org/vacancies/1610488176505
+[{"id":1610488206856,"success":true,"message":"Job with id:1610488206856 added successfully."},{"id":1610488201171,"success":true,"message":"Job with id:1610488201171 added successfully."},{"id":1610488195415,"success":true,"message":"Job with id:1610488195415 added successfully."},{"id":1610488188857,"success":true,"message":"Job with id:1610488188857 added successfully."},{"id":1610488176505,"success":true,"message":"Job with id:1610488176505 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488170831
+Scraping following url:  https://unjobs.org/vacancies/1610488165092
+Scraping following url:  https://unjobs.org/vacancies/1610488159273
+Scraping following url:  https://unjobs.org/vacancies/1610488153310
+Scraping following url:  https://unjobs.org/vacancies/1610488099776
+Not able to parse following url :  https://unjobs.org/vacancies/1610488099776
+Here is the exception :  list index out of range
+[{"id":1610488170831,"success":true,"message":"Job with id:1610488170831 added successfully."},{"id":1610488165092,"success":true,"message":"Job with id:1610488165092 added successfully."},{"id":1610488159273,"success":true,"message":"Job with id:1610488159273 added successfully."},{"id":1610488153310,"success":true,"message":"Job with id:1610488153310 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610471934053
+Scraping following url:  https://unjobs.org/vacancies/1610471946039
+Scraping following url:  https://unjobs.org/vacancies/1610471963282
+Scraping following url:  https://unjobs.org/vacancies/1610471968934
+Scraping following url:  https://unjobs.org/vacancies/1610471980376
+[{"id":1610471934053,"success":true,"message":"Job with id:1610471934053 added successfully."},{"id":1610471946039,"success":true,"message":"Job with id:1610471946039 added successfully."},{"id":1610471963282,"success":true,"message":"Job with id:1610471963282 added successfully."},{"id":1610471968934,"success":true,"message":"Job with id:1610471968934 added successfully."},{"id":1610471980376,"success":true,"message":"Job with id:1610471980376 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610474190592
+Scraping following url:  https://unjobs.org/vacancies/1610474192308
+Not able to parse following url :  https://unjobs.org/vacancies/1610474192308
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610474193905
+Scraping following url:  https://unjobs.org/vacancies/1610474195735
+Scraping following url:  https://unjobs.org/vacancies/1610474197407
+[{"id":1610474190592,"success":true,"message":"Job with id:1610474190592 added successfully."},{"id":1610474193905,"success":true,"message":"Job with id:1610474193905 added successfully."},{"id":1610474195735,"success":true,"message":"Job with id:1610474195735 added successfully."},{"id":1610474197407,"success":true,"message":"Job with id:1610474197407 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610474199161
+Scraping following url:  https://unjobs.org/vacancies/1610474200764
+Scraping following url:  https://unjobs.org/vacancies/1610474202327
+Scraping following url:  https://unjobs.org/vacancies/1610474203924
+Scraping following url:  https://unjobs.org/vacancies/1610475037703
+[{"id":1610474199161,"success":true,"message":"Job with id:1610474199161 added successfully."},{"id":1610474200764,"success":true,"message":"Job with id:1610474200764 added successfully."},{"id":1610474202327,"success":true,"message":"Job with id:1610474202327 added successfully."},{"id":1610474203924,"success":true,"message":"Job with id:1610474203924 added successfully."},{"id":1610475037703,"success":true,"message":"Job with id:1610475037703 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610475040729
+Scraping following url:  https://unjobs.org/vacancies/1610475042306
+Scraping following url:  https://unjobs.org/vacancies/1610476266681
+Scraping following url:  https://unjobs.org/vacancies/1610476283491
+Scraping following url:  https://unjobs.org/vacancies/1610476291857
+[{"id":1610475040729,"success":true,"message":"Job with id:1610475040729 added successfully."},{"id":1610475042306,"success":true,"message":"Job with id:1610475042306 added successfully."},{"id":1610476266681,"success":true,"message":"Job with id:1610476266681 added successfully."},{"id":1610476283491,"success":true,"message":"Job with id:1610476283491 added successfully."},{"id":1610476291857,"success":true,"message":"Job with id:1610476291857 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610476300728
+Scraping following url:  https://unjobs.org/vacancies/1610476308775
+Scraping following url:  https://unjobs.org/vacancies/1610476325246
+Scraping following url:  https://unjobs.org/vacancies/1610476333798
+Scraping following url:  https://unjobs.org/vacancies/1610476366425
+[{"id":1610476300728,"success":true,"message":"Job with id:1610476300728 added successfully."},{"id":1610476308775,"success":true,"message":"Job with id:1610476308775 added successfully."},{"id":1610476325246,"success":true,"message":"Job with id:1610476325246 added successfully."},{"id":1610476333798,"success":true,"message":"Job with id:1610476333798 added successfully."},{"id":1610476366425,"success":true,"message":"Job with id:1610476366425 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610476376272
+Scraping following url:  https://unjobs.org/vacancies/1610476384109
+Scraping following url:  https://unjobs.org/vacancies/1610476539346
+Scraping following url:  https://unjobs.org/vacancies/1610476547767
+Scraping following url:  https://unjobs.org/vacancies/1610476554616
+[{"id":1610476376272,"success":true,"message":"Job with id:1610476376272 added successfully."},{"id":1610476384109,"success":true,"message":"Job with id:1610476384109 added successfully."},{"id":1610476539346,"success":true,"message":"Job with id:1610476539346 added successfully."},{"id":1610476547767,"success":true,"message":"Job with id:1610476547767 added successfully."},{"id":1610476554616,"success":true,"message":"Job with id:1610476554616 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610476561840
+Scraping following url:  https://unjobs.org/vacancies/1610476568728
+Not able to parse following url :  https://unjobs.org/vacancies/1610476568728
+Here is the exception :  ERROR parsing office of job!
+Scraping following url:  https://unjobs.org/vacancies/1610476575864
+Scraping following url:  https://unjobs.org/vacancies/1610476590133
+Scraping following url:  https://unjobs.org/vacancies/1610478226495
+[{"id":1610476561840,"success":true,"message":"Job with id:1610476561840 added successfully."},{"id":1610476575864,"success":true,"message":"Job with id:1610476575864 added successfully."},{"id":1610476590133,"success":true,"message":"Job with id:1610476590133 added successfully."},{"id":1610478226495,"success":true,"message":"Job with id:1610478226495 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610478236408
+Scraping following url:  https://unjobs.org/vacancies/1610483004766
+Scraping following url:  https://unjobs.org/vacancies/1610483009897
+Scraping following url:  https://unjobs.org/vacancies/1610483011932
+Scraping following url:  https://unjobs.org/vacancies/1610483076555
+[{"id":1610478236408,"success":true,"message":"Job with id:1610478236408 added successfully."},{"id":1610483004766,"success":true,"message":"Job with id:1610483004766 added successfully."},{"id":1610483009897,"success":true,"message":"Job with id:1610483009897 added successfully."},{"id":1610483011932,"success":true,"message":"Job with id:1610483011932 added successfully."},{"id":1610483076555,"success":true,"message":"Job with id:1610483076555 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610483078685
+Scraping following url:  https://unjobs.org/vacancies/1610483082620
+Scraping following url:  https://unjobs.org/vacancies/1610483086073
+Scraping following url:  https://unjobs.org/vacancies/1610483089797
+Scraping following url:  https://unjobs.org/vacancies/1610483098421
+[{"id":1610483078685,"success":true,"message":"Job with id:1610483078685 added successfully."},{"id":1610483082620,"success":true,"message":"Job with id:1610483082620 added successfully."},{"id":1610483086073,"success":true,"message":"Job with id:1610483086073 added successfully."},{"id":1610483089797,"success":true,"message":"Job with id:1610483089797 added successfully."},{"id":1610483098421,"success":true,"message":"Job with id:1610483098421 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610483100061
+Scraping following url:  https://unjobs.org/vacancies/1610483105191
+Scraping following url:  https://unjobs.org/vacancies/1610483106867
+Scraping following url:  https://unjobs.org/vacancies/1610483110054
+Scraping following url:  https://unjobs.org/vacancies/1610483111660
+[{"id":1610483100061,"success":true,"message":"Job with id:1610483100061 added successfully."},{"id":1610483105191,"success":true,"message":"Job with id:1610483105191 added successfully."},{"id":1610483106867,"success":true,"message":"Job with id:1610483106867 added successfully."},{"id":1610483110054,"success":true,"message":"Job with id:1610483110054 added successfully."},{"id":1610483111660,"success":true,"message":"Job with id:1610483111660 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610485748235
+Scraping following url:  https://unjobs.org/vacancies/1610485750024
+Scraping following url:  https://unjobs.org/vacancies/1610485752467
+Scraping following url:  https://unjobs.org/vacancies/1610488077815
+Scraping following url:  https://unjobs.org/vacancies/1610488082011
+[{"id":1610485748235,"success":true,"message":"Job with id:1610485748235 added successfully."},{"id":1610485750024,"success":true,"message":"Job with id:1610485750024 added successfully."},{"id":1610485752467,"success":true,"message":"Job with id:1610485752467 added successfully."},{"id":1610488077815,"success":true,"message":"Job with id:1610488077815 added successfully."},{"id":1610488082011,"success":true,"message":"Job with id:1610488082011 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488091219
+Scraping following url:  https://unjobs.org/vacancies/1610488095459
+Scraping following url:  https://unjobs.org/vacancies/1610488104559
+Scraping following url:  https://unjobs.org/vacancies/1610488108842
+Scraping following url:  https://unjobs.org/vacancies/1610488134240
+[{"id":1610488091219,"success":true,"message":"Job with id:1610488091219 added successfully."},{"id":1610488095459,"success":true,"message":"Job with id:1610488095459 added successfully."},{"id":1610488104559,"success":true,"message":"Job with id:1610488104559 added successfully."},{"id":1610488108842,"success":true,"message":"Job with id:1610488108842 added successfully."},{"id":1610488134240,"success":true,"message":"Job with id:1610488134240 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488137728
+Scraping following url:  https://unjobs.org/vacancies/1610488140425
+Scraping following url:  https://unjobs.org/vacancies/1610488143600
+Scraping following url:  https://unjobs.org/vacancies/1610488299098
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610488331562
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610488137728,"success":true,"message":"Job with id:1610488137728 added successfully."},{"id":1610488140425,"success":true,"message":"Job with id:1610488140425 added successfully."},{"id":1610488143600,"success":true,"message":"Job with id:1610488143600 added successfully."},{"id":1610488299098,"success":true,"message":"Job with id:1610488299098 added successfully."},{"id":1610488331562,"success":true,"message":"Job with id:1610488331562 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488352842
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610488363491
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610488375194
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610488663199
+Scraping following url:  https://unjobs.org/vacancies/1610488732921
+[{"id":1610488352842,"success":true,"message":"Job with id:1610488352842 added successfully."},{"id":1610488363491,"success":true,"message":"Job with id:1610488363491 added successfully."},{"id":1610488375194,"success":true,"message":"Job with id:1610488375194 added successfully."},{"id":1610488663199,"success":true,"message":"Job with id:1610488663199 added successfully."},{"id":1610488732921,"success":true,"message":"Job with id:1610488732921 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610488734415
+Scraping following url:  https://unjobs.org/vacancies/1610488740899
+Scraping following url:  https://unjobs.org/vacancies/1610488742401
+Scraping following url:  https://unjobs.org/vacancies/1610488743762
+Scraping following url:  https://unjobs.org/vacancies/1610488745865
+[{"id":1610488734415,"success":true,"message":"Job with id:1610488734415 added successfully."},{"id":1610488740899,"success":true,"message":"Job with id:1610488740899 added successfully."},{"id":1610488742401,"success":true,"message":"Job with id:1610488742401 added successfully."},{"id":1610488743762,"success":true,"message":"Job with id:1610488743762 added successfully."},{"id":1610488745865,"success":true,"message":"Job with id:1610488745865 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610048215929
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610048201749
+Scraping following url:  https://unjobs.org/vacancies/1610048192971
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610048186240
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610048160085
+[{"id":1610048215929,"success":true,"message":"Job with id:1610048215929 added successfully."},{"id":1610048201749,"success":true,"message":"Job with id:1610048201749 added successfully."},{"id":1610048192971,"success":true,"message":"Job with id:1610048192971 added successfully."},{"id":1610048186240,"success":true,"message":"Job with id:1610048186240 added successfully."},{"id":1610048160085,"success":true,"message":"Job with id:1610048160085 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610048133426
+Scraping following url:  https://unjobs.org/vacancies/1610048140128
+Scraping following url:  https://unjobs.org/vacancies/1610048147055
+Scraping following url:  https://unjobs.org/vacancies/1610130362761
+Scraping following url:  https://unjobs.org/vacancies/1610048153829
+[{"id":1610048133426,"success":true,"message":"Job with id:1610048133426 added successfully."},{"id":1610048140128,"success":true,"message":"Job with id:1610048140128 added successfully."},{"id":1610048147055,"success":true,"message":"Job with id:1610048147055 added successfully."},{"id":1610130362761,"success":true,"message":"Job with id:1610130362761 added successfully."},{"id":1610048153829,"success":true,"message":"Job with id:1610048153829 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610048167409
+Scraping following url:  https://unjobs.org/vacancies/1610048172851
+Scraping following url:  https://unjobs.org/vacancies/1610048179517
+Scraping following url:  https://unjobs.org/vacancies/1610389511987
+Scraping following url:  https://unjobs.org/vacancies/1610389505356
+[{"id":1610048167409,"success":true,"message":"Job with id:1610048167409 added successfully."},{"id":1610048172851,"success":true,"message":"Job with id:1610048172851 added successfully."},{"id":1610048179517,"success":true,"message":"Job with id:1610048179517 added successfully."},{"id":1610389511987,"success":true,"message":"Job with id:1610389511987 added successfully."},{"id":1610389505356,"success":true,"message":"Job with id:1610389505356 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610389492012
+Scraping following url:  https://unjobs.org/vacancies/1610389485069
+Scraping following url:  https://unjobs.org/vacancies/1610389539810
+Scraping following url:  https://unjobs.org/vacancies/1610389533271
+Scraping following url:  https://unjobs.org/vacancies/1610389115899
+[{"id":1610389492012,"success":true,"message":"Job with id:1610389492012 added successfully."},{"id":1610389485069,"success":true,"message":"Job with id:1610389485069 added successfully."},{"id":1610389539810,"success":true,"message":"Job with id:1610389539810 added successfully."},{"id":1610389533271,"success":true,"message":"Job with id:1610389533271 added successfully."},{"id":1610389115899,"success":true,"message":"Job with id:1610389115899 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610389126739
+Scraping following url:  https://unjobs.org/vacancies/1610389018340
+Scraping following url:  https://unjobs.org/vacancies/1610389525712
+Scraping following url:  https://unjobs.org/vacancies/1610388952996
+Scraping following url:  https://unjobs.org/vacancies/1610397047476
+[{"id":1610389126739,"success":true,"message":"Job with id:1610389126739 added successfully."},{"id":1610389018340,"success":true,"message":"Job with id:1610389018340 added successfully."},{"id":1610389525712,"success":true,"message":"Job with id:1610389525712 added successfully."},{"id":1610388952996,"success":true,"message":"Job with id:1610388952996 added successfully."},{"id":1610397047476,"success":true,"message":"Job with id:1610397047476 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397049624
+Scraping following url:  https://unjobs.org/vacancies/1610390063638
+Scraping following url:  https://unjobs.org/vacancies/1610389498482
+Scraping following url:  https://unjobs.org/vacancies/1610403045351
+Scraping following url:  https://unjobs.org/vacancies/1610402756009
+Not able to parse following url :  https://unjobs.org/vacancies/1610402756009
+Here is the exception :  list index out of range
+[{"id":1610397049624,"success":true,"message":"Job with id:1610397049624 added successfully."},{"id":1610390063638,"success":true,"message":"Job with id:1610390063638 added successfully."},{"id":1610389498482,"success":true,"message":"Job with id:1610389498482 added successfully."},{"id":1610403045351,"success":true,"message":"Job with id:1610403045351 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610404204740
+Scraping following url:  https://unjobs.org/vacancies/1610404124106
+Scraping following url:  https://unjobs.org/vacancies/1610401743642
+Scraping following url:  https://unjobs.org/vacancies/1610401741999
+Scraping following url:  https://unjobs.org/vacancies/1610401740024
+[{"id":1610404204740,"success":true,"message":"Job with id:1610404204740 added successfully."},{"id":1610404124106,"success":true,"message":"Job with id:1610404124106 added successfully."},{"id":1610401743642,"success":true,"message":"Job with id:1610401743642 added successfully."},{"id":1610401741999,"success":true,"message":"Job with id:1610401741999 added successfully."},{"id":1610401740024,"success":true,"message":"Job with id:1610401740024 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610401738475
+Scraping following url:  https://unjobs.org/vacancies/1610403011040
+Scraping following url:  https://unjobs.org/vacancies/1610391686993
+Scraping following url:  https://unjobs.org/vacancies/1610391675803
+Scraping following url:  https://unjobs.org/vacancies/1610389890139
+[{"id":1610401738475,"success":true,"message":"Job with id:1610401738475 added successfully."},{"id":1610403011040,"success":true,"message":"Job with id:1610403011040 added successfully."},{"id":1610391686993,"success":true,"message":"Job with id:1610391686993 added successfully."},{"id":1610391675803,"success":true,"message":"Job with id:1610391675803 added successfully."},{"id":1610389890139,"success":true,"message":"Job with id:1610389890139 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610389865601
+Not able to parse following url :  https://unjobs.org/vacancies/1610389865601
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610389849180
+Scraping following url:  https://unjobs.org/vacancies/1610391847970
+Scraping following url:  https://unjobs.org/vacancies/1610391845428
+Scraping following url:  https://unjobs.org/vacancies/1610391843915
+[{"id":1610389849180,"success":true,"message":"Job with id:1610389849180 added successfully."},{"id":1610391847970,"success":true,"message":"Job with id:1610391847970 added successfully."},{"id":1610391845428,"success":true,"message":"Job with id:1610391845428 added successfully."},{"id":1610391843915,"success":true,"message":"Job with id:1610391843915 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610391842307
+Scraping following url:  https://unjobs.org/vacancies/1610391840905
+Scraping following url:  https://unjobs.org/vacancies/1610391839505
+Scraping following url:  https://unjobs.org/vacancies/1610391837877
+Scraping following url:  https://unjobs.org/vacancies/1610402543223
+[{"id":1610391842307,"success":true,"message":"Job with id:1610391842307 added successfully."},{"id":1610391840905,"success":true,"message":"Job with id:1610391840905 added successfully."},{"id":1610391839505,"success":true,"message":"Job with id:1610391839505 added successfully."},{"id":1610391837877,"success":true,"message":"Job with id:1610391837877 added successfully."},{"id":1610402543223,"success":true,"message":"Job with id:1610402543223 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402924930
+Scraping following url:  https://unjobs.org/vacancies/1610402919344
+Scraping following url:  https://unjobs.org/vacancies/1610402913705
+Scraping following url:  https://unjobs.org/vacancies/1610402907111
+Scraping following url:  https://unjobs.org/vacancies/1610402901504
+[{"id":1610402924930,"success":true,"message":"Job with id:1610402924930 added successfully."},{"id":1610402919344,"success":true,"message":"Job with id:1610402919344 added successfully."},{"id":1610402913705,"success":true,"message":"Job with id:1610402913705 added successfully."},{"id":1610402907111,"success":true,"message":"Job with id:1610402907111 added successfully."},{"id":1610402901504,"success":true,"message":"Job with id:1610402901504 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402895826
+Scraping following url:  https://unjobs.org/vacancies/1610402890020
+Scraping following url:  https://unjobs.org/vacancies/1610402882886
+Scraping following url:  https://unjobs.org/vacancies/1610402877294
+Scraping following url:  https://unjobs.org/vacancies/1610402865768
+[{"id":1610402895826,"success":true,"message":"Job with id:1610402895826 added successfully."},{"id":1610402890020,"success":true,"message":"Job with id:1610402890020 added successfully."},{"id":1610402882886,"success":true,"message":"Job with id:1610402882886 added successfully."},{"id":1610402877294,"success":true,"message":"Job with id:1610402877294 added successfully."},{"id":1610402865768,"success":true,"message":"Job with id:1610402865768 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402871627
+Scraping following url:  https://unjobs.org/vacancies/1610402860000
+Scraping following url:  https://unjobs.org/vacancies/1610402848491
+Scraping following url:  https://unjobs.org/vacancies/1610402854304
+Scraping following url:  https://unjobs.org/vacancies/1610402837136
+[{"id":1610402871627,"success":true,"message":"Job with id:1610402871627 added successfully."},{"id":1610402860000,"success":true,"message":"Job with id:1610402860000 added successfully."},{"id":1610402848491,"success":true,"message":"Job with id:1610402848491 added successfully."},{"id":1610402854304,"success":true,"message":"Job with id:1610402854304 added successfully."},{"id":1610402837136,"success":true,"message":"Job with id:1610402837136 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402791543
+Not able to parse following url :  https://unjobs.org/vacancies/1610402791543
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610402783442
+Not able to parse following url :  https://unjobs.org/vacancies/1610402783442
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610402779453
+Not able to parse following url :  https://unjobs.org/vacancies/1610402779453
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610402770102
+Scraping following url:  https://unjobs.org/vacancies/1610394085121
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610402770102,"success":true,"message":"Job with id:1610402770102 added successfully."},{"id":1610394085121,"success":true,"message":"Job with id:1610394085121 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610385459795
+Scraping following url:  https://unjobs.org/vacancies/1610385466100
+Scraping following url:  https://unjobs.org/vacancies/1610385538842
+Scraping following url:  https://unjobs.org/vacancies/1610385576306
+Scraping following url:  https://unjobs.org/vacancies/1610385592917
+[{"id":1610385459795,"success":true,"message":"Job with id:1610385459795 added successfully."},{"id":1610385466100,"success":true,"message":"Job with id:1610385466100 added successfully."},{"id":1610385538842,"success":true,"message":"Job with id:1610385538842 added successfully."},{"id":1610385576306,"success":true,"message":"Job with id:1610385576306 added successfully."},{"id":1610385592917,"success":true,"message":"Job with id:1610385592917 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610385598818
+Scraping following url:  https://unjobs.org/vacancies/1610387710180
+Scraping following url:  https://unjobs.org/vacancies/1610387712521
+Scraping following url:  https://unjobs.org/vacancies/1610387714324
+Scraping following url:  https://unjobs.org/vacancies/1610387716012
+[{"id":1610385598818,"success":true,"message":"Job with id:1610385598818 added successfully."},{"id":1610387710180,"success":true,"message":"Job with id:1610387710180 added successfully."},{"id":1610387712521,"success":true,"message":"Job with id:1610387712521 added successfully."},{"id":1610387714324,"success":true,"message":"Job with id:1610387714324 added successfully."},{"id":1610387716012,"success":true,"message":"Job with id:1610387716012 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610387717709
+Scraping following url:  https://unjobs.org/vacancies/1610387719509
+Scraping following url:  https://unjobs.org/vacancies/1610388420413
+Scraping following url:  https://unjobs.org/vacancies/1610388565868
+Scraping following url:  https://unjobs.org/vacancies/1610388570073
+Not able to parse following url :  https://unjobs.org/vacancies/1610388570073
+Here is the exception :  list index out of range
+[{"id":1610387717709,"success":true,"message":"Job with id:1610387717709 added successfully."},{"id":1610387719509,"success":true,"message":"Job with id:1610387719509 added successfully."},{"id":1610388420413,"success":true,"message":"Job with id:1610388420413 added successfully."},{"id":1610388565868,"success":true,"message":"Job with id:1610388565868 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610388571703
+Scraping following url:  https://unjobs.org/vacancies/1610389831900
+Scraping following url:  https://unjobs.org/vacancies/1610389840706
+Scraping following url:  https://unjobs.org/vacancies/1610389857607
+Scraping following url:  https://unjobs.org/vacancies/1610389873606
+[{"id":1610388571703,"success":true,"message":"Job with id:1610388571703 added successfully."},{"id":1610389831900,"success":true,"message":"Job with id:1610389831900 added successfully."},{"id":1610389840706,"success":true,"message":"Job with id:1610389840706 added successfully."},{"id":1610389857607,"success":true,"message":"Job with id:1610389857607 added successfully."},{"id":1610389873606,"success":true,"message":"Job with id:1610389873606 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610389882105
+Scraping following url:  https://unjobs.org/vacancies/1610390042077
+Scraping following url:  https://unjobs.org/vacancies/1610390049536
+Scraping following url:  https://unjobs.org/vacancies/1610390056756
+Scraping following url:  https://unjobs.org/vacancies/1610390071921
+[{"id":1610389882105,"success":true,"message":"Job with id:1610389882105 added successfully."},{"id":1610390042077,"success":true,"message":"Job with id:1610390042077 added successfully."},{"id":1610390049536,"success":true,"message":"Job with id:1610390049536 added successfully."},{"id":1610390056756,"success":true,"message":"Job with id:1610390056756 added successfully."},{"id":1610390071921,"success":true,"message":"Job with id:1610390071921 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610390079336
+Scraping following url:  https://unjobs.org/vacancies/1610390092909
+Scraping following url:  https://unjobs.org/vacancies/1610390100454
+Scraping following url:  https://unjobs.org/vacancies/1610390107559
+Scraping following url:  https://unjobs.org/vacancies/1610390114432
+[{"id":1610390079336,"success":true,"message":"Job with id:1610390079336 added successfully."},{"id":1610390092909,"success":true,"message":"Job with id:1610390092909 added successfully."},{"id":1610390100454,"success":true,"message":"Job with id:1610390100454 added successfully."},{"id":1610390107559,"success":true,"message":"Job with id:1610390107559 added successfully."},{"id":1610390114432,"success":true,"message":"Job with id:1610390114432 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610391755243
+Scraping following url:  https://unjobs.org/vacancies/1610391760087
+Scraping following url:  https://unjobs.org/vacancies/1610391763818
+Scraping following url:  https://unjobs.org/vacancies/1610391767588
+Scraping following url:  https://unjobs.org/vacancies/1610393513572
+Not able to parse following url :  https://unjobs.org/vacancies/1610393513572
+Here is the exception :  ERROR parsing office of job!
+[{"id":1610391755243,"success":true,"message":"Job with id:1610391755243 added successfully."},{"id":1610391760087,"success":true,"message":"Job with id:1610391760087 added successfully."},{"id":1610391763818,"success":true,"message":"Job with id:1610391763818 added successfully."},{"id":1610391767588,"success":true,"message":"Job with id:1610391767588 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610393516425
+Scraping following url:  https://unjobs.org/vacancies/1610393714299
+Scraping following url:  https://unjobs.org/vacancies/1610397143585
+Scraping following url:  https://unjobs.org/vacancies/1610397145557
+Scraping following url:  https://unjobs.org/vacancies/1610397149545
+[{"id":1610393516425,"success":true,"message":"Job with id:1610393516425 added successfully."},{"id":1610393714299,"success":true,"message":"Job with id:1610393714299 added successfully."},{"id":1610397143585,"success":true,"message":"Job with id:1610397143585 added successfully."},{"id":1610397145557,"success":true,"message":"Job with id:1610397145557 added successfully."},{"id":1610397149545,"success":true,"message":"Job with id:1610397149545 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397151230
+Scraping following url:  https://unjobs.org/vacancies/1610397152866
+Scraping following url:  https://unjobs.org/vacancies/1610397154566
+Scraping following url:  https://unjobs.org/vacancies/1610397160883
+Scraping following url:  https://unjobs.org/vacancies/1610397164358
+[{"id":1610397151230,"success":true,"message":"Job with id:1610397151230 added successfully."},{"id":1610397152866,"success":true,"message":"Job with id:1610397152866 added successfully."},{"id":1610397154566,"success":true,"message":"Job with id:1610397154566 added successfully."},{"id":1610397160883,"success":true,"message":"Job with id:1610397160883 added successfully."},{"id":1610397164358,"success":true,"message":"Job with id:1610397164358 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397167652
+Scraping following url:  https://unjobs.org/vacancies/1610397169316
+Scraping following url:  https://unjobs.org/vacancies/1610397172417
+Scraping following url:  https://unjobs.org/vacancies/1610397175725
+Scraping following url:  https://unjobs.org/vacancies/1610397177323
+[{"id":1610397167652,"success":true,"message":"Job with id:1610397167652 added successfully."},{"id":1610397169316,"success":true,"message":"Job with id:1610397169316 added successfully."},{"id":1610397172417,"success":true,"message":"Job with id:1610397172417 added successfully."},{"id":1610397175725,"success":true,"message":"Job with id:1610397175725 added successfully."},{"id":1610397177323,"success":true,"message":"Job with id:1610397177323 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397182370
+Scraping following url:  https://unjobs.org/vacancies/1610397191932
+Scraping following url:  https://unjobs.org/vacancies/1610397193471
+Scraping following url:  https://unjobs.org/vacancies/1610397198242
+Scraping following url:  https://unjobs.org/vacancies/1610397199775
+[{"id":1610397182370,"success":true,"message":"Job with id:1610397182370 added successfully."},{"id":1610397191932,"success":true,"message":"Job with id:1610397191932 added successfully."},{"id":1610397193471,"success":true,"message":"Job with id:1610397193471 added successfully."},{"id":1610397198242,"success":true,"message":"Job with id:1610397198242 added successfully."},{"id":1610397199775,"success":true,"message":"Job with id:1610397199775 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397201373
+Scraping following url:  https://unjobs.org/vacancies/1610397204482
+Scraping following url:  https://unjobs.org/vacancies/1610397207884
+Scraping following url:  https://unjobs.org/vacancies/1610397209378
+Scraping following url:  https://unjobs.org/vacancies/1610397212536
+[{"id":1610397201373,"success":true,"message":"Job with id:1610397201373 added successfully."},{"id":1610397204482,"success":true,"message":"Job with id:1610397204482 added successfully."},{"id":1610397207884,"success":true,"message":"Job with id:1610397207884 added successfully."},{"id":1610397209378,"success":true,"message":"Job with id:1610397209378 added successfully."},{"id":1610397212536,"success":true,"message":"Job with id:1610397212536 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397214084
+Scraping following url:  https://unjobs.org/vacancies/1610397218654
+Scraping following url:  https://unjobs.org/vacancies/1610397223394
+Scraping following url:  https://unjobs.org/vacancies/1610397226564
+Scraping following url:  https://unjobs.org/vacancies/1610397229792
+[{"id":1610397214084,"success":true,"message":"Job with id:1610397214084 added successfully."},{"id":1610397218654,"success":true,"message":"Job with id:1610397218654 added successfully."},{"id":1610397223394,"success":true,"message":"Job with id:1610397223394 added successfully."},{"id":1610397226564,"success":true,"message":"Job with id:1610397226564 added successfully."},{"id":1610397229792,"success":true,"message":"Job with id:1610397229792 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397231345
+Scraping following url:  https://unjobs.org/vacancies/1610397234462
+Scraping following url:  https://unjobs.org/vacancies/1610397237591
+Scraping following url:  https://unjobs.org/vacancies/1610397240775
+Scraping following url:  https://unjobs.org/vacancies/1610397243792
+[{"id":1610397231345,"success":true,"message":"Job with id:1610397231345 added successfully."},{"id":1610397234462,"success":true,"message":"Job with id:1610397234462 added successfully."},{"id":1610397237591,"success":true,"message":"Job with id:1610397237591 added successfully."},{"id":1610397240775,"success":true,"message":"Job with id:1610397240775 added successfully."},{"id":1610397243792,"success":true,"message":"Job with id:1610397243792 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610397247008
+Scraping following url:  https://unjobs.org/vacancies/1610401819083
+Scraping following url:  https://unjobs.org/vacancies/1610401822352
+Scraping following url:  https://unjobs.org/vacancies/1610401956059
+Scraping following url:  https://unjobs.org/vacancies/1610402415780
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+[{"id":1610397247008,"success":true,"message":"Job with id:1610397247008 added successfully."},{"id":1610401819083,"success":true,"message":"Job with id:1610401819083 added successfully."},{"id":1610401822352,"success":true,"message":"Job with id:1610401822352 added successfully."},{"id":1610401956059,"success":true,"message":"Job with id:1610401956059 added successfully."},{"id":1610402415780,"success":true,"message":"Job with id:1610402415780 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402751642
+Scraping following url:  https://unjobs.org/vacancies/1610402760954
+Scraping following url:  https://unjobs.org/vacancies/1610402765452
+Scraping following url:  https://unjobs.org/vacancies/1610402775192
+Scraping following url:  https://unjobs.org/vacancies/1610402787378
+[{"id":1610402751642,"success":true,"message":"Job with id:1610402751642 added successfully."},{"id":1610402760954,"success":true,"message":"Job with id:1610402760954 added successfully."},{"id":1610402765452,"success":true,"message":"Job with id:1610402765452 added successfully."},{"id":1610402775192,"success":true,"message":"Job with id:1610402775192 added successfully."},{"id":1610402787378,"success":true,"message":"Job with id:1610402787378 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402815994
+Scraping following url:  https://unjobs.org/vacancies/1610402818557
+Scraping following url:  https://unjobs.org/vacancies/1610402821926
+Scraping following url:  https://unjobs.org/vacancies/1610402824898
+Scraping following url:  https://unjobs.org/vacancies/1610402827400
+[{"id":1610402815994,"success":true,"message":"Job with id:1610402815994 added successfully."},{"id":1610402818557,"success":true,"message":"Job with id:1610402818557 added successfully."},{"id":1610402821926,"success":true,"message":"Job with id:1610402821926 added successfully."},{"id":1610402824898,"success":true,"message":"Job with id:1610402824898 added successfully."},{"id":1610402827400,"success":true,"message":"Job with id:1610402827400 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610402948484
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610402959377
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610403026874
+Scraping following url:  https://unjobs.org/vacancies/1610403029544
+Scraping following url:  https://unjobs.org/vacancies/1610403068914
+[{"id":1610402948484,"success":true,"message":"Job with id:1610402948484 added successfully."},{"id":1610402959377,"success":true,"message":"Job with id:1610402959377 added successfully."},{"id":1610403026874,"success":true,"message":"Job with id:1610403026874 added successfully."},{"id":1610403029544,"success":true,"message":"Job with id:1610403029544 added successfully."},{"id":1610403068914,"success":true,"message":"Job with id:1610403068914 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610403074031
+Scraping following url:  https://unjobs.org/vacancies/1610403076436
+Scraping following url:  https://unjobs.org/vacancies/1608669047096
+Scraping following url:  https://unjobs.org/vacancies/1609524763582
+Scraping following url:  https://unjobs.org/vacancies/1610287549072
+[{"id":1610403074031,"success":true,"message":"Job with id:1610403074031 added successfully."},{"id":1610403076436,"success":true,"message":"Job with id:1610403076436 added successfully."},{"id":1608669047096,"success":true,"message":"Job with id:1608669047096 added successfully."},{"id":1609524763582,"success":true,"message":"Job with id:1609524763582 added successfully."},{"id":1610287549072,"success":true,"message":"Job with id:1610287549072 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610132622824
+Scraping following url:  https://unjobs.org/vacancies/1610312077892
+Scraping following url:  https://unjobs.org/vacancies/1610312001366
+Scraping following url:  https://unjobs.org/vacancies/1610311972425
+Scraping following url:  https://unjobs.org/vacancies/1610312068326
+[{"id":1610132622824,"success":true,"message":"Job with id:1610132622824 added successfully."},{"id":1610312077892,"success":true,"message":"Job with id:1610312077892 added successfully."},{"id":1610312001366,"success":true,"message":"Job with id:1610312001366 added successfully."},{"id":1610311972425,"success":true,"message":"Job with id:1610311972425 added successfully."},{"id":1610312068326,"success":true,"message":"Job with id:1610312068326 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311933747
+Scraping following url:  https://unjobs.org/vacancies/1610312164187
+Scraping following url:  https://unjobs.org/vacancies/1610312049125
+Scraping following url:  https://unjobs.org/vacancies/1610311914752
+Scraping following url:  https://unjobs.org/vacancies/1610311866780
+[{"id":1610311933747,"success":true,"message":"Job with id:1610311933747 added successfully."},{"id":1610312164187,"success":true,"message":"Job with id:1610312164187 added successfully."},{"id":1610312049125,"success":true,"message":"Job with id:1610312049125 added successfully."},{"id":1610311914752,"success":true,"message":"Job with id:1610311914752 added successfully."},{"id":1610311866780,"success":true,"message":"Job with id:1610311866780 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311827985
+Scraping following url:  https://unjobs.org/vacancies/1610311837808
+Scraping following url:  https://unjobs.org/vacancies/1610311818472
+Scraping following url:  https://unjobs.org/vacancies/1610311808650
+Scraping following url:  https://unjobs.org/vacancies/1610310881218
+[{"id":1610311827985,"success":true,"message":"Job with id:1610311827985 added successfully."},{"id":1610311837808,"success":true,"message":"Job with id:1610311837808 added successfully."},{"id":1610311818472,"success":true,"message":"Job with id:1610311818472 added successfully."},{"id":1610311808650,"success":true,"message":"Job with id:1610311808650 added successfully."},{"id":1610310881218,"success":true,"message":"Job with id:1610310881218 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610310874251
+Scraping following url:  https://unjobs.org/vacancies/1610310147246
+Scraping following url:  https://unjobs.org/vacancies/1610309892233
+Scraping following url:  https://unjobs.org/vacancies/1610309079331
+Scraping following url:  https://unjobs.org/vacancies/1610309025615
+[{"id":1610310874251,"success":true,"message":"Job with id:1610310874251 added successfully."},{"id":1610310147246,"success":true,"message":"Job with id:1610310147246 added successfully."},{"id":1610309892233,"success":true,"message":"Job with id:1610309892233 added successfully."},{"id":1610309079331,"success":true,"message":"Job with id:1610309079331 added successfully."},{"id":1610309025615,"success":true,"message":"Job with id:1610309025615 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610312843267
+Scraping following url:  https://unjobs.org/vacancies/1610312837864
+Scraping following url:  https://unjobs.org/vacancies/1610214470722
+Scraping following url:  https://unjobs.org/vacancies/1610300813375
+Scraping following url:  https://unjobs.org/vacancies/1610309064381
+Not able to parse following url :  https://unjobs.org/vacancies/1610309064381
+Here is the exception :  list index out of range
+[{"id":1610312843267,"success":true,"message":"Job with id:1610312843267 added successfully."},{"id":1610312837864,"success":true,"message":"Job with id:1610312837864 added successfully."},{"id":1610214470722,"success":true,"message":"Job with id:1610214470722 added successfully."},{"id":1610300813375,"success":true,"message":"Job with id:1610300813375 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311490269
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610311436219
+Unable to find closing date for job. Setting closing date to: 1.01.2025
+Scraping following url:  https://unjobs.org/vacancies/1610132632239
+Scraping following url:  https://unjobs.org/vacancies/1610312141683
+Not able to parse following url :  https://unjobs.org/vacancies/1610312141683
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610312137133
+[{"id":1610311490269,"success":true,"message":"Job with id:1610311490269 added successfully."},{"id":1610311436219,"success":true,"message":"Job with id:1610311436219 added successfully."},{"id":1610132632239,"success":true,"message":"Job with id:1610132632239 added successfully."},{"id":1610312137133,"success":true,"message":"Job with id:1610312137133 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610312131225
+Scraping following url:  https://unjobs.org/vacancies/1610132721030
+Scraping following url:  https://unjobs.org/vacancies/1610132716296
+Scraping following url:  https://unjobs.org/vacancies/1610132714800
+Scraping following url:  https://unjobs.org/vacancies/1610132713445
+[{"id":1610312131225,"success":true,"message":"Job with id:1610312131225 added successfully."},{"id":1610132721030,"success":true,"message":"Job with id:1610132721030 added successfully."},{"id":1610132716296,"success":true,"message":"Job with id:1610132716296 added successfully."},{"id":1610132714800,"success":true,"message":"Job with id:1610132714800 added successfully."},{"id":1610132713445,"success":true,"message":"Job with id:1610132713445 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610132710635
+Scraping following url:  https://unjobs.org/vacancies/1610132705181
+Scraping following url:  https://unjobs.org/vacancies/1610132703366
+Scraping following url:  https://unjobs.org/vacancies/1610218739853
+Scraping following url:  https://unjobs.org/vacancies/1610218738512
+[{"id":1610132710635,"success":true,"message":"Job with id:1610132710635 added successfully."},{"id":1610132705181,"success":true,"message":"Job with id:1610132705181 added successfully."},{"id":1610132703366,"success":true,"message":"Job with id:1610132703366 added successfully."},{"id":1610218739853,"success":true,"message":"Job with id:1610218739853 added successfully."},{"id":1610218738512,"success":true,"message":"Job with id:1610218738512 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610218736987
+Scraping following url:  https://unjobs.org/vacancies/1610304321497
+Scraping following url:  https://unjobs.org/vacancies/1610304318581
+Scraping following url:  https://unjobs.org/vacancies/1610304317231
+Scraping following url:  https://unjobs.org/vacancies/1610304315860
+[{"id":1610218736987,"success":true,"message":"Job with id:1610218736987 added successfully."},{"id":1610304321497,"success":true,"message":"Job with id:1610304321497 added successfully."},{"id":1610304318581,"success":true,"message":"Job with id:1610304318581 added successfully."},{"id":1610304317231,"success":true,"message":"Job with id:1610304317231 added successfully."},{"id":1610304315860,"success":true,"message":"Job with id:1610304315860 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610304314476
+Scraping following url:  https://unjobs.org/vacancies/1610304313046
+Scraping following url:  https://unjobs.org/vacancies/1610130767489
+Scraping following url:  https://unjobs.org/vacancies/1610130734983
+Scraping following url:  https://unjobs.org/vacancies/1610130726496
+[{"id":1610304314476,"success":true,"message":"Job with id:1610304314476 added successfully."},{"id":1610304313046,"success":true,"message":"Job with id:1610304313046 added successfully."},{"id":1610130767489,"success":true,"message":"Job with id:1610130767489 added successfully."},{"id":1610130734983,"success":true,"message":"Job with id:1610130734983 added successfully."},{"id":1610130726496,"success":true,"message":"Job with id:1610130726496 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610312106578
+Scraping following url:  https://unjobs.org/vacancies/1610312058686
+Scraping following url:  https://unjobs.org/vacancies/1610311981885
+Scraping following url:  https://unjobs.org/vacancies/1610311962510
+Scraping following url:  https://unjobs.org/vacancies/1610311924178
+[{"id":1610312106578,"success":true,"message":"Job with id:1610312106578 added successfully."},{"id":1610312058686,"success":true,"message":"Job with id:1610312058686 added successfully."},{"id":1610311981885,"success":true,"message":"Job with id:1610311981885 added successfully."},{"id":1610311962510,"success":true,"message":"Job with id:1610311962510 added successfully."},{"id":1610311924178,"success":true,"message":"Job with id:1610311924178 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311857014
+Scraping following url:  https://unjobs.org/vacancies/1610304168118
+Scraping following url:  https://unjobs.org/vacancies/1610287553559
+Scraping following url:  https://unjobs.org/vacancies/1610287550751
+Scraping following url:  https://unjobs.org/vacancies/1610287546742
+[{"id":1610311857014,"success":true,"message":"Job with id:1610311857014 added successfully."},{"id":1610304168118,"success":true,"message":"Job with id:1610304168118 added successfully."},{"id":1610287553559,"success":true,"message":"Job with id:1610287553559 added successfully."},{"id":1610287550751,"success":true,"message":"Job with id:1610287550751 added successfully."},{"id":1610287546742,"success":true,"message":"Job with id:1610287546742 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311336192
+Scraping following url:  https://unjobs.org/vacancies/1610311324830
+Scraping following url:  https://unjobs.org/vacancies/1610311306816
+Scraping following url:  https://unjobs.org/vacancies/1610311294881
+Scraping following url:  https://unjobs.org/vacancies/1610311288209
+[{"id":1610311336192,"success":true,"message":"Job with id:1610311336192 added successfully."},{"id":1610311324830,"success":true,"message":"Job with id:1610311324830 added successfully."},{"id":1610311306816,"success":true,"message":"Job with id:1610311306816 added successfully."},{"id":1610311294881,"success":true,"message":"Job with id:1610311294881 added successfully."},{"id":1610311288209,"success":true,"message":"Job with id:1610311288209 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311282593
+Scraping following url:  https://unjobs.org/vacancies/1610311275862
+Scraping following url:  https://unjobs.org/vacancies/1610311270177
+Scraping following url:  https://unjobs.org/vacancies/1610311264472
+Scraping following url:  https://unjobs.org/vacancies/1610311253319
+[{"id":1610311282593,"success":true,"message":"Job with id:1610311282593 added successfully."},{"id":1610311275862,"success":true,"message":"Job with id:1610311275862 added successfully."},{"id":1610311270177,"success":true,"message":"Job with id:1610311270177 added successfully."},{"id":1610311264472,"success":true,"message":"Job with id:1610311264472 added successfully."},{"id":1610311253319,"success":true,"message":"Job with id:1610311253319 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311231003
+Scraping following url:  https://unjobs.org/vacancies/1610311225470
+Scraping following url:  https://unjobs.org/vacancies/1610311219910
+Scraping following url:  https://unjobs.org/vacancies/1610311214303
+Scraping following url:  https://unjobs.org/vacancies/1610311208331
+[{"id":1610311231003,"success":true,"message":"Job with id:1610311231003 added successfully."},{"id":1610311225470,"success":true,"message":"Job with id:1610311225470 added successfully."},{"id":1610311219910,"success":true,"message":"Job with id:1610311219910 added successfully."},{"id":1610311214303,"success":true,"message":"Job with id:1610311214303 added successfully."},{"id":1610311208331,"success":true,"message":"Job with id:1610311208331 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311197078
+Scraping following url:  https://unjobs.org/vacancies/1610311191544
+Scraping following url:  https://unjobs.org/vacancies/1610311185991
+Scraping following url:  https://unjobs.org/vacancies/1610311180429
+Scraping following url:  https://unjobs.org/vacancies/1610311174628
+[{"id":1610311197078,"success":true,"message":"Job with id:1610311197078 added successfully."},{"id":1610311191544,"success":true,"message":"Job with id:1610311191544 added successfully."},{"id":1610311185991,"success":true,"message":"Job with id:1610311185991 added successfully."},{"id":1610311180429,"success":true,"message":"Job with id:1610311180429 added successfully."},{"id":1610311174628,"success":true,"message":"Job with id:1610311174628 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311140620
+Scraping following url:  https://unjobs.org/vacancies/1610311134789
+Scraping following url:  https://unjobs.org/vacancies/1610311129230
+Scraping following url:  https://unjobs.org/vacancies/1610311122610
+Scraping following url:  https://unjobs.org/vacancies/1610311111405
+[{"id":1610311140620,"success":true,"message":"Job with id:1610311140620 added successfully."},{"id":1610311134789,"success":true,"message":"Job with id:1610311134789 added successfully."},{"id":1610311129230,"success":true,"message":"Job with id:1610311129230 added successfully."},{"id":1610311122610,"success":true,"message":"Job with id:1610311122610 added successfully."},{"id":1610311111405,"success":true,"message":"Job with id:1610311111405 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311105818
+Scraping following url:  https://unjobs.org/vacancies/1610311094373
+Scraping following url:  https://unjobs.org/vacancies/1610311088786
+Scraping following url:  https://unjobs.org/vacancies/1610311076646
+Scraping following url:  https://unjobs.org/vacancies/1610311052985
+[{"id":1610311105818,"success":true,"message":"Job with id:1610311105818 added successfully."},{"id":1610311094373,"success":true,"message":"Job with id:1610311094373 added successfully."},{"id":1610311088786,"success":true,"message":"Job with id:1610311088786 added successfully."},{"id":1610311076646,"success":true,"message":"Job with id:1610311076646 added successfully."},{"id":1610311052985,"success":true,"message":"Job with id:1610311052985 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311035828
+Scraping following url:  https://unjobs.org/vacancies/1610311041498
+Scraping following url:  https://unjobs.org/vacancies/1610311030121
+Scraping following url:  https://unjobs.org/vacancies/1610311024484
+Not able to parse following url :  https://unjobs.org/vacancies/1610311024484
+Here is the exception :  ERROR parsing office of job!
+Scraping following url:  https://unjobs.org/vacancies/1610311017779
+[{"id":1610311035828,"success":true,"message":"Job with id:1610311035828 added successfully."},{"id":1610311041498,"success":true,"message":"Job with id:1610311041498 added successfully."},{"id":1610311030121,"success":true,"message":"Job with id:1610311030121 added successfully."},{"id":1610311017779,"success":true,"message":"Job with id:1610311017779 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610311005909
+Scraping following url:  https://unjobs.org/vacancies/1610310994217
+Scraping following url:  https://unjobs.org/vacancies/1610310988450
+Scraping following url:  https://unjobs.org/vacancies/1610310982926
+Scraping following url:  https://unjobs.org/vacancies/1610310971426
+[{"id":1610311005909,"success":true,"message":"Job with id:1610311005909 added successfully."},{"id":1610310994217,"success":true,"message":"Job with id:1610310994217 added successfully."},{"id":1610310988450,"success":true,"message":"Job with id:1610310988450 added successfully."},{"id":1610310982926,"success":true,"message":"Job with id:1610310982926 added successfully."},{"id":1610310971426,"success":true,"message":"Job with id:1610310971426 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610310942325
+Scraping following url:  https://unjobs.org/vacancies/1610310936770
+Scraping following url:  https://unjobs.org/vacancies/1610310931212
+Scraping following url:  https://unjobs.org/vacancies/1610310925510
+Scraping following url:  https://unjobs.org/vacancies/1610310913605
+[{"id":1610310942325,"success":true,"message":"Job with id:1610310942325 added successfully."},{"id":1610310936770,"success":true,"message":"Job with id:1610310936770 added successfully."},{"id":1610310931212,"success":true,"message":"Job with id:1610310931212 added successfully."},{"id":1610310925510,"success":true,"message":"Job with id:1610310925510 added successfully."},{"id":1610310913605,"success":true,"message":"Job with id:1610310913605 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610310165877
+Scraping following url:  https://unjobs.org/vacancies/1610309034653
+Not able to parse following url :  https://unjobs.org/vacancies/1610309034653
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610301742533
+Scraping following url:  https://unjobs.org/vacancies/1610301748748
+Scraping following url:  https://unjobs.org/vacancies/1610301751840
+[{"id":1610310165877,"success":true,"message":"Job with id:1610310165877 added successfully."},{"id":1610301742533,"success":true,"message":"Job with id:1610301742533 added successfully."},{"id":1610301748748,"success":true,"message":"Job with id:1610301748748 added successfully."},{"id":1610301751840,"success":true,"message":"Job with id:1610301751840 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610302704718
+Scraping following url:  https://unjobs.org/vacancies/1610302711789
+Scraping following url:  https://unjobs.org/vacancies/1610304237681
+Scraping following url:  https://unjobs.org/vacancies/1610304242797
+Scraping following url:  https://unjobs.org/vacancies/1610309043459
+[{"id":1610302704718,"success":true,"message":"Job with id:1610302704718 added successfully."},{"id":1610302711789,"success":true,"message":"Job with id:1610302711789 added successfully."},{"id":1610304237681,"success":true,"message":"Job with id:1610304237681 added successfully."},{"id":1610304242797,"success":true,"message":"Job with id:1610304242797 added successfully."},{"id":1610309043459,"success":true,"message":"Job with id:1610309043459 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610309047622
+Scraping following url:  https://unjobs.org/vacancies/1610309051752
+Scraping following url:  https://unjobs.org/vacancies/1610309060030
+Scraping following url:  https://unjobs.org/vacancies/1610309072036
+Not able to parse following url :  https://unjobs.org/vacancies/1610309072036
+Here is the exception :  list index out of range
+Scraping following url:  https://unjobs.org/vacancies/1610309083390
+[{"id":1610309047622,"success":true,"message":"Job with id:1610309047622 added successfully."},{"id":1610309051752,"success":true,"message":"Job with id:1610309051752 added successfully."},{"id":1610309060030,"success":true,"message":"Job with id:1610309060030 added successfully."},{"id":1610309083390,"success":true,"message":"Job with id:1610309083390 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610309087423
+Scraping following url:  https://unjobs.org/vacancies/1610309783274
+Scraping following url:  https://unjobs.org/vacancies/1610309788375
+Scraping following url:  https://unjobs.org/vacancies/1610309791321
+Scraping following url:  https://unjobs.org/vacancies/1610309895155
+[{"id":1610309087423,"success":true,"message":"Job with id:1610309087423 added successfully."},{"id":1610309783274,"success":true,"message":"Job with id:1610309783274 added successfully."},{"id":1610309788375,"success":true,"message":"Job with id:1610309788375 added successfully."},{"id":1610309791321,"success":true,"message":"Job with id:1610309791321 added successfully."},{"id":1610309895155,"success":true,"message":"Job with id:1610309895155 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610309898316
+Scraping following url:  https://unjobs.org/vacancies/1610310021566
+Scraping following url:  https://unjobs.org/vacancies/1610310083169
+Scraping following url:  https://unjobs.org/vacancies/1610310094759
+Scraping following url:  https://unjobs.org/vacancies/1610310110811
+[{"id":1610309898316,"success":true,"message":"Job with id:1610309898316 added successfully."},{"id":1610310021566,"success":true,"message":"Job with id:1610310021566 added successfully."},{"id":1610310083169,"success":true,"message":"Job with id:1610310083169 added successfully."},{"id":1610310094759,"success":true,"message":"Job with id:1610310094759 added successfully."},{"id":1610310110811,"success":true,"message":"Job with id:1610310110811 added successfully."}]
+Scraping following url:  https://unjobs.org/vacancies/1610310129145
+Scraping following url:  https://unjobs.org/vacancies/1610310134555
+Scraping following url:  https://unjobs.org/vacancies/1610310140065
+Scraping following url:  https://unjobs.org/vacancies/1610310159032
+Scraping following url:  https://unjobs.org/vacancies/1610310178158
+[{"id":1610310129145,"success":true,"message":"Job with id:1610310129145 added successfully."},{"id":1610310134555,"success":true,"message":"Job with id:1610310134555 added successfully."},{"id":1610310140065,"success":true,"message":"Job with id:1610310140065 added successfully."},{"id":1610310159032,"success":true,"message":"Job with id:1610310159032 added successfully."},{"id":1610310178158,"success":true,"message":"Job with id:1610310178158 added successfully."}]
+

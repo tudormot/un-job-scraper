@@ -1,5 +1,6 @@
 from scraping import *
 from scrape_main_page import *
+from web_adapter import *
 
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
@@ -53,7 +54,7 @@ def test_re_2():
     print("i,c,p = ",i,c,p)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1610658708861"
+    TEST_URL = "https://unjobs.org/vacancies/1610649545063"
     job = read_job_from_url(TEST_URL)
     print(job.as_dict())
 
@@ -76,10 +77,28 @@ def test_get_all_job_urls():
     print(url_list)
     print("last_update_time: ",last_update_date)
 
+def test_rest_api_incomplete_info():
+    dummy_json = {
+        'jobs' : [
+            {
+                "title": "dummy_jobszzz2",
+                "original_job_link": "https://jobs.undp.org/cj_view_job.cfm?cur_job_id=96019",
+                "extra_information": "blabla", # required
+                "closing_date": "01.01.2025", # required
+                "country" : None,
+                "city:": None,
+                "id": "12345"
+            }
+        ]
+    }
+
+    upload_from_json(dummy_json)
+
 
 if __name__ == '__main__':
-    # test_read_job_from_url()
+    # test_rest_api_incomplete_info()
+    test_read_job_from_url()
     # test_re_2()
     # test_string_to_datetime()
-    test_get_jobs_since_date()
+    # test_get_jobs_since_date()
     # test_get_all_job_urls()
