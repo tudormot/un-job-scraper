@@ -54,7 +54,7 @@ def test_re_2():
     print("i,c,p = ",i,c,p)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1610649545063"
+    TEST_URL = "https://unjobs.org/vacancies/1610817517042"
     job = read_job_from_url(TEST_URL)
     print(job.as_dict())
 

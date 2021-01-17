@@ -9,9 +9,11 @@ def read_job_from_url(url):
     print("Scraping following url: ", url)
     job = JobModel()
     application_link, html = _selenium_automation(url)
+
     job.original_job_link = application_link
     soup = BeautifulSoup(html, 'html.parser')
-
+    # print('DEBUG.Contents of soup:')
+    # print(soup.prettify())
     # get ID and title
     id = url.split('/')[-1]
     job.id = id
@@ -38,7 +40,11 @@ def read_job_from_url(url):
 
 
 def _selenium_automation(url):
-    driver = webdriver.Chrome('/snap/bin/chromium.chromedriver')
+    options = webdriver.ChromeOptions()
+    user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36"
+    options.add_argument(f'user-agent={user_agent}')
+    options.add_argument("--headless")
+    driver = webdriver.Chrome('/snap/bin/chromium.chromedriver',options=options)
     driver.get(url)
     html = driver.page_source
 
@@ -61,38 +67,35 @@ def _get_info_from_contents_container(soup, job):
     pattern_office = 'Office:\n'
     pattern_grade = 'Grade:\n'
 
+    job.organisation = None
+    job.country = None
+    job.city = None
+    job.grade = None
+    job.office = None
+
     for content in contents:
+        # print('content[0] is ',content[0])
         if content[0] == pattern_org:
             job.organisation = content[1].string.strip('\n')
-        else:
-            job.organisation = None
-            if content[0] == pattern_country:
+        elif content[0] == pattern_country:
                 job.country = content[1].string.strip('\n')
-            else:
-                job.country = None
-                if content[0] == pattern_city_1 or content[0] == pattern_city_2:
-                    job.city = content[1].string.strip('\n')
-                else:
-                    job.city = None
-                    if content[0] == pattern_grade:
-                        job.grade = content[1].string.strip('\n')
-                    else:
-                        job.grade = None
-                        if content[0] == pattern_office:
-                            job.office = content[1].string.strip('\n')
-                        else:
-                            job.office = None
+        elif content[0] == pattern_city_1 or content[0] == pattern_city_2:
+                job.city = content[1].string.strip('\n')
+        elif content[0] == pattern_grade:
+                job.grade = content[1].string.strip('\n')
+        elif content[0] == pattern_office:
+                job.office = content[1].string.strip('\n')
 
     if job.office is None:
-        print('ERROR parsing office! Leaving Blank')
+        print('INFO cant parse office! Leaving Blank')
     if job.country is None:
-        print('ERROR parsing country! Leaving Blank')
+        print('INFO cant parse country! Leaving Blank')
     if job.city is None:
-        print('ERROR parsing city! Leaving Blank')
+        print('INFO cant parse city! Leaving Blank')
     if job.organisation is None:
-        print('ERROR parsing organisation! Leaving Blank')
+        print('INFO cant parse organisation! Leaving Blank')
     if job.grade is None:
-        print('ERROR parsing grade! Leaving Blank')
+        print('INFO cant parse grade! Leaving Blank')
 
 
 def _get_text_content(soup, job):

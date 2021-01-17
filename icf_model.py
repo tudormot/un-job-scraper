@@ -8,18 +8,24 @@ class icf_model:
     def __init__(self):
         self.db =  TinyDB('db.json')
         self.query = Query()
+        self.delete_expired_jobs()
 
     def delete_expired_jobs(self):
         print("INFO: deleting expired jobs")
         curr = datetime.datetime.now()
         test_func = lambda s: self._closingdatestr_to_date(s) < curr
-        self.db.search(self.query.closing_date.test(test_func))
+        response = self.db.search(self.query.closing_date.test(test_func))
+        print("INFO: deleting following expired jobs : (id,date)", ['('+str(r['id'])+','+str(r['closing_date']) + ')' for r in response])
+        self.db.remove(self.query.closing_date.test(test_func))
 
 
     def create(self, jobs):
         results = upload_jobs(jobs)
+        # print("type of results is : ", type(results))
         for i, result in enumerate(results):
-            if result['success']:
+            # print("result is : ", result)
+            # print("type of result[success] is : ", type(result['success']))
+            if 'success' in result:
                 self.db.insert(jobs[i])
 
     def delete(self,jobs):
@@ -46,9 +52,9 @@ class icf_model:
     @staticmethod
     def _closingdatestr_to_date(s):
         list = s.split('.')
-        return datetime.datetime(year = list[2],
-                                 month= list[1],
-                                 day=list[0],
-                                 hour=23,
-                                 minute=59,
-                                 second=59)
+        return datetime.datetime(year = int(list[2]),
+                                 month= int(list[1]),
+                                 day=int(list[0]),
+                                 hour=int(23),
+                                 minute=int(59),
+                                 second=int(59))

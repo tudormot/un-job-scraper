@@ -42,15 +42,20 @@ def scrape_all_website_usecase():
     upload_from_urls(url_list,model)
     model.set_last_update(last_update)
 
+def delete_expired_jobs_usecase():
+    model = icf_model()
+    model.delete_expired_jobs()
+
 def scrape_since_last_update_usecase():
     model = icf_model()
     date = model.get_last_update()
     url_list, last_update = get_jobs_since_date(date)
-    print(url_list)
-    print('UNJobs was last updated on: ', str(last_update))
-    print('icf was last updated on: ', str(model.get_last_update()))
-    # upload_from_urls(url_list, model)
-    # model.set_last_update(last_update)
+    # print(url_list)
+    print('INFO : UNJobs was last updated on: ', str(last_update))
+    print('INFO : icf was last updated on: ', str(model.get_last_update()))
+    print('INFO : uploading ',len(url_list),' jobs')
+    upload_from_urls(url_list, model)
+    model.set_last_update(last_update)
 
 
 
@@ -65,5 +70,6 @@ if __name__ == '__main__':
     # upload_jobs(data)
     # scrape_all_website_usecase()
     scrape_since_last_update_usecase()
+    # delete_expired_jobs_usecase()
     pass
 

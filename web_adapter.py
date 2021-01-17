@@ -11,7 +11,7 @@ def upload_jobs(jobs):
     r = requests.post('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
                       json=json)
     print(r.text)
-    return r.text
+    return r.json()
 
 def upload_from_json(json):
     r = requests.post('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
