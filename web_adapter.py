@@ -14,26 +14,20 @@ def upload_jobs(jobs):
     return r.json()
 
 def upload_from_json(json):
+    #for testing purposes
     r = requests.post('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
                       json=json)
     print(r.text)
     return r.text
 
 
-def delete_jobs():
-    dummy_dict = {
-        "jobs": [
-            {
-                "id": "1608592405428"
-            },
-            {
-                "id": "1608589401659"
-            },
-        ]
-    }
+def delete_jobs(jobs):
+    json = jobs_to_deletedict(jobs)
+    print('DEBUG in delete jobs. json is : ', json)
     r = requests.delete('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
-                        json=dummy_dict)
+                        json=json)
     print(r.text)
+    return r.json()
 
 def save_jobs_as_JSON(job_list):
     dict = jobs_to_dict(job_list)
@@ -45,4 +39,10 @@ def jobs_to_dict(jobs):
     return {
         "jobs":
             [job for job in jobs]
+    }
+def jobs_to_deletedict(jobs):
+    """creating a 'json' dict which contains only the job ids"""
+    return {
+        "jobs":
+            [{'id':job['id']} for job in jobs]
     }

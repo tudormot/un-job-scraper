@@ -21,15 +21,34 @@ class icf_model:
 
     def create(self, jobs):
         results = upload_jobs(jobs)
-        # print("type of results is : ", type(results))
         for i, result in enumerate(results):
-            # print("result is : ", result)
-            # print("type of result[success] is : ", type(result['success']))
             if 'success' in result:
                 self.db.insert(jobs[i])
+        return results
+
+    def update_or_create(self,jobs):
+        # just a deletion of jobs followed by creation
+        # first check if the jobs exist by job id
+        all_ids = [job['id'] for job in jobs]
+        found = self.db.search(self.query.id.test(lambda id: id in all_ids))
+        print("debug. found is : ", found)
+        #delete the entries already found from website and DB
+        if found: #aka if found is non-empty, stupid python syntax
+            self.delete(found)
+
+        #now create all jobs.. Everything should be successful as the pre-existing ones should have been deleted
+        self.create(jobs)
+
 
     def delete(self,jobs):
-        raise Exception('Not Implemented yet!')
+        print('INFO.Deleting jobs.')
+        results = delete_jobs(jobs)
+        #also delete jobs from db
+        for i, result in enumerate(results):
+            if 'success' in result:
+                self.db.remove(self.query.id == jobs[i]["id"])
+
+
 
     def set_last_update(self,update):
         self.db.remove(self.query.last_updated.exists())

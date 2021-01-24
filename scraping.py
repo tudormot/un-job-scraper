@@ -159,6 +159,6 @@ def _parse_string_for_date(closing_date_pretty):
         if len(chunks[3]) == 1: chunks[3] = '0' + chunks[3] # so date is dd.mm.YYYY
         return chunks[3] + '.' + my_hash[chunks[4]] + '.' + chunks[5]
     except AttributeError as e:
-        FAKE_DATE = "1.01.2025"
-        print("Unable to find closing date for job. Setting closing date to: " + FAKE_DATE)
-        return FAKE_DATE
+        # FAKE_DATE = "1.01.2025"
+        print("Unable to find closing date for job. ")
+        return None

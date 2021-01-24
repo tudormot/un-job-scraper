@@ -24,7 +24,7 @@ def upload_from_urls(url_list,model):
                     print("Not able to parse following url : ", url)
                     print("Here is the exception : ", str(e))
 
-            model.create(jobs)
+            model.update_or_create(jobs)
 
         except StopIteration as e:
             break
