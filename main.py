@@ -62,6 +62,7 @@ def scrape_since_last_update_usecase():
 
 
 
+
 if __name__ == '__main__':
     # jobs = read_html_from_file()
     # save_jobs_as_JSON(jobs)

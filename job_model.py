@@ -18,7 +18,7 @@ class JobModel:
         self.job_type = None
 
     def as_dict(self):
-        return {
+         job_dict = {
             "title": self.title,
             "organisation": self.organisation,
             "country": self.country,
@@ -32,3 +32,4 @@ class JobModel:
             "id": self.id,
             "job_category" : self.job_category
         }
+         return {k:job_dict[k] for k in job_dict if job_dict[k] is not None}

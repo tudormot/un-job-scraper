@@ -15,8 +15,9 @@ class icf_model:
         curr = datetime.datetime.now()
         test_func = lambda s: self._closingdatestr_to_date(s) < curr
         response = self.db.search(self.query.closing_date.test(test_func))
-        print("INFO: deleting following expired jobs : (id,date)", ['('+str(r['id'])+','+str(r['closing_date']) + ')' for r in response])
-        self.db.remove(self.query.closing_date.test(test_func))
+        print("INFO: deleting ",len(response)," expired jobs.")
+        self.delete(response)
+        # self.db.remove(self.query.closing_date.test(test_func))
 
 
     def create(self, jobs):
@@ -31,7 +32,6 @@ class icf_model:
         # first check if the jobs exist by job id
         all_ids = [job['id'] for job in jobs]
         found = self.db.search(self.query.id.test(lambda id: id in all_ids))
-        print("debug. found is : ", found)
         #delete the entries already found from website and DB
         if found: #aka if found is non-empty, stupid python syntax
             self.delete(found)
