@@ -1,21 +1,24 @@
 from web_adapter import *
 from tinydb import TinyDB, Query
 import datetime
+import logging as l
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 
 class icf_model:
     def __init__(self):
-        self.db =  TinyDB('db.json')
+        self.db =  TinyDB(os.path.join(dir_path,'db.json'))
         self.query = Query()
         self.delete_expired_jobs()
 
     def delete_expired_jobs(self):
-        print("INFO: deleting expired jobs")
+        l.info("INFO: deleting expired jobs")
         curr = datetime.datetime.now()
         test_func = lambda s: self._closingdatestr_to_date(s) < curr
         response = self.db.search(self.query.closing_date.test(test_func))
-        print("INFO: deleting ",len(response)," expired jobs.")
+        l.info("INFO: deleting "+str(len(response))+" expired jobs.")
         self.delete(response)
         # self.db.remove(self.query.closing_date.test(test_func))
 
@@ -41,7 +44,7 @@ class icf_model:
 
 
     def delete(self,jobs):
-        print('INFO.Deleting jobs.')
+        l.info('INFO.Deleting jobs.')
         results = delete_jobs(jobs)
         #also delete jobs from db
         for i, result in enumerate(results):

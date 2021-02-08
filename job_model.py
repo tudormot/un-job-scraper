@@ -30,6 +30,7 @@ class JobModel:
             "original_job_link": self.original_job_link,
             "extra_information": self.extra_information,
             "id": self.id,
-            "job_category" : self.job_category
+            "job_category" : self.job_category,
+            "job_type" : self.job_type
         }
          return {k:job_dict[k] for k in job_dict if job_dict[k] is not None}

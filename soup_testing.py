@@ -1,6 +1,8 @@
 from scraping import *
 from scrape_main_page import *
 from web_adapter import *
+import logging as l
+from logging_config import config_log
 
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
@@ -20,14 +22,14 @@ from bs4 import BeautifulSoup
 
 def test_learn_soup():
     soup = BeautifulSoup(html_doc, 'html.parser')
-    print(soup.p)
-    print(soup.shouldprintnone)
+    l.info(soup.p)
+    l.info(soup.shouldprintnone)
 
 def test_re ():
     string = """I am a Consultant. I am also a consultant. find Consultants!"""
     pattern = 'Consultant|consultant'
     result = re.findall(pattern, string, re.IGNORECASE)
-    print(result)
+    l.info(result)
 
 def test_re_2():
     i,c,p = 0,0,0
@@ -51,31 +53,32 @@ def test_re_2():
             else:
                 job_category = 'Full Time '
 
-    print("i,c,p = ",i,c,p)
+    l.info("i,c,p = " + str(i) + str(c) + str(p))
+    l.info("job_type decided: ",job_category)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1610817517042"
+    TEST_URL = "https://unjobs.org/vacancies/1612519239063"
     job = read_job_from_url(TEST_URL)
-    print(job.as_dict())
+    l.info(job.as_dict())
 
 def test_string_to_datetime():
     STRING = '2021-01-15T09:20:06Z'
     date = string_to_datetime(STRING)
-    print(date)
+    l.info(date)
 
 def test_get_jobs_since_date():
     STRING = '2021-01-12T09:20:06Z'
     date = string_to_datetime(STRING)
     url_list, last_update_date = get_jobs_since_date(date)
 
-    print(url_list)
-    print("last_update_time: ",last_update_date)
+    l.info(url_list)
+    l.info("last_update_time: "+ str(last_update_date))
 
 def test_get_all_job_urls():
     url_list,last_update_date = get_all_job_urls()
 
-    print(url_list)
-    print("last_update_time: ",last_update_date)
+    l.info(url_list)
+    l.info("last_update_time: " + str(last_update_date))
 
 def test_rest_api_incomplete_info():
     dummy_json = {
@@ -97,6 +100,7 @@ def test_rest_api_incomplete_info():
 
 if __name__ == '__main__':
     # test_rest_api_incomplete_info()
+    config_log()
     test_read_job_from_url()
     # test_re_2()
     # test_string_to_datetime()

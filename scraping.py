@@ -3,17 +3,17 @@ import time
 from job_model import *
 from bs4 import BeautifulSoup
 import re
+import logging as l
 
 
 def read_job_from_url(url):
-    print("Scraping following url: ", url)
+    l.info("Scraping following url: "+ str( url))
     job = JobModel()
     application_link, html = _selenium_automation(url)
 
     job.original_job_link = application_link
     soup = BeautifulSoup(html, 'html.parser')
-    # print('DEBUG.Contents of soup:')
-    # print(soup.prettify())
+
     # get ID and title
     id = url.split('/')[-1]
     job.id = id
@@ -74,7 +74,6 @@ def _get_info_from_contents_container(soup, job):
     job.office = None
 
     for content in contents:
-        # print('content[0] is ',content[0])
         if content[0] == pattern_org:
             job.organisation = content[1].string.strip('\n')
         elif content[0] == pattern_country:
@@ -87,15 +86,15 @@ def _get_info_from_contents_container(soup, job):
                 job.office = content[1].string.strip('\n')
 
     if job.office is None:
-        print('INFO cant parse office! Leaving Blank')
+        l.error('cant parse office! Leaving Blank')
     if job.country is None:
-        print('INFO cant parse country! Leaving Blank')
+        l.error('cant parse country! Leaving Blank')
     if job.city is None:
-        print('INFO cant parse city! Leaving Blank')
+        l.error('cant parse city! Leaving Blank')
     if job.organisation is None:
-        print('INFO cant parse organisation! Leaving Blank')
+        l.error('cant parse organisation! Leaving Blank')
     if job.grade is None:
-        print('INFO cant parse grade! Leaving Blank')
+        l.error('cant parse grade! Leaving Blank')
 
 
 def _get_text_content(soup, job):
@@ -117,10 +116,18 @@ def _get_text_content(soup, job):
     job.extra_information = str(text_tag)
 
 def _decide_job_category(job):
+    title = job.title
     text = job.extra_information
     pattern_internship = 'internship|intern[^a-z]'
     pattern_contractor = 'contractor|contract|consultancy|consultant'
     pattern_part_time = 'part time'
+
+    #first try to decide based on title:
+    c = len(re.findall(pattern_internship, title, re.IGNORECASE))
+    if c>0:
+        job.job_type = 'Internship'
+        return
+
 
 
     c = len(re.findall(pattern_contractor, text, re.IGNORECASE))
@@ -160,5 +167,5 @@ def _parse_string_for_date(closing_date_pretty):
         return chunks[3] + '.' + my_hash[chunks[4]] + '.' + chunks[5]
     except AttributeError as e:
         # FAKE_DATE = "1.01.2025"
-        print("Unable to find closing date for job. ")
+        l.error("Unable to find closing date for job. Leaving Blank")
         return None

@@ -1,5 +1,6 @@
 import requests
 import json
+import logging
 
 PASSWORD = 'cVbr S0fX FM03 BAPe ylgH LpGt'
 USERNAME = 'admin'
@@ -10,23 +11,26 @@ def upload_jobs(jobs):
     json = jobs_to_dict(jobs)
     r = requests.post('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
                       json=json)
-    print(r.text)
+    logging.info("Website response after upload request:")
+    logging.info(r.text)
     return r.json()
 
 def upload_from_json(json):
     #for testing purposes
     r = requests.post('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
                       json=json)
-    print(r.text)
+    logging.info("Website response after upload request:")
+    logging.info(r.text)
     return r.text
 
 
 def delete_jobs(jobs):
     json = jobs_to_deletedict(jobs)
-    print('DEBUG in delete jobs. json is : ', json)
+
     r = requests.delete('https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs', auth=(USERNAME, PASSWORD),
                         json=json)
-    print(r.text)
+    logging.info("Website response after delete request:")
+    logging.info(r.text)
     return r.json()
 
 def save_jobs_as_JSON(job_list):
