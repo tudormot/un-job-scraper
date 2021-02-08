@@ -57,9 +57,12 @@ def test_re_2():
     l.info("job_type decided: ",job_category)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1612519239063"
+    TEST_URL = "https://unjobs.org/vacancies/1612617093601"
     job = read_job_from_url(TEST_URL)
     l.info(job.as_dict())
+    # a,b = selenium_automation(TEST_URL)
+    # print(a,b)
+
 
 def test_string_to_datetime():
     STRING = '2021-01-15T09:20:06Z'

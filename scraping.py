@@ -9,7 +9,7 @@ import logging as l
 def read_job_from_url(url):
     l.info("Scraping following url: "+ str( url))
     job = JobModel()
-    application_link, html = _selenium_automation(url)
+    application_link, html = selenium_automation(url)
 
     job.original_job_link = application_link
     soup = BeautifulSoup(html, 'html.parser')
@@ -39,12 +39,20 @@ def read_job_from_url(url):
     return job
 
 
-def _selenium_automation(url):
-    options = webdriver.ChromeOptions()
-    user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36"
-    options.add_argument(f'user-agent={user_agent}')
-    options.add_argument("--headless")
-    driver = webdriver.Chrome('/snap/bin/chromium.chromedriver',options=options)
+def selenium_automation(url):
+    USE_FIREFOX = False
+    if USE_FIREFOX:
+        from selenium.webdriver.firefox.options import Options
+        import os
+        options = Options()
+        options.headless = True
+        driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'))
+    else:
+        options = webdriver.ChromeOptions()
+        user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36"
+        options.add_argument(f'user-agent={user_agent}')
+        options.add_argument("--headless")
+        driver = webdriver.Chrome('/snap/bin/chromium.chromedriver',options=options)
     driver.get(url)
     html = driver.page_source
 
@@ -99,21 +107,48 @@ def _get_info_from_contents_container(soup, job):
 
 def _get_text_content(soup, job):
     text_tag = soup.find("div", class_='t' + job.id)
-    ads = text_tag.find_all('ins', class_='adsbygoogle')
-    for ad in ads:
-        ad.decompose()
-    tag_buttons = text_tag.find_all("div", class_='md-chips')
-    for container in tag_buttons:
-        container.decompose()
-    ads2 = text_tag.find_all('div', class_='google-auto-placed')
-    for ad in ads2:
-        ad.decompose()
-    scripts = text_tag.find_all('script')
-    for script in scripts:
-        script.decompose()
+    if text_tag is not None:
+        # we are in the normal job format
+        ads = text_tag.find_all('ins', class_='adsbygoogle')
+        for ad in ads:
+            ad.decompose()
+        tag_buttons = text_tag.find_all("div", class_='md-chips')
+        for container in tag_buttons:
+            container.decompose()
+        ads2 = text_tag.find_all('div', class_='google-auto-placed')
+        for ad in ads2:
+            ad.decompose()
+        scripts = text_tag.find_all('script')
+        for script in scripts:
+            script.decompose()
 
-    text_tag['class'] = 'job_description'
-    job.extra_information = str(text_tag)
+        text_tag['class'] = 'job_description'
+        job.extra_information = str(text_tag)
+    else:
+        #we are probably in pdf job mode. let's assert this assumtion:
+        l.warning("Could not scrape main text content. Possibly pdf content. Leaving blank")
+        job.extra_information = None
+        #TODO: the problem with pdf content is that it is not rendered by headless chrome OR firefox
+        #headless chrome downloads the pdf automatially , so could in theory use this pdf for parsing
+        #alternatively, could change to a non-headless browser just for when this usecase is detecte. Todo though
+
+        # anchor_tag = soup.find('textarea')
+        # if anchor_tag is None:
+        #     l.critical("In _get_text_content. format of job is not recognised")
+        #     job.extra_information = None
+        #     return
+        # else:
+        #     #get the tag containig all text:
+        #     text_tag = anchor_tag.parent.children[1].children[0]
+        #     #delete weird class info
+        #     for child in text_tag.descendants:
+        #         del child['class']
+        #     job.extra_information = str(text_tag)
+
+
+
+
+
 
 def _decide_job_category(job):
     title = job.title
@@ -128,7 +163,10 @@ def _decide_job_category(job):
         job.job_type = 'Internship'
         return
 
-
+    #exit here in case we could not extract main text body:
+    if text is None:
+        job.job_type = 'Full Time '
+        return
 
     c = len(re.findall(pattern_contractor, text, re.IGNORECASE))
     if c>2:
