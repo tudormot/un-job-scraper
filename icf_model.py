@@ -9,7 +9,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class icf_model:
     def __init__(self):
-        self.db =  TinyDB(os.path.join(dir_path,'db.json'))
+        self.db = TinyDB(os.path.join(dir_path,'db.json'))
         self.query = Query()
         self.delete_expired_jobs()
 

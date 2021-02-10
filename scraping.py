@@ -49,6 +49,9 @@ def selenium_automation(url):
         driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'))
     else:
         options = webdriver.ChromeOptions()
+        #following 2 options allow chromium to be ran as administrator
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36"
         options.add_argument(f'user-agent={user_agent}')
         options.add_argument("--headless")
@@ -59,7 +62,7 @@ def selenium_automation(url):
     # get original job link:
     button = driver.find_element_by_id("more-info-button")
     button.click()
-    time.sleep(2)
+    time.sleep(1)
     original_job_link = driver.current_url
     return original_job_link, html
 
