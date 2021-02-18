@@ -9,13 +9,16 @@ html_doc = """
 <body>
 <p class="title"><b>The Dormouse's story</b></p>
 
-<p class="story">Once upon a time there were three little sisters; and their names were
+<p class="story">Once upon a time there were three little sisters http://example.com/mysuperexample; and their names were
 <a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
 <a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
 <a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
 and they lived at the bottom of a well.</p>
 
 <p class="story">...</p>
+blablabla
+</body>
+</html>
 """
 
 from bs4 import BeautifulSoup
@@ -57,9 +60,9 @@ def test_re_2():
     l.info("job_type decided: ",job_category)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1612617093601"
+    TEST_URL = "https://unjobs.org/vacancies/1613337257394"
     job = read_job_from_url(TEST_URL)
-    l.info(job.as_dict())
+    l.info(str(job.extra_information))
     # a,b = selenium_automation(TEST_URL)
     # print(a,b)
 
@@ -99,6 +102,13 @@ def test_rest_api_incomplete_info():
     }
 
     upload_from_json(dummy_json)
+
+
+def test_re_pattern():
+    soup = BeautifulSoup(html_doc, 'html.parser')
+    print(soup.body)
+    remove_last_line_gibberish_and_urls(soup.body,soup)
+    print(soup.prettify())
 
 
 if __name__ == '__main__':

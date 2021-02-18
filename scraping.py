@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
 from job_model import *
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as l
 
@@ -126,6 +126,7 @@ def _get_text_content(soup, job):
             script.decompose()
 
         text_tag['class'] = 'job_description'
+        remove_last_line_gibberish_and_urls(text_tag,soup)
         job.extra_information = str(text_tag)
     else:
         #we are probably in pdf job mode. let's assert this assumtion:
@@ -210,3 +211,34 @@ def _parse_string_for_date(closing_date_pretty):
         # FAKE_DATE = "1.01.2025"
         l.error("Unable to find closing date for job. Leaving Blank")
         return None
+
+def remove_last_line_gibberish_and_urls(tag,soup):
+    re_pattern = r'[^ ]*(?:http://|www.|https://)[a-zA-Z0-9_/.]+'
+    # print(list(tag.strings))
+    no_changes_made = True
+    while no_changes_made:
+        for i,string in enumerate(tag.strings):
+            python_string = str(string)
+            found_links = re.findall(re_pattern, python_string, re.IGNORECASE)
+            if found_links:
+                no_changes_made = False
+                link = found_links[0]
+                chunks = python_string.split(link,1) # 2nd param ensures splits only in 2
+                new_tag = soup.new_tag("a", href=link)
+                new_tag.string= '(link)'
+                str1 = NavigableString(chunks[0])
+                string.replace_with(str1)
+                str1.insert_after(new_tag)
+                new_tag.insert_after(NavigableString(chunks[1]))
+                break
+        if no_changes_made:
+            break
+        else:
+            no_changes_made = True
+
+    l = list(tag.strings)
+    l[-1].extract() #this is a gibberish code that should be removed
+
+
+def remove_problematic_links(html_content):
+    pass
