@@ -1,11 +1,10 @@
-import time
-
+from utils import fuzzy_delay
 from bs4 import BeautifulSoup
-import requests
-from config import args
 import logging as l
-from fake_useragent import UserAgent
 import datetime
+
+from scraping import get_html_from_url
+
 MAGIC_URL = 'https://unjobs.org/new/'
 
 
@@ -58,34 +57,33 @@ def get_all_job_urls():
 
 
 def get_urls_from_page(page_url):
-    ua = UserAgent()
-    header = {'User-Agent': str(ua.chrome)}
-    time.sleep(1)
-    l.info("INFO. request to : "+ str( page_url))
-    r = requests.get(page_url, headers=header)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    fuzzy_delay(1)
+    html, _  = get_html_from_url(page_url)
+    _.close()
+
+    soup = BeautifulSoup(html, 'html.parser')
 
     job_url_list = [x['href'] for x in soup.find_all("a", class_="jtitle")]
 
     return job_url_list
 
 def get_urls_and_update_times_from_page(page_url):
-    ua = UserAgent()
-    header = {'User-Agent': str(ua.chrome)}
-    time.sleep(1)
+    html, _  = get_html_from_url(page_url)
+    fuzzy_delay(1)
+    _.close()
     l.info("INFO. request to : "+ str(page_url))
-    r = requests.get(page_url, headers=header)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
     job_url_list = [x['href'] for x in soup.find_all("a", class_="jtitle")]
     date_list = [string_to_datetime(x['datetime']) for x in soup.find_all('time', class_='upd timeago')]
 
     return job_url_list, date_list
 
 def _get_last_update_time():
-    ua = UserAgent()
-    header = {'User-Agent': str(ua.chrome)}
-    r = requests.get(MAGIC_URL + '1', headers=header)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    html,_  = get_html_from_url("https://unjobs.org/")
+    _.close()
+    fuzzy_delay(1)
+    soup = BeautifulSoup(html, 'html.parser')
+    print("debug, html is :",html)
     tag = soup.find('time', class_='upd timeago')
     last_update_date = string_to_datetime(tag['datetime'])
     l.info("INFO: last_update_date: "+ str( last_update_date))

@@ -110,12 +110,19 @@ def test_re_pattern():
     remove_last_line_gibberish_and_urls(soup.body,soup)
     print(soup.prettify())
 
+def test_get_last_update_time():
+    from scrape_main_page import _get_last_update_time
+    result = _get_last_update_time()
+    print("results is : ", result)
+
+
 
 if __name__ == '__main__':
     # test_rest_api_incomplete_info()
     config_log()
-    test_read_job_from_url()
+    # test_read_job_from_url()
     # test_re_2()
     # test_string_to_datetime()
     # test_get_jobs_since_date()
     # test_get_all_job_urls()
+    test_get_last_update_time()
