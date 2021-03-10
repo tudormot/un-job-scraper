@@ -1,6 +1,6 @@
 from scrape_main_page import *
 from scraping import *
-from icf_model import *
+from icf_model import icf_model
 import logging
 
 

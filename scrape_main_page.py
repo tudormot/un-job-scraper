@@ -17,7 +17,6 @@ def get_jobs_since_date(date):
 
     while True:
         job_url_list, job_dates = get_urls_and_update_times_from_page(MAGIC_URL + str(page_nr))
-        assert len(job_url_list) == len(job_dates), "Something went wrongggg!" # TODO remove assertion after debuggin
         for i, update_date in enumerate(job_dates):
             if(update_date > date):
                 url_list.append( job_url_list[i])
@@ -31,7 +30,7 @@ def get_jobs_since_date(date):
             l.critical('Did not find any more pages at url: '+ str( MAGIC_URL+str(page_nr)))
             l.critical('WARNING! This should really not happen!')
             break
-        url_list.extend(job_url_list)
+        # url_list.extend(job_url_list)
         page_nr += 1
 
     return url_list, last_update_date
@@ -60,6 +59,7 @@ def get_urls_from_page(page_url):
     fuzzy_delay(1)
     html, _  = get_html_from_url(page_url)
     _.close()
+    _.quit()
 
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -71,6 +71,7 @@ def get_urls_and_update_times_from_page(page_url):
     html, _  = get_html_from_url(page_url)
     fuzzy_delay(1)
     _.close()
+    _.quit()
     l.info("INFO. request to : "+ str(page_url))
     soup = BeautifulSoup(html, 'html.parser')
     job_url_list = [x['href'] for x in soup.find_all("a", class_="jtitle")]
@@ -81,9 +82,9 @@ def get_urls_and_update_times_from_page(page_url):
 def _get_last_update_time():
     html,_  = get_html_from_url("https://unjobs.org/")
     _.close()
+    _.quit()
     fuzzy_delay(1)
     soup = BeautifulSoup(html, 'html.parser')
-    print("debug, html is :",html)
     tag = soup.find('time', class_='upd timeago')
     last_update_date = string_to_datetime(tag['datetime'])
     l.info("INFO: last_update_date: "+ str( last_update_date))

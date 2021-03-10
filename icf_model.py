@@ -24,7 +24,7 @@ class icf_model:
 
 
     def create(self, jobs):
-        results = upload_jobs(jobs)
+        results = request_with_retry(jobs,upload_jobs)
         for i, result in enumerate(results):
             if 'success' in result:
                 self.db.insert(jobs[i])
@@ -45,10 +45,10 @@ class icf_model:
 
     def delete(self,jobs):
         l.info('INFO.Deleting jobs.')
-        results = delete_jobs(jobs)
+        results = request_with_retry(jobs,delete_jobs)
         #also delete jobs from db
         for i, result in enumerate(results):
-            if 'success' in result:
+            if 'success' in result or 'type' in result and result['type']=="not_exists":
                 self.db.remove(self.query.id == jobs[i]["id"])
 
 

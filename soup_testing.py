@@ -1,6 +1,6 @@
 from scraping import *
 from scrape_main_page import *
-from web_adapter import *
+from icf_model import icf_model
 import logging as l
 from logging_config import config_log
 
@@ -86,23 +86,6 @@ def test_get_all_job_urls():
     l.info(url_list)
     l.info("last_update_time: " + str(last_update_date))
 
-def test_rest_api_incomplete_info():
-    dummy_json = {
-        'jobs' : [
-            {
-                "title": "dummy_jobszzz2",
-                "original_job_link": "https://jobs.undp.org/cj_view_job.cfm?cur_job_id=96019",
-                "extra_information": "blabla", # required
-                "closing_date": "01.01.2025", # required
-                "country" : None,
-                "city:": None,
-                "id": "12345"
-            }
-        ]
-    }
-
-    upload_from_json(dummy_json)
-
 
 def test_re_pattern():
     soup = BeautifulSoup(html_doc, 'html.parser')
@@ -116,6 +99,11 @@ def test_get_last_update_time():
     print("results is : ", result)
 
 
+
+def change_last_updated_date_manually(date):
+    model = icf_model()
+    model.set_last_update(date)
+    pass
 
 if __name__ == '__main__':
     # test_rest_api_incomplete_info()

@@ -1,4 +1,4 @@
-from usecases import *
+from usecases import scrape_since_last_update_usecase
 from logging_config import config_log
 
 

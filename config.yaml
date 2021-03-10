@@ -1,6 +1,7 @@
 ---
 
   root_url: https://unjobs.org/
+  fast: no
 ##using YAML instead of JSON as it supports comments and &referencing
 #  program_behaviour:
 #    draw_pyplot: no

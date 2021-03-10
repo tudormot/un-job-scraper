@@ -1,6 +1,7 @@
 #!/bin/bash
 source /home/tudor/miniconda3/etc/profile.d/conda.sh
 conda activate wcproduct
-nordvpn connect
-python /home/tudor/Workspace/job_scraper/main.py log_to_file
+#nordvpn connect
+echo "I am $USER, with uid $UID"
+python /home/tudor/Workspace/job_scraper/main.py
 #echo "just debugging for the time being"

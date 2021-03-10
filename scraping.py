@@ -270,51 +270,30 @@ def get_html_from_url(url):
 
     while is_cloudflare and retry<4:
         retry +=1
-        l.warning("detected cloudflare. Retrying...")
+        l.warning("detected cloudflare.")
         fuzzy_delay(8)
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
         if soup.title.string == "Just a moment...":
             is_cloudflare = True
+            l.warning("Retrying...")
         else:
             is_cloudflare = False
     if retry ==4 :
-        raise Exception("could not scrape.. Maybe cloudflare protection? " + str(url))
+        raise Exception("could not scrape,maximum retries reached.. Maybe cloudflare protection got better? " + str(url))
 
 
     # print(html)
     return html, driver
 
+
 def selenium_automation(url):
-    # USE_FIREFOX = False
-    # if USE_FIREFOX:
-    #     from selenium.webdriver.firefox.options import Options
-    #     import os
-    #     options = Options()
-    #     options.headless = True
-    #     driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'))
-    # else:
-    #     options = webdriver.ChromeOptions()
-    #     #following 2 options allow chromium to be ran as administrator
-    #     options.add_argument('--no-sandbox')
-    #     options.add_argument('--disable-dev-shm-usage')
-    #     options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    #     options.add_experimental_option('useAutomationExtension', False)
-    #     options.add_argument("--disable-blink-features=AutomationControlled")
-    #     user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36"
-    #     options.add_argument(f'user-agent={user_agent}')
-    #     options.add_argument("--headless")
-    #     driver = webdriver.Chrome('/snap/bin/chromium.chromedriver',options=options)
-    #     driver = uc.Chrome()
-    # driver.get(url)
-    # html = driver.page_source
-
     html, driver = get_html_from_url(url)
-
     # get original job link:
     button = driver.find_element_by_id("more-info-button")
     button.click()
     fuzzy_delay(1)
     original_job_link = driver.current_url
     driver.close()
+    driver.quit()
     return original_job_link, html
