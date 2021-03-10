@@ -57,10 +57,8 @@ def get_all_job_urls():
 
 def get_urls_from_page(page_url):
     fuzzy_delay(1)
-    html, _  = get_html_from_url(page_url)
-    _.close()
-    _.quit()
-
+    html, _= get_html_from_url(page_url)
+    fuzzy_delay(1)
     soup = BeautifulSoup(html, 'html.parser')
 
     job_url_list = [x['href'] for x in soup.find_all("a", class_="jtitle")]
@@ -70,8 +68,6 @@ def get_urls_from_page(page_url):
 def get_urls_and_update_times_from_page(page_url):
     html, _  = get_html_from_url(page_url)
     fuzzy_delay(1)
-    _.close()
-    _.quit()
     l.info("INFO. request to : "+ str(page_url))
     soup = BeautifulSoup(html, 'html.parser')
     job_url_list = [x['href'] for x in soup.find_all("a", class_="jtitle")]
@@ -81,8 +77,6 @@ def get_urls_and_update_times_from_page(page_url):
 
 def _get_last_update_time():
     html,_  = get_html_from_url("https://unjobs.org/")
-    _.close()
-    _.quit()
     fuzzy_delay(1)
     soup = BeautifulSoup(html, 'html.parser')
     tag = soup.find('time', class_='upd timeago')

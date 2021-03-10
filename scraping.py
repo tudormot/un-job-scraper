@@ -12,7 +12,7 @@ import undetected_chromedriver as uc
 def read_job_from_url(url):
     l.info("Scraping following url: "+ str( url))
     job = JobModel()
-    application_link, html = selenium_automation(url)
+    html, application_link = get_html_from_url(url,scrape_joblinkbutton_mode=True)
 
     job.original_job_link = application_link
     soup = BeautifulSoup(html, 'html.parser')
@@ -218,82 +218,91 @@ def remove_last_line_gibberish_and_urls(tag,soup):
     l[-1].extract() #this is a gibberish code that should be removed
 
 
-def get_html_from_url(url):
-    USE_FIREFOX = True
-    if USE_FIREFOX:
-        from selenium.webdriver.firefox.options import Options
-        from selenium.webdriver import DesiredCapabilities
-        import os
-        options = Options()
-        profile = webdriver.FirefoxProfile()
+def get_html_from_url(url, scrape_joblinkbutton_mode = False):
+    driver = None
+    try:
+        USE_FIREFOX = True
+        if USE_FIREFOX:
+            from selenium.webdriver.firefox.options import Options
+            from selenium.webdriver import DesiredCapabilities
+            import os
+            options = Options()
+            profile = webdriver.FirefoxProfile()
 
-        PROXY_HOST = "12.12.12.123"
-        PROXY_PORT = "1234"
-        profile.set_preference("network.proxy.type", 1)
-        profile.set_preference("network.proxy.http", PROXY_HOST)
-        profile.set_preference("network.proxy.http_port", int(PROXY_PORT))
-        profile.set_preference("dom.webdriver.enabled", False)
-        profile.set_preference('useAutomationExtension', False)
-        profile.update_preferences()
-        desired = DesiredCapabilities.FIREFOX
-        options.headless = True
-        driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'),firefox_profile=profile, desired_capabilities=desired)
-        driver.get(url)
-    else:
-        options = webdriver.ChromeOptions()
-        # following 2 options allow chromium to be ran as administrator
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        # user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML, like Gecko) Ubuntu/11.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30"
-        # options.add_argument(f'user-agent={user_agent}')
-        # options.add_argument("--headless")
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('useAutomationExtension', False)
-        options.add_argument("--disable-blink-features")
-        options.add_argument("--disable-blink-features=AutomationControlled")
+            PROXY_HOST = "12.12.12.123"
+            PROXY_PORT = "1234"
+            profile.set_preference("network.proxy.type", 1)
+            profile.set_preference("network.proxy.http", PROXY_HOST)
+            profile.set_preference("network.proxy.http_port", int(PROXY_PORT))
+            profile.set_preference("dom.webdriver.enabled", False)
+            profile.set_preference('useAutomationExtension', False)
+            profile.update_preferences()
+            desired = DesiredCapabilities.FIREFOX
+            options.headless = True
+            driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'),firefox_profile=profile, desired_capabilities=desired)
+            driver.get(url)
+        else:
+            options = webdriver.ChromeOptions()
+            # following 2 options allow chromium to be ran as administrator
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            # user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML, like Gecko) Ubuntu/11.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30"
+            # options.add_argument(f'user-agent={user_agent}')
+            # options.add_argument("--headless")
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option('useAutomationExtension', False)
+            options.add_argument("--disable-blink-features")
+            options.add_argument("--disable-blink-features=AutomationControlled")
 
-        driver = webdriver.Chrome('/snap/bin/chromium.chromedriver', options=options)
-        driver.execute_script('window.open(\''+url+'\')')
-        driver.get(url)
+            driver = webdriver.Chrome('/snap/bin/chromium.chromedriver', options=options)
+            driver.execute_script('window.open(\''+url+'\')')
+            driver.get(url)
 
 
-    fuzzy_delay(1)
-    html = driver.page_source
-    retry = 0
-    soup = BeautifulSoup(html, 'html.parser')
-    # print(soup.title.string)
-    # print(type(soup.title))
-    if soup.title.string == "Just a moment...":
-        is_cloudflare = True
-    else:
-        is_cloudflare = False
-
-    while is_cloudflare and retry<4:
-        retry +=1
-        l.warning("detected cloudflare.")
-        fuzzy_delay(8)
+        fuzzy_delay(1)
         html = driver.page_source
+        retry = 0
         soup = BeautifulSoup(html, 'html.parser')
+        # print(soup.title.string)
+        # print(type(soup.title))
         if soup.title.string == "Just a moment...":
             is_cloudflare = True
-            l.warning("Retrying...")
         else:
             is_cloudflare = False
-    if retry ==4 :
-        raise Exception("could not scrape,maximum retries reached.. Maybe cloudflare protection got better? " + str(url))
+
+        while is_cloudflare and retry<4:
+            retry +=1
+            l.warning("detected cloudflare.")
+            fuzzy_delay(8)
+            html = driver.page_source
+            soup = BeautifulSoup(html, 'html.parser')
+            if soup.title.string == "Just a moment...":
+                is_cloudflare = True
+                l.warning("Retrying...")
+            else:
+                is_cloudflare = False
+        if retry ==4 :
+            raise Exception("could not scrape,maximum retries reached.. Maybe cloudflare protection got better? " + str(url))
+
+        original_job_url = None
+        if scrape_joblinkbutton_mode:
+            #this code is reached when a job page is scraped. to get the original job link, we need to autoate the pressing of a button with selenium:
+            original_job_url = _selenium_automation(driver)
+    finally:
+        # fuzzy_delay(1)
+        driver.close()
+        driver.quit()
 
 
     # print(html)
-    return html, driver
+    return html, original_job_url
 
 
-def selenium_automation(url):
-    html, driver = get_html_from_url(url)
+def _selenium_automation(driver):
     # get original job link:
     button = driver.find_element_by_id("more-info-button")
     button.click()
     fuzzy_delay(1)
     original_job_link = driver.current_url
-    driver.close()
-    driver.quit()
-    return original_job_link, html
+
+    return original_job_link
