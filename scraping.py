@@ -1,8 +1,8 @@
 from selenium import webdriver
 # import time
 from utils import fuzzy_delay
-
-
+from datetime import datetime
+from datetime import timedelta
 from job_model import *
 from bs4 import BeautifulSoup, NavigableString
 import re
@@ -186,9 +186,10 @@ def _parse_string_for_date(closing_date_pretty):
         if len(chunks[3]) == 1: chunks[3] = '0' + chunks[3] # so date is dd.mm.YYYY
         return chunks[3] + '.' + my_hash[chunks[4]] + '.' + chunks[5]
     except AttributeError as e:
-        # FAKE_DATE = "1.01.2025"
-        l.error("Unable to find closing date for job. Leaving Blank")
-        return None
+        now = datetime.now()
+        FAKE_DATE = (now + timedelta(weeks=8)).strftime("%d.%m.%Y")
+        l.error("Unable to find closing date for job. Setting artificial closing date in two months from now. FAKE_DATE = " + FAKE_DATE)
+        return FAKE_DATE
 
 def remove_last_line_gibberish_and_urls(tag,soup):
     re_pattern = r'[^ ]*(?:http://|www.|https://)[a-zA-Z0-9_/.]+'
@@ -221,7 +222,7 @@ def remove_last_line_gibberish_and_urls(tag,soup):
 def get_html_from_url(url, scrape_joblinkbutton_mode = False):
     driver = None
     try:
-        USE_FIREFOX = True
+        USE_FIREFOX = False
         if USE_FIREFOX:
             from selenium.webdriver.firefox.options import Options
             from selenium.webdriver import DesiredCapabilities
@@ -238,7 +239,7 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
             profile.set_preference('useAutomationExtension', False)
             profile.update_preferences()
             desired = DesiredCapabilities.FIREFOX
-            options.headless = True
+            # options.headless = True
             driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'),firefox_profile=profile, desired_capabilities=desired)
             driver.get(url)
         else:
@@ -246,9 +247,9 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
             # following 2 options allow chromium to be ran as administrator
             options.add_argument('--no-sandbox')
             options.add_argument('--disable-dev-shm-usage')
-            # user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML, like Gecko) Ubuntu/11.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30"
-            # options.add_argument(f'user-agent={user_agent}')
-            # options.add_argument("--headless")
+            user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML, like Gecko) Ubuntu/11.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30"
+            options.add_argument("user-agent=" + user_agent)
+            options.add_argument("--headless")
             options.add_experimental_option("excludeSwitches", ["enable-automation"])
             options.add_experimental_option('useAutomationExtension', False)
             options.add_argument("--disable-blink-features")
@@ -289,7 +290,7 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
             #this code is reached when a job page is scraped. to get the original job link, we need to autoate the pressing of a button with selenium:
             original_job_url = _selenium_automation(driver)
     finally:
-        # fuzzy_delay(1)
+        # fuzzy_delay(50)
         driver.close()
         driver.quit()
 
@@ -301,6 +302,7 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
 def _selenium_automation(driver):
     # get original job link:
     button = driver.find_element_by_id("more-info-button")
+    # print("button is : "+ str(button))
     button.click()
     fuzzy_delay(1)
     original_job_link = driver.current_url

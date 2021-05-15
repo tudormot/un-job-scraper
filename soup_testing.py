@@ -60,9 +60,9 @@ def test_re_2():
     l.info("job_type decided: ",job_category)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1613337257394"
+    TEST_URL = "https://unjobs.org/vacancies/1620762015998"
     job = read_job_from_url(TEST_URL)
-    l.info(str(job.extra_information))
+    l.info(str(job.original_job_link))
     # a,b = selenium_automation(TEST_URL)
     # print(a,b)
 
@@ -108,9 +108,9 @@ def change_last_updated_date_manually(date):
 if __name__ == '__main__':
     # test_rest_api_incomplete_info()
     config_log()
-    # test_read_job_from_url()
+    test_read_job_from_url()
     # test_re_2()
     # test_string_to_datetime()
     # test_get_jobs_since_date()
     # test_get_all_job_urls()
-    test_get_last_update_time()
+    # test_get_last_update_time()
