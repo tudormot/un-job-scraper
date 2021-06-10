@@ -1,5 +1,7 @@
 from selenium import webdriver
 # import time
+from selenium.common.exceptions import NoSuchElementException
+
 from utils import fuzzy_delay
 from datetime import datetime
 from datetime import timedelta
@@ -300,7 +302,19 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
 
 
 def _selenium_automation(driver):
+    #first check if by any chance a cookie consent banner appeared on the page, and dismiss it
+    # html = driver.page_source
+    # soup = BeautifulSoup(html, 'html.parser')
+    # print(soup)
+    try:
+        cookie_consent_button = driver.find_element_by_class_name("css-47sehv")
+        cookie_consent_button.click()
+        fuzzy_delay(1)
+    except NoSuchElementException as e:
+        pass
+
     # get original job link:
+
     button = driver.find_element_by_id("more-info-button")
     # print("button is : "+ str(button))
     button.click()
