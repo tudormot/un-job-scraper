@@ -62,7 +62,7 @@ def test_re_2():
 def test_read_job_from_url():
     TEST_URL = "https://unjobs.org/vacancies/1622882786491"
     job = read_job_from_url(TEST_URL)
-    l.info(str(job.original_job_link))
+    l.info(str(job.title))
     # a,b = selenium_automation(TEST_URL)
     # print(a,b)
 

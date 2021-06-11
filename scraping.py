@@ -290,7 +290,8 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
         original_job_url = None
         if scrape_joblinkbutton_mode:
             #this code is reached when a job page is scraped. to get the original job link, we need to autoate the pressing of a button with selenium:
-            original_job_url = _selenium_automation(driver)
+            original_job_url, html = _selenium_automation(driver)
+
     finally:
         # fuzzy_delay(50)
         driver.close()
@@ -313,6 +314,8 @@ def _selenium_automation(driver):
     except NoSuchElementException as e:
         pass
 
+    proper_html = driver.page_source
+
     # get original job link:
 
     button = driver.find_element_by_id("more-info-button")
@@ -321,4 +324,4 @@ def _selenium_automation(driver):
     fuzzy_delay(1)
     original_job_link = driver.current_url
 
-    return original_job_link
+    return original_job_link, proper_html
