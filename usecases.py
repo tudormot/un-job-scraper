@@ -19,6 +19,7 @@ def upload_from_urls(url_list,model):
                 try:
                     job = read_job_from_url(url).as_dict()
                     jobs.append(job)
+                    print("DEBUG. Job title: " + job['title'])
                 except Exception as e:
                     logging.error("Not able to parse following url : ", url)
                     logging.error("Here is the exception : ", str(e))

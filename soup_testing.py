@@ -60,7 +60,7 @@ def test_re_2():
     l.info("job_type decided: ",job_category)
 
 def test_read_job_from_url():
-    TEST_URL = "https://unjobs.org/vacancies/1622882786491"
+    TEST_URL = "https://unjobs.org/vacancies/1623577616752"
     job = read_job_from_url(TEST_URL)
     l.info(str(job.title))
     # a,b = selenium_automation(TEST_URL)

@@ -9,7 +9,11 @@ from job_model import *
 from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as l
-import undetected_chromedriver.v2 as uc
+from init import web_driver
+
+
+def has_h2_class_but_also_style(tag):
+    return tag.has_attr('style') and tag.name =='h2'
 
 def read_job_from_url(url):
     l.info("Scraping following url: "+ str( url))
@@ -22,8 +26,13 @@ def read_job_from_url(url):
     # get ID and title
     id = url.split('/')[-1]
     job.id = id
-    job.title = soup.h2.string
-    assert job.title is not None, 'ERROR parsing job title! in url ' + url
+    potential_titles_list = soup.find_all(has_h2_class_but_also_style)
+    if len(potential_titles_list) != 1:
+        print("potential titles list : " + str(potential_titles_list))
+        raise Exception("Unable to decide which is the title! Multiple matches")
+
+    job.title = str(potential_titles_list[0].string)
+
 
     _get_info_from_contents_container(soup, job)
 
@@ -222,124 +231,70 @@ def remove_last_line_gibberish_and_urls(tag,soup):
 
 
 def get_html_from_url(url, scrape_joblinkbutton_mode = False):
-    driver = None
-    try:
-    #     USE_FIREFOX = False
-    #     if USE_FIREFOX:
-    #         from selenium.webdriver.firefox.options import Options
-    #         from selenium.webdriver import DesiredCapabilities
-    #         import os
-    #         options = Options()
-    #         profile = webdriver.FirefoxProfile()
-    #
-    #         PROXY_HOST = "12.12.12.123"
-    #         PROXY_PORT = "1234"
-    #         profile.set_preference("network.proxy.type", 1)
-    #         profile.set_preference("network.proxy.http", PROXY_HOST)
-    #         profile.set_preference("network.proxy.http_port", int(PROXY_PORT))
-    #         profile.set_preference("dom.webdriver.enabled", False)
-    #         profile.set_preference('useAutomationExtension', False)
-    #         profile.update_preferences()
-    #         desired = DesiredCapabilities.FIREFOX
-    #         # options.headless = True
-    #         driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'),firefox_profile=profile, desired_capabilities=desired)
-    #         driver.get(url)
-    #     else:
-    #         options = webdriver.ChromeOptions()
-    #         # following 2 options allow chromium to be ran as administrator
-    #         # options.add_argument('--no-sandbox')
-    #         # options.add_argument('--disable-dev-shm-usage')
-    #         user_agent = "user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
-    #         options.add_argument("user-agent=" + user_agent)
-    #         # options.add_argument("--start-maximized")
-    #         options.add_argument("--headless")
-    #         options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    #         options.add_experimental_option('useAutomationExtension', False)
-    #         options.add_argument("--disable-blink-features")
-    #         options.add_argument("--disable-blink-features=AutomationControlled")
-    #         options.add_argument("--enable-javascript")
-    #         driver = webdriver.Chrome('/home/tudor/Downloads/Installers/chromedriver_linux64/chromedriver', options=options)
-    #         driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-    #             "source": """
-    #                         Object.defineProperty(navigator, 'webdriver', {
-    #                           get: () => undefined
-    #                         })
-    #                       """
-    #         })
-    #         # driver.execute_script('window.open(\''+url+'\')')
-    #         driver.get(url)
 
-        # driver = uc.Chrome()
-        # just some options passing in to skip annoying popups
-        options = uc.ChromeOptions()
-        options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
-        options.add_argument('--headless')
-        driver = uc.Chrome(options=options)
-        driver.get(url)
+    web_driver.get(url)
+    fuzzy_delay(1)
+    html = web_driver.page_source
+    retry = 0
+    soup = BeautifulSoup(html, 'html.parser')
+    # print(soup.title.string)
+    # print(type(soup.title))
+    cloudflare_title_strings = ["Access denied | unjobs.org used Cloudflare to restrict access", "Just a moment..."]
+    if soup.title.string in cloudflare_title_strings:
+        is_cloudflare = True
+    else:
+        is_cloudflare = False
 
-
-
-        fuzzy_delay(1)
-        html = driver.page_source
-        retry = 0
+    while is_cloudflare and retry<4:
+        retry +=1
+        l.warning("detected cloudflare.")
+        fuzzy_delay(8)
+        html = web_driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
-        # print(soup.title.string)
-        # print(type(soup.title))
-        cloudflare_title_strings = ["Access denied | unjobs.org used Cloudflare to restrict access", "Just a moment..."]
         if soup.title.string in cloudflare_title_strings:
             is_cloudflare = True
+            l.warning("Retrying...")
         else:
             is_cloudflare = False
+    if retry ==4 :
+        raise Exception("could not scrape,maximum retries reached.. Maybe cloudflare protection got better? " + str(url))
 
-        while is_cloudflare and retry<4:
-            retry +=1
-            l.warning("detected cloudflare.")
-            fuzzy_delay(8)
-            html = driver.page_source
-            soup = BeautifulSoup(html, 'html.parser')
-            if soup.title.string in cloudflare_title_strings:
-                is_cloudflare = True
-                l.warning("Retrying...")
-            else:
-                is_cloudflare = False
-        if retry ==4 :
-            raise Exception("could not scrape,maximum retries reached.. Maybe cloudflare protection got better? " + str(url))
+    original_job_url = None
+    if scrape_joblinkbutton_mode:
+        #this code is reached when a job page is scraped. to get the original job link, we need to autoate the pressing of a button with selenium:
+        original_job_url, html = _selenium_automation()
 
-        original_job_url = None
-        if scrape_joblinkbutton_mode:
-            #this code is reached when a job page is scraped. to get the original job link, we need to autoate the pressing of a button with selenium:
-            original_job_url, html = _selenium_automation(driver)
-
-    finally:
-        # fuzzy_delay(50)
-        driver.close()
-        driver.quit()
 
 
     # print(html)
     return html, original_job_url
 
 
-def _selenium_automation(driver):
+def _selenium_automation():
     #first check if by any chance a cookie consent banner appeared on the page, and dismiss it
-    # html = driver.page_source
-    # soup = BeautifulSoup(html, 'html.parser')
-    # print(soup)
     try:
-        cookie_consent_button = driver.find_element_by_class_name("css-47sehv")
+        cookie_consent_button = web_driver.find_element_by_class_name("css-47sehv")
         cookie_consent_button.click()
         fuzzy_delay(1)
     except NoSuchElementException as e:
         pass
 
-    proper_html = driver.page_source
+    # try:
+    #     other_consent_button = driver.find_element_by_class_name("qc-cmp2-close-icon")
+    #     print("DEBUG. we did find this cookie consent button!")
+    #     other_consent_button.click()
+    #     fuzzy_delay(1)
+    # except NoSuchElementException as e:
+    #     pass
+
+    proper_html = web_driver.page_source
 
     # get original job link:
 
-    button = driver.find_element_by_id("more-info-button")
+    button = web_driver.find_element_by_id("more-info-button")
     # print("button is : "+ str(button))
     button.click()
     fuzzy_delay(1)
-    original_job_link = driver.current_url
+    original_job_link = web_driver.current_url
 
     return original_job_link, proper_html
