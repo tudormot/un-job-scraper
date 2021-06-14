@@ -109,6 +109,7 @@ if __name__ == '__main__':
     # test_rest_api_incomplete_info()
     config_log()
     test_read_job_from_url()
+    print("are we here, and afterwards receiving those warnings? wtf?")
     # test_re_2()
     # test_string_to_datetime()
     # test_get_jobs_since_date()

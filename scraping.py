@@ -9,7 +9,7 @@ from job_model import *
 from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as l
-import undetected_chromedriver as uc
+import undetected_chromedriver.v2 as uc
 
 def read_job_from_url(url):
     l.info("Scraping following url: "+ str( url))
@@ -224,42 +224,59 @@ def remove_last_line_gibberish_and_urls(tag,soup):
 def get_html_from_url(url, scrape_joblinkbutton_mode = False):
     driver = None
     try:
-        USE_FIREFOX = False
-        if USE_FIREFOX:
-            from selenium.webdriver.firefox.options import Options
-            from selenium.webdriver import DesiredCapabilities
-            import os
-            options = Options()
-            profile = webdriver.FirefoxProfile()
+    #     USE_FIREFOX = False
+    #     if USE_FIREFOX:
+    #         from selenium.webdriver.firefox.options import Options
+    #         from selenium.webdriver import DesiredCapabilities
+    #         import os
+    #         options = Options()
+    #         profile = webdriver.FirefoxProfile()
+    #
+    #         PROXY_HOST = "12.12.12.123"
+    #         PROXY_PORT = "1234"
+    #         profile.set_preference("network.proxy.type", 1)
+    #         profile.set_preference("network.proxy.http", PROXY_HOST)
+    #         profile.set_preference("network.proxy.http_port", int(PROXY_PORT))
+    #         profile.set_preference("dom.webdriver.enabled", False)
+    #         profile.set_preference('useAutomationExtension', False)
+    #         profile.update_preferences()
+    #         desired = DesiredCapabilities.FIREFOX
+    #         # options.headless = True
+    #         driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'),firefox_profile=profile, desired_capabilities=desired)
+    #         driver.get(url)
+    #     else:
+    #         options = webdriver.ChromeOptions()
+    #         # following 2 options allow chromium to be ran as administrator
+    #         # options.add_argument('--no-sandbox')
+    #         # options.add_argument('--disable-dev-shm-usage')
+    #         user_agent = "user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
+    #         options.add_argument("user-agent=" + user_agent)
+    #         # options.add_argument("--start-maximized")
+    #         options.add_argument("--headless")
+    #         options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    #         options.add_experimental_option('useAutomationExtension', False)
+    #         options.add_argument("--disable-blink-features")
+    #         options.add_argument("--disable-blink-features=AutomationControlled")
+    #         options.add_argument("--enable-javascript")
+    #         driver = webdriver.Chrome('/home/tudor/Downloads/Installers/chromedriver_linux64/chromedriver', options=options)
+    #         driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+    #             "source": """
+    #                         Object.defineProperty(navigator, 'webdriver', {
+    #                           get: () => undefined
+    #                         })
+    #                       """
+    #         })
+    #         # driver.execute_script('window.open(\''+url+'\')')
+    #         driver.get(url)
 
-            PROXY_HOST = "12.12.12.123"
-            PROXY_PORT = "1234"
-            profile.set_preference("network.proxy.type", 1)
-            profile.set_preference("network.proxy.http", PROXY_HOST)
-            profile.set_preference("network.proxy.http_port", int(PROXY_PORT))
-            profile.set_preference("dom.webdriver.enabled", False)
-            profile.set_preference('useAutomationExtension', False)
-            profile.update_preferences()
-            desired = DesiredCapabilities.FIREFOX
-            # options.headless = True
-            driver = webdriver.Firefox(options=options,executable_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),'geckodriver'),firefox_profile=profile, desired_capabilities=desired)
-            driver.get(url)
-        else:
-            options = webdriver.ChromeOptions()
-            # following 2 options allow chromium to be ran as administrator
-            options.add_argument('--no-sandbox')
-            options.add_argument('--disable-dev-shm-usage')
-            user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML, like Gecko) Ubuntu/11.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30"
-            options.add_argument("user-agent=" + user_agent)
-            options.add_argument("--headless")
-            options.add_experimental_option("excludeSwitches", ["enable-automation"])
-            options.add_experimental_option('useAutomationExtension', False)
-            options.add_argument("--disable-blink-features")
-            options.add_argument("--disable-blink-features=AutomationControlled")
+        # driver = uc.Chrome()
+        # just some options passing in to skip annoying popups
+        options = uc.ChromeOptions()
+        options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
+        options.add_argument('--headless')
+        driver = uc.Chrome(options=options)
+        driver.get(url)
 
-            driver = webdriver.Chrome('/snap/bin/chromium.chromedriver', options=options)
-            driver.execute_script('window.open(\''+url+'\')')
-            driver.get(url)
 
 
         fuzzy_delay(1)
@@ -268,7 +285,8 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
         soup = BeautifulSoup(html, 'html.parser')
         # print(soup.title.string)
         # print(type(soup.title))
-        if soup.title.string == "Just a moment...":
+        cloudflare_title_strings = ["Access denied | unjobs.org used Cloudflare to restrict access", "Just a moment..."]
+        if soup.title.string in cloudflare_title_strings:
             is_cloudflare = True
         else:
             is_cloudflare = False
@@ -279,7 +297,7 @@ def get_html_from_url(url, scrape_joblinkbutton_mode = False):
             fuzzy_delay(8)
             html = driver.page_source
             soup = BeautifulSoup(html, 'html.parser')
-            if soup.title.string == "Just a moment...":
+            if soup.title.string in cloudflare_title_strings:
                 is_cloudflare = True
                 l.warning("Retrying...")
             else:
