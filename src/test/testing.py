@@ -1,5 +1,7 @@
 import unittest
-from scrape.scrape_main_page import *
+
+from src.scrape.browser_automation.playwright_automation import \
+    _PlaywrightAutomation
 
 
 class MainPageScraper(unittest.TestCase):
@@ -7,12 +9,17 @@ class MainPageScraper(unittest.TestCase):
         # self.widget = Widget('The widget')
         pass
 
-    def test_0_number_of_jobs_per_page(self):
-        MAGIC_URL = "https://unjobs.org/"
-        job_url_list = get_urls_from_page(MAGIC_URL)
-        print(job_url_list)
-        self.assertEqual(len(job_url_list), 25,
-                         'incorrect number of jobs found on main page')
+    # def test_0_number_of_jobs_per_page(self):
+    #     MAGIC_URL = "https://unjobs.org/"
+    #     job_url_list = _PlaywrightAutomation().get_html_from_url(MAGIC_URL)
+
+
+    def test_1_get_original_job_link(self):
+        MAGIC_URL = "https://unjobs.org/vacancies/1642076044496"
+        _PlaywrightAutomation().get_url_after_button_press(MAGIC_URL)
+
+
+
 
 
 if __name__ == '__main__':

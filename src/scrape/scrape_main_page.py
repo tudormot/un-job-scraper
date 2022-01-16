@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from src.scrape.common import get_html_from_url
-from src.utils import fuzzy_delay
+from src.scrape.browser_automation.automation_interface import \
+    AutomationInterface
 from bs4 import BeautifulSoup
 import logging as log
 from datetime import datetime
@@ -14,9 +14,9 @@ class JobURLModel:
     upload_date:datetime
 
 class MainPageScraper:
-    def __init__(self, page_url, web_driver):
+    def __init__(self, page_url, browser_automator):
         self.page_url = page_url
-        self.web_driver = web_driver
+        self.browser_automator: AutomationInterface = browser_automator
 
     def get_jobs_since_date(self, date):
         url_list = []
@@ -61,8 +61,7 @@ class MainPageScraper:
             page_nr += 1
 
     def _get_urls_from_page(self, page_url)->List[JobURLModel]:
-        html = get_html_from_url(page_url, self.web_driver)
-        fuzzy_delay(1)
+        html = self.browser_automator.get_html_from_url(page_url)
         log.info("INFO. request to : " + str(page_url))
         soup = BeautifulSoup(html, 'html.parser')
         job_url_list = [x['href'] for x in soup.find_all("a", class_="jtitle")]
@@ -79,8 +78,7 @@ class MainPageScraper:
         ]
 
     def get_last_update_time(self) -> datetime:
-        html, _ = get_html_from_url(self.page_url, self.web_driver)
-        fuzzy_delay(1)
+        html = self.browser_automator.get_html_from_url(self.page_url)
         soup = BeautifulSoup(html, 'html.parser')
         tag = soup.find('time', class_='upd timeago')
         last_update_date = MainPageScraper._string_to_datetime(tag['datetime'])

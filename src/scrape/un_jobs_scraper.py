@@ -3,21 +3,21 @@ from datetime import datetime
 from typing import Generator
 
 from src.models.job_model import JobModel
+from src.scrape.browser_automation.selenium_automation import \
+    selenium_automation
 from src.scrape.scrape_job_page import JobPageScraper
 from src.scrape.scrape_main_page import MainPageScraper
-from src.scrape.web_driver import web_driver
 
 
 class UNJobsScraper:
     UN_JOBS_MAIN_PAGE_URL = 'https://unjobs.org/new/'
 
     def __init__(self):
-        self.web_driver = web_driver
         self.main_page_scraper = MainPageScraper(
             UNJobsScraper.UN_JOBS_MAIN_PAGE_URL,
-            self.web_driver
+            selenium_automation
         )
-        self.job_page_scraper = JobPageScraper(self.web_driver)
+        self.job_page_scraper = JobPageScraper(selenium_automation)
 
     def get_last_un_jobs_update_date(self) -> datetime:
         return self.main_page_scraper.get_last_update_time()

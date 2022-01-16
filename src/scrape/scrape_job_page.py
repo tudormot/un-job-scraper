@@ -1,26 +1,23 @@
-from selenium.webdriver.chrome.webdriver import WebDriver
-
-from src.scrape.common import get_html_from_url, check_for_cookie_consent_button_and_clear
-from src.utils import fuzzy_delay
+from src.scrape.browser_automation.automation_interface import \
+    AutomationInterface
 from datetime import datetime
 from datetime import timedelta
 from src.models.job_model import JobModel
 from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as log
-import multiprocessing as mp
-import time
+
 
 class JobPageScraper:
-    def __init__(self, web_driver):
+    def __init__(self, browser_automator):
         # it is important to create a new instance of chrome. This way
         # parsing of the main page and the job pages can run "in parallel"
-        self.web_driver: WebDriver = web_driver
+        self.browser_automator: AutomationInterface = browser_automator
 
     def scrape_job_from_job_page(self, url) -> JobModel:
         job = JobModel()
         self._populate_job_from_main_url(job, url)
-        self._populate_job_from_button_click_result(job)
+        self._populate_job_from_button_click_result(job, url)
         return job
 
     @staticmethod
@@ -30,7 +27,7 @@ class JobPageScraper:
     def _populate_job_from_main_url(self, job, url):
         log.info("Scraping following url: " + str(url))
 
-        html = get_html_from_url(url, self.web_driver)
+        html = self.browser_automator.get_html_from_url(url)
 
         soup = BeautifulSoup(html, 'html.parser')
 
@@ -224,62 +221,6 @@ class JobPageScraper:
         l = list(tag.strings)
         l[-1].extract()  # this is a gibberish code that should be removed
 
-    def _populate_job_from_button_click_result(self, job):
-        """Note: this function assumes that the web_driver is currently on
-        the job page on which the button needs clicking"""
-        # get current link (job posting on unjobs) in case we need it for
-        # fallback:
-        un_jobs_url = self.web_driver.current_url
-        link = "https://unjobs.org/job_detail"
-        MAX_NR_RETRIES = 5
-        retry = 0
-        while link == "https://unjobs.org/job_detail" and retry < \
-                MAX_NR_RETRIES:
-            # process = mp.Process(target=self.web_driver.execute_script(
-            #     "document.getElementById('more-info-button').click()"))
-            process = mp.Process(target=self.web_driver.find_element_by_id(
-                'more-info-button').click, args=())
-            process.start()
-            start = time.time()
-            print("before joining process")
-            process.join(timeout=10)
-            end = time.time()
-            print("time it took for subprocess to join : ",
-                  (end - start))
-            if process.exitcode is None:
-                print("process has not terminated!")
-                process.kill()
-                if self.web_driver is not None:
-                    print('hmm, we were not expecting web_driver to be '
-                          'non_null')
-                    self.web_driver.quit()
-                    print("closed web_driver")
-                import undetected_chromedriver as uc
-                self.web_driver = uc.Chrome()
-                self.web_driver.get(un_jobs_url)
-                check_for_cookie_consent_button_and_clear(self.web_driver)
-            else:
-                print("subprocess exitcode : ", process.exitcode)
-                link = self.web_driver.current_url
-
-
-            if link == "https://unjobs.org/job_detail":
-                print("un jobs failed and we got to the wrong page. "
-                      "retrying..")
-                self.web_driver.get(un_jobs_url)
-                fuzzy_delay(2)
-
-            retry += 1
-
-        job.original_job_link = link
-        print("original_job_link: ", job.original_job_link)
-
-    # @staticmethod
-    # def _problematic_button_click(web_driver):
-    #     # button = web_driver.find_element_by_id("more-info-button")
-    #     print("debug! clicking the problematic button by script!")
-    #     web_driver.execute_script(
-    #         "document.getElementById('more-info-button').click()")
-    #     # button.click()
-    #     # fuzzy_delay(2)
-    #     time.sleep(4)
+    def _populate_job_from_button_click_result(self, job, url):
+        job.original_job_link = \
+            self.browser_automator.get_url_after_button_press(url)

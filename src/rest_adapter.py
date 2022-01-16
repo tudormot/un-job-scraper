@@ -1,7 +1,6 @@
+import time
 import requests
-import json
 import logging
-from utils import fuzzy_delay
 
 
 class RESTAdapter:
@@ -21,7 +20,7 @@ class RESTAdapter:
                     "Problem with REST request. Perhaps lost internet connection. Exception: ",
                     e)
                 logging.info("Retrying...")
-                fuzzy_delay(300)
+                time.sleep(300)
                 retry += 1
                 continue
             break
