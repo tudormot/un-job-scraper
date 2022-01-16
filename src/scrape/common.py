@@ -36,6 +36,12 @@ def get_html_from_url(url, web_driver):
             "could not scrape,maximum retries reached.. Maybe cloudflare protection got better? " + str(
                 url))
 
+    check_for_cookie_consent_button_and_clear(web_driver)
+    html = web_driver.page_source
+    return html
+
+
+def check_for_cookie_consent_button_and_clear(web_driver):
     try:
         cookie_consent_button = web_driver.find_element_by_class_name(
             "css-47sehv")
@@ -43,11 +49,6 @@ def get_html_from_url(url, web_driver):
                  "Trying to consent now")
         cookie_consent_button.click()
         fuzzy_delay(1)
-
-        # getting again html, after got rid of the cookie consent button
-        html = web_driver.page_source
-
     except NoSuchElementException as e:
         pass
 
-    return html

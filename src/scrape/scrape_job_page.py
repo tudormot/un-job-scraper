@@ -1,4 +1,6 @@
-from src.scrape.common import get_html_from_url
+from selenium.webdriver.chrome.webdriver import WebDriver
+
+from src.scrape.common import get_html_from_url, check_for_cookie_consent_button_and_clear
 from src.utils import fuzzy_delay
 from datetime import datetime
 from datetime import timedelta
@@ -6,14 +8,14 @@ from src.models.job_model import JobModel
 from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as log
-# import undetected_chromedriver as uc
 import multiprocessing as mp
+import time
 
 class JobPageScraper:
     def __init__(self, web_driver):
         # it is important to create a new instance of chrome. This way
         # parsing of the main page and the job pages can run "in parallel"
-        self.web_driver = web_driver
+        self.web_driver: WebDriver = web_driver
 
     def scrape_job_from_job_page(self, url) -> JobModel:
         job = JobModel()
@@ -225,34 +227,59 @@ class JobPageScraper:
     def _populate_job_from_button_click_result(self, job):
         """Note: this function assumes that the web_driver is currently on
         the job page on which the button needs clicking"""
-        # get original job link:
+        # get current link (job posting on unjobs) in case we need it for
+        # fallback:
+        un_jobs_url = self.web_driver.current_url
+        link = "https://unjobs.org/job_detail"
+        MAX_NR_RETRIES = 5
+        retry = 0
+        while link == "https://unjobs.org/job_detail" and retry < \
+                MAX_NR_RETRIES:
+            # process = mp.Process(target=self.web_driver.execute_script(
+            #     "document.getElementById('more-info-button').click()"))
+            process = mp.Process(target=self.web_driver.find_element_by_id(
+                'more-info-button').click, args=())
+            process.start()
+            start = time.time()
+            print("before joining process")
+            process.join(timeout=10)
+            end = time.time()
+            print("time it took for subprocess to join : ",
+                  (end - start))
+            if process.exitcode is None:
+                print("process has not terminated!")
+                process.kill()
+                if self.web_driver is not None:
+                    print('hmm, we were not expecting web_driver to be '
+                          'non_null')
+                    self.web_driver.quit()
+                    print("closed web_driver")
+                import undetected_chromedriver as uc
+                self.web_driver = uc.Chrome()
+                self.web_driver.get(un_jobs_url)
+                check_for_cookie_consent_button_and_clear(self.web_driver)
+            else:
+                print("subprocess exitcode : ", process.exitcode)
+                link = self.web_driver.current_url
 
-        # try:
-        #     await asyncio.wait_for(await asyncio.to_thread(
-        #         self._problematic_button_click,
-        #         self.web_driver), timeout=5)
-        # except Exception as e:
-        #     print("in clicking problematic button, timed out after 5 "
-        #           "seconds. Continuing and seeing what happens")
-        #     pass
 
-        p = mp.Process(target=self._problematic_button_click,
-                       args=(self.web_driver, ))
-        p.start()
-        p.join(10)
-        if p.exitcode is None:
-            #this means that process did not close succesfully. close it here
-            print("in clicking problematic button, timed out after 5 "
-                  "seconds. Continuing and seeing what happens")
-            p.kill()
-            assert self.web_driver is not None, "wow web driver is none now " \
-                                                "that we killed that process?"
-        job.original_job_link = self.web_driver.current_url
+            if link == "https://unjobs.org/job_detail":
+                print("un jobs failed and we got to the wrong page. "
+                      "retrying..")
+                self.web_driver.get(un_jobs_url)
+                fuzzy_delay(2)
+
+            retry += 1
+
+        job.original_job_link = link
         print("original_job_link: ", job.original_job_link)
 
-    @staticmethod
-    def _problematic_button_click(web_driver):
-        button = web_driver.find_element_by_id("more-info-button")
-        print("debug! clicking the problmatic button!")
-        button.click()
-        fuzzy_delay(2)
+    # @staticmethod
+    # def _problematic_button_click(web_driver):
+    #     # button = web_driver.find_element_by_id("more-info-button")
+    #     print("debug! clicking the problematic button by script!")
+    #     web_driver.execute_script(
+    #         "document.getElementById('more-info-button').click()")
+    #     # button.click()
+    #     # fuzzy_delay(2)
+    #     time.sleep(4)
