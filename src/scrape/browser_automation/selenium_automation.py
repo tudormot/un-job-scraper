@@ -34,7 +34,9 @@ class _SeleniumAutomation(AutomationInterface):
         else:
             is_cloudflare = False
 
-        while is_cloudflare and retry < 5:
+        MAX_RETRIES_CLOUDFLARE_CHECK = 5
+
+        while is_cloudflare and retry < MAX_RETRIES_CLOUDFLARE_CHECK:
             retry += 1
             log.warning("detected cloudflare.")
             self._fuzzy_delay(3)
@@ -45,7 +47,7 @@ class _SeleniumAutomation(AutomationInterface):
                 log.warning("Still detected cloudflare...")
             else:
                 is_cloudflare = False
-        if retry == 4:
+        if retry == MAX_RETRIES_CLOUDFLARE_CHECK:
             raise Exception(
                 "could not scrape,maximum retries reached in wait for "
                 "cloudflare.. Maybe cloudflare protection got better? " + str(
@@ -72,11 +74,13 @@ class _SeleniumAutomation(AutomationInterface):
 
     def get_url_after_button_press(self, initial_url,
                                    button_id='more-info-button') -> str:
-        assert initial_url == self.web_driver.current_url, "this state of " \
-                                                           "the browser is " \
-                                                           "not what the " \
-                                                           "code was " \
-                                                           "expecting.."
+        if initial_url != self.web_driver.current_url:
+            log.warning("warning, during normal scraping workflow selenium "
+                        "should be at " +
+                        initial_url + " but now it is instead "
+                                      "at " + self.web_driver.current_url)
+            self.web_driver.get(initial_url)
+
         un_jobs_url = self.web_driver.current_url
         link = "https://unjobs.org/job_detail"
         MAX_NR_RETRIES = 5

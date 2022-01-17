@@ -37,9 +37,10 @@ class JobPageScraper:
         potential_titles_list = soup.find_all(
             JobPageScraper._has_h2_class_but_also_style)
         if len(potential_titles_list) != 1:
-            print("potential titles list : " + str(potential_titles_list))
-            raise Exception(
-                "Unable to decide which is the title! Multiple matches")
+            log.warning("Found multiple potential titles. Choosing most "
+                        "likely")
+            assert 'Roboto Condensed' in potential_titles_list[0]['style'],\
+                "Unable to decide which is the title!"
 
         job.title = str(potential_titles_list[0].string)
 
@@ -55,7 +56,9 @@ class JobPageScraper:
 
         # get tags
         job.tags = [x.a.string for x in soup.find_all("div",
-                                                      class_="md-chip md-chip-raised md-chip-hover")[
+                                                      class_="md-chip "
+                                                             "md-chip-raised "
+                                                             "md-chip-hover")[
                                         1:]]
 
         self._get_text_content(soup, job)
@@ -128,7 +131,8 @@ class JobPageScraper:
         else:
             # we are probably in pdf job mode.
             log.warning(
-                "Could not scrape main text content. Possibly pdf content. Leaving blank")
+                "Could not scrape main text content. Possibly pdf content. "
+                "Leaving blank")
             job.extra_information = None
 
     @staticmethod
@@ -189,7 +193,9 @@ class JobPageScraper:
             now = datetime.now()
             FAKE_DATE = (now + timedelta(weeks=8)).strftime("%d.%m.%Y")
             log.error(
-                "Unable to find closing date for job. Setting artificial closing date in two months from now. FAKE_DATE = " + FAKE_DATE)
+                "Unable to find closing date for job. Setting artificial "
+                "closing date in two months from now. FAKE_DATE = " +
+                FAKE_DATE)
             return FAKE_DATE
 
     @staticmethod
@@ -204,8 +210,7 @@ class JobPageScraper:
                 if found_links:
                     no_changes_made = False
                     link = found_links[0]
-                    chunks = python_string.split(link,
-                                                 1)  # 2nd param ensures splits only in 2
+                    chunks = python_string.split(link, 1)
                     new_tag = soup.new_tag("a", href=link)
                     new_tag.string = '(link)'
                     str1 = NavigableString(chunks[0])
