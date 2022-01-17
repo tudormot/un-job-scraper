@@ -17,7 +17,7 @@ class JobModel:
         self.job_category = 'Search All Jobs'
         self.job_type = None
 
-    def as_dict(self):
+    def as_dict(self)->dict:
         job_dict = {
             "title": self.title,
             "organisation": self.organisation,
@@ -34,3 +34,11 @@ class JobModel:
             "job_type": self.job_type
         }
         return {k: job_dict[k] for k in job_dict if job_dict[k] is not None}
+
+    def __str__(self):
+        dict_repr = self.as_dict()
+        try:
+            dict_repr.pop("extra_information")
+        except KeyError:
+            pass
+        return dict_repr.__str__()

@@ -1,8 +1,10 @@
 from datetime import datetime
 
 from typing import Generator
-
+import logging as log
 from src.models.job_model import JobModel
+from src.scrape.browser_automation.automation_interface import \
+    UnableToParseJobException
 from src.scrape.browser_automation.selenium_automation import \
     selenium_automation
 from src.scrape.scrape_job_page import JobPageScraper
@@ -24,7 +26,12 @@ class UNJobsScraper:
 
     def get_all_jobs_from_un_jobs(self) -> Generator[JobModel, None, None]:
         for job_url in self.main_page_scraper.get_all_job_urls():
-            yield self.job_page_scraper.scrape_job_from_job_page(job_url)
+            try:
+                yield self.job_page_scraper.scrape_job_from_job_page(job_url)
+            except UnableToParseJobException as e:
+                log.warning("could not parse job at url: " + job_url)
+                log.info("no biggie, continuing with next job")
+                pass
 
     def get_jobs_from_un_jobs_since_date(self, date: datetime) -> Generator[
         JobModel, None, None]:

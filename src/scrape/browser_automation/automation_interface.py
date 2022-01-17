@@ -1,5 +1,6 @@
 
-
+class UnableToParseJobException(Exception):
+    pass
 
 class AutomationInterface:
     def get_html_from_url(self, url:str, drop_consent_button:bool=True)->str:

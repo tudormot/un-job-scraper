@@ -1,7 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException
 
 from src.scrape.browser_automation.automation_interface import \
-    AutomationInterface
+    AutomationInterface, UnableToParseJobException
 import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 import logging as log
@@ -31,10 +31,10 @@ class _SeleniumAutomation(AutomationInterface):
         else:
             is_cloudflare = False
 
-        while is_cloudflare and retry < 4:
+        while is_cloudflare and retry < 5:
             retry += 1
             log.warning("detected cloudflare.")
-            self._fuzzy_delay(8)
+            self._fuzzy_delay(3)
             html = self.web_driver.page_source
             soup = BeautifulSoup(html, 'html.parser')
             if soup.title.string in cloudflare_title_strings:
@@ -57,8 +57,7 @@ class _SeleniumAutomation(AutomationInterface):
         try:
             cookie_consent_button = self.web_driver.find_element_by_class_name(
                 "css-47sehv")
-            log.info("Seems like we have found a cookie consent button! "
-                     "Trying to consent now")
+            log.info("Consenting to cookies!")
             cookie_consent_button.click()
             self._fuzzy_delay(1)
         except NoSuchElementException as e:
@@ -81,36 +80,30 @@ class _SeleniumAutomation(AutomationInterface):
             #     "document.getElementById('more-info-button').click()"))
             process = mp.Process(target=self.web_driver.find_element_by_id(
                 'more-info-button').click, args=())
+            self._fuzzy_delay(0.2)
             process.start()
-            start = time.time()
-            print("before joining process")
             process.join(timeout=10)
-            end = time.time()
-            print("time it took for subprocess to join : ",
-                  (end - start))
             if process.exitcode is None:
                 print("process has not terminated!")
                 process.kill()
                 if self.web_driver is not None:
-                    print('hmm, we were not expecting web_driver to be '
-                          'non_null')
                     self.web_driver.quit()
-                    print("closed web_driver")
-                import undetected_chromedriver as uc
                 self.web_driver = uc.Chrome()
                 self.web_driver.get(un_jobs_url)
                 self._check_for_cookie_consent_button_and_clear()
             else:
-                print("subprocess exitcode : ", process.exitcode)
                 link = self.web_driver.current_url
 
             if link == "https://unjobs.org/job_detail":
-                print("un jobs failed and we got to the wrong page. "
-                      "retrying..")
+                print("Landed on https://unjobs.org/job_detail.. retrying: "
+                      "", retry)
                 self.web_driver.get(un_jobs_url)
-                self._fuzzy_delay(2)
+                self._fuzzy_delay(0.2)
             retry += 1
-        print("url found after pressing button: ", link)
+        if retry == MAX_NR_RETRIES:
+            #could not get the damned link, so giving up on parsing this job
+            raise UnableToParseJobException("We could not get the original "
+                                            "job application link")
         return link
 
     @staticmethod
@@ -120,6 +113,7 @@ class _SeleniumAutomation(AutomationInterface):
         fuzz = np.random.uniform(low=-tol, high=tol)
         delay = s + fuzz
         time.sleep(delay)
+
 
 
 # poor man's singleton
