@@ -1,4 +1,7 @@
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from src.scrape.browser_automation.automation_interface import \
     AutomationInterface, UnableToParseJobException
@@ -55,12 +58,16 @@ class _SeleniumAutomation(AutomationInterface):
 
     def _check_for_cookie_consent_button_and_clear(self):
         try:
-            cookie_consent_button = self.web_driver.find_element_by_class_name(
-                "css-47sehv")
+            cookie_consent_button = WebDriverWait(self.web_driver,
+                                                  2).until(
+                EC.presence_of_element_located((By.CLASS_NAME,
+                                                "css-47sehv"))
+            )
             log.info("Consenting to cookies!")
             cookie_consent_button.click()
-            self._fuzzy_delay(1)
-        except NoSuchElementException as e:
+            self._fuzzy_delay(0.2)
+        except TimeoutException as e:
+            # not found cookie consent, no biggie
             pass
 
     def get_url_after_button_press(self, initial_url,
@@ -76,10 +83,17 @@ class _SeleniumAutomation(AutomationInterface):
         retry = 0
         while link == "https://unjobs.org/job_detail" and retry < \
                 MAX_NR_RETRIES:
-            # process = mp.Process(target=self.web_driver.execute_script(
-            #     "document.getElementById('more-info-button').click()"))
-            process = mp.Process(target=self.web_driver.find_element_by_id(
-                'more-info-button').click, args=())
+            button = None
+            try:
+                button = WebDriverWait(self.web_driver, 10).until(
+                    EC.presence_of_element_located((By.ID, "more-info-button"))
+                )
+            except TimeoutException as e:
+                log.error("Could not find the more-info-button for job: " +
+                          un_jobs_url + ". Failed parsing this job")
+                raise e
+
+            process = mp.Process(target=button.click, args=())
             self._fuzzy_delay(0.2)
             process.start()
             process.join(timeout=10)
@@ -101,7 +115,7 @@ class _SeleniumAutomation(AutomationInterface):
                 self._fuzzy_delay(0.2)
             retry += 1
         if retry == MAX_NR_RETRIES:
-            #could not get the damned link, so giving up on parsing this job
+            # could not get the damned link, so giving up on parsing this job
             raise UnableToParseJobException("We could not get the original "
                                             "job application link")
         return link
@@ -114,6 +128,8 @@ class _SeleniumAutomation(AutomationInterface):
         delay = s + fuzz
         time.sleep(delay)
 
+    def terminate(self):
+        self.web_driver.quit()
 
 
 # poor man's singleton

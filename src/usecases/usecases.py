@@ -4,6 +4,7 @@ from src.scrape.un_jobs_scraper import UNJobsScraper
 
 
 def upload_from_urls(url_list, model):
+    raise Exception("needs refactoring and updating")
     CHUNK = 5  # upload only 5 jobs at once
     gen = chunks(url_list, CHUNK)
     while True:
@@ -32,10 +33,15 @@ def chunks(lst, n):
 
 
 def scrape_all_website_usecase():
-    scraper = UNJobsScraper()
-    for job in scraper.get_all_jobs_from_un_jobs():
-        print("yay seems like we scraped a job")
-        print(job)
+    scraper = None
+    try:
+        scraper = UNJobsScraper()
+        for job in scraper.get_all_jobs_from_un_jobs():
+            print("yay seems like we scraped a job")
+            print(job)
+    finally:
+        if scraper:
+            scraper.terminate()
 
     # url_list, last_update = get_all_job_urls()
     # upload_from_urls(url_list, model)
@@ -43,7 +49,7 @@ def scrape_all_website_usecase():
 
 
 def scrape_since_last_update_usecase():
-    raise("Usecase not refactored yet. Refactor first")
+    raise ("Usecase not refactored yet. Refactor first")
     model = icf_model()
     date = model.get_last_update()
     url_list, last_update = get_jobs_since_date(date)

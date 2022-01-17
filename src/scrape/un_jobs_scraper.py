@@ -2,6 +2,9 @@ from datetime import datetime
 
 from typing import Generator
 import logging as log
+
+from selenium.common.exceptions import TimeoutException
+
 from src.models.job_model import JobModel
 from src.scrape.browser_automation.automation_interface import \
     UnableToParseJobException
@@ -28,7 +31,7 @@ class UNJobsScraper:
         for job_url in self.main_page_scraper.get_all_job_urls():
             try:
                 yield self.job_page_scraper.scrape_job_from_job_page(job_url)
-            except UnableToParseJobException as e:
+            except (UnableToParseJobException, TimeoutException) as e:
                 log.warning("could not parse job at url: " + job_url)
                 log.info("no biggie, continuing with next job")
                 pass
@@ -37,3 +40,6 @@ class UNJobsScraper:
         JobModel, None, None]:
         raise Exception("WIP Not reimplemented yet!2")
         pass
+
+    def terminate(self):
+        selenium_automation.terminate()
