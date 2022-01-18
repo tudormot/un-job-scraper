@@ -1,7 +1,7 @@
 import unittest
 
 
-from src.scrape.browser_automation.selenium_automation import \
+from src.scrape.browser_automation.selenium.selenium_automation import \
     _SeleniumAutomation
 from src.scrape.scrape_job_page import JobPageScraper
 
@@ -25,6 +25,8 @@ class MainPageScraper(unittest.TestCase):
         job = JobPageScraper(_SeleniumAutomation()).scrape_job_from_job_page(
             MAGIC_URL)
         print("job is : ", job)
+
+
 
 
 

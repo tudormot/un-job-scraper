@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 from src.models.job_model import JobModel
 from src.scrape.browser_automation.automation_interface import \
     UnableToParseJobException
-from src.scrape.browser_automation.selenium_automation import \
+from src.scrape.browser_automation.selenium.selenium_automation import \
     selenium_automation
 from src.scrape.scrape_job_page import JobPageScraper
 from src.scrape.scrape_main_page import MainPageScraper
