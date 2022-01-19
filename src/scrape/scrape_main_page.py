@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Generator, Iterable
 
 from src.scrape.browser_automation.automation_interface import \
     AutomationInterface
@@ -10,57 +10,56 @@ from datetime import datetime
 
 @dataclass
 class JobURLModel:
-    URL:str
-    upload_date:datetime
+    URL: str
+    upload_date: datetime
+
 
 class MainPageScraper:
     def __init__(self, page_url, browser_automator):
-        self.page_url = page_url
+        self.main_page_url = page_url
         self.browser_automator: AutomationInterface = browser_automator
 
-    def get_jobs_since_date(self, date):
-        url_list = []
+    def get_job_urls_since_date(self, date: datetime) -> Generator[JobURLModel,
+                                                               None, None]:
+        # first get to UNJobs page which contains first job already scraped
         page_nr = 1
-        break_loop = False
         while True:
-            job_list:List[JobURLModel] = \
+            job_list = \
                 self._get_urls_from_page(
-                    self.page_url + str(page_nr))
-            for job in job_list:
-                if job.upload_date > date:
-                    url_list.append(job.URL)
-                else:
-                    break_loop = True
-                    break
-            if break_loop:
+                    self.main_page_url + str(page_nr))
+            if job_list[-1].upload_date < date:
+                first_non_scraped_page = page_nr
                 break
+            else:
+                page_nr += 1
 
-            if not job_list:
-                log.critical('Did not find any more pages at url: ' + str(
-                    self.page_url + str(page_nr)))
-                break
-            page_nr += 1
+        for page_nr in range(first_non_scraped_page, 0, -1):
+            job_urls = filter(
+                lambda j: j.upload_date > date,
+                reversed(
+                    self._get_urls_from_page(self.main_page_url + str(
+                        page_nr))
+                )
+            )
+            for job in job_urls:
+                yield job
 
-        return url_list
-
-    def get_all_job_urls(self):
-        page_nr = 1
-
-        while True:
-            jobs_list = self._get_urls_from_page(self.page_url + str(
+    def get_all_job_urls(self) -> Generator[JobURLModel, None, None]:
+        for page_nr in range(40, 0, -1):
+            jobs_list = self._get_urls_from_page(self.main_page_url + str(
                 page_nr))
             if not jobs_list:
-                log.info(
-                    'Did not find any more pages at url: ' + str(
-                        self.page_url) +
-                    str(
-                        page_nr))
-                break
-            for job in jobs_list:
-                yield job.URL
-            page_nr += 1
+                raise Exception("Last time I checked UNJobs.org, they always "
+                                "had jobs between pages 40 and 1. This "
+                                "exception means that they modified their "
+                                "website")
+            for job in reversed(jobs_list):
+                yield job
 
-    def _get_urls_from_page(self, page_url)->List[JobURLModel]:
+    def _get_urls_from_page(self, page_url) -> List[JobURLModel]:
+        """ note: the list returned by this function is ordered: IE,
+        last element of list is last on UNjobs page, this also meaning that
+        it is the one uploaded earliest on the UNjobs website"""
         html = self.browser_automator.get_html_from_url(page_url)
         log.info("INFO. request to : " + str(page_url))
         soup = BeautifulSoup(html, 'html.parser')
@@ -78,7 +77,7 @@ class MainPageScraper:
         ]
 
     def get_last_update_time(self) -> datetime:
-        html = self.browser_automator.get_html_from_url(self.page_url)
+        html = self.browser_automator.get_html_from_url(self.main_page_url)
         soup = BeautifulSoup(html, 'html.parser')
         tag = soup.find('time', class_='upd timeago')
         last_update_date = MainPageScraper._string_to_datetime(tag['datetime'])

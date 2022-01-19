@@ -8,4 +8,7 @@ class AutomationInterface:
 
     def get_url_after_button_press(self, initial_url,
                                    button_id='more-info-button') -> str:
-        raise "this should be overriden by actual automation implemenation"
+        raise "this should be overriden by actual automation implementation"
+
+    def terminate(self):
+        raise "this should be overriden by actual automation implementation"

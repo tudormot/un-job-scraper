@@ -2,8 +2,11 @@ from scrape.scraping import *
 from scrape.scrape_main_page import *
 from icf_model import icf_model
 import logging as l
+import re
 from src.config.logging_config import config_log
 
+
+raise Exception("This old testing file needs refactoring")
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
 <body>

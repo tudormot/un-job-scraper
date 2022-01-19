@@ -1,17 +1,10 @@
-from selenium.common.exceptions import NoSuchElementException, \
-    TimeoutException, ElementClickInterceptedException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import atexit
 
 from src.scrape.browser_automation.automation_interface import \
     AutomationInterface, UnableToParseJobException
 import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 import logging as log
-import multiprocessing as mp
-import time
-import numpy as np
 
 from src.scrape.browser_automation.selenium.button_clicker_process import \
     ButtonClickerProcess
@@ -19,24 +12,13 @@ from src.scrape.browser_automation.selenium.common import \
     check_for_cookie_consent_button_and_clear, fuzzy_delay
 
 
-class _SeleniumAutomation(AutomationInterface):
+class SeleniumAutomation(AutomationInterface):
     def __init__(self):
         self.web_driver = uc.Chrome()
-        # self.web_driver.set_page_load_timeout(20)
-        # self.web_driver.set_script_timeout(20)
+        self.process = None
 
     def get_html_from_url(self, url: str,
                           drop_consent_button: bool = True) -> str:
-
-        # print
-        # try:
-        #
-        #     if soup.head.title.string in cloudflare_title_strings:
-        #         is_cloudflare = True
-        #     else:
-        #         is_cloudflare = False
-        # except Exception as e:
-
         self.web_driver.get(url)
         fuzzy_delay(1)
 
@@ -59,10 +41,10 @@ class _SeleniumAutomation(AutomationInterface):
                 else:
                     is_cloudflare = False
             except Exception as e:
-                #todo: remove this try/except if error never gets thrown, this is
+                # todo: remove this try/except if error never gets thrown, this is
                 # for debugging purposes. I got a soup.title.string = None
                 # exception once, now i modified it to
-                print("unexpected exception in checking for cloudflare: ",e)
+                print("unexpected exception in checking for cloudflare: ", e)
                 print("soup.head.title.string: ", soup.head.title.string)
                 print("url = ", url)
                 print('html = \n', soup.prettify())
@@ -101,21 +83,28 @@ class _SeleniumAutomation(AutomationInterface):
         while link == "https://unjobs.org/job_detail" and retry < \
                 MAX_NR_RETRIES:
             try:
-                process = ButtonClickerProcess(args=(self.web_driver,un_jobs_url))
+                self.process = ButtonClickerProcess(args=(self.web_driver,
+                                                          un_jobs_url))
                 fuzzy_delay(0.2)
-                process.start()
-                process.join(timeout=10)
+                self.process.start()
+                self.process.join(timeout=10)
             except Exception as e:
                 print("no idea what we caught from spawned process: ", e)
                 raise e
 
-            if process.exitcode is None:
+            if self.process.exitcode is None:
                 print("process has not terminated!")
-                process.kill()
-                if self.web_driver is not None:
-                    self.web_driver.quit()
-                self.web_driver = uc.Chrome()
-                self.web_driver.get(un_jobs_url)
+                self.process.kill()
+                if True:
+                    if self.web_driver is not None:
+                        self.web_driver.quit()
+                    self.web_driver = uc.Chrome()
+                    self.web_driver.get(un_jobs_url)
+                else:
+                    # in cases there are problems with this new method of
+                    # fixing web_automator getting stuck, use the method in
+                    # the other branch of this if statement
+                    self.web_driver.reconnect()
                 check_for_cookie_consent_button_and_clear(self.web_driver)
             else:
                 link = self.web_driver.current_url
@@ -132,11 +121,13 @@ class _SeleniumAutomation(AutomationInterface):
                                             "job application link")
         return link
 
-
-
     def terminate(self):
+        if self.process:
+            self.process.kill()
+
+        self.web_driver.close()
         self.web_driver.quit()
+        #this is required as undetected chromedriver is using this atexit
+        # method to kill some processes...
+        atexit._run_exitfuncs()
 
-
-# poor man's singleton
-selenium_automation = _SeleniumAutomation()

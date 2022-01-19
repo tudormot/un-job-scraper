@@ -1,5 +1,7 @@
 import logging
 
+from src.scrape.browser_automation.selenium.selenium_automation import \
+    SeleniumAutomation
 from src.scrape.un_jobs_scraper import UNJobsScraper
 
 
@@ -33,19 +35,14 @@ def chunks(lst, n):
 
 
 def scrape_all_website_usecase():
-    scraper = None
+    scraper = UNJobsScraper(SeleniumAutomation())
     try:
-        scraper = UNJobsScraper()
         for job in scraper.get_all_jobs_from_un_jobs():
             print("yay seems like we scraped a job")
             print(job)
     finally:
-        if scraper:
-            scraper.terminate()
+        scraper.terminate()
 
-    # url_list, last_update = get_all_job_urls()
-    # upload_from_urls(url_list, model)
-    # model.set_last_update(last_update)
 
 
 def scrape_since_last_update_usecase():
