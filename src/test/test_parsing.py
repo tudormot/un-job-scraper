@@ -73,7 +73,7 @@ class MainPageScraperTesting(unittest.TestCase):
     def test_4_get_last_update_time(self):
         last_update_time = self.un_parser.main_page_scraper.\
             get_last_update_time()
-        delta = datetime.date.today() - last_update_time
+        delta = datetime.datetime.today() - last_update_time
         log.info("last_update_time: " + str(last_update_time))
         self.assertTrue(delta.days < 4, "last_update_time bigger than 4 "
                                         "days. Weird, check again unjobs "

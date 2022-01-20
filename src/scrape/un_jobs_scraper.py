@@ -61,17 +61,3 @@ class UNJobsScraper:
 
     def terminate(self):
         self.web_automation.terminate()
-
-
-class ScraperUnrecoverableError(Exception):
-    """A wrapper exception for an exception that could not be fixed
-    internally to the job scraper. Additionally to the original exception,
-    it contains information about the update_time on unjobs of the last
-    jobs. This information can be used to setting the last_scraping_date in
-    the database, basically avoiding any scraping duplicate work"""
-    raise Exception("deprecated, found an easier way to do this")
-
-    def __init__(self, message, date_of_last_scraped_job):
-        super().__init__(message)
-        self.date_of_last_scraped_job: Optional[datetime] = \
-            date_of_last_scraped_job

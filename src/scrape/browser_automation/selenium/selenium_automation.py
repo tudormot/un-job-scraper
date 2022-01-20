@@ -122,12 +122,13 @@ class SeleniumAutomation(AutomationInterface):
         return link
 
     def terminate(self):
-        if self.process:
-            self.process.kill()
 
-        self.web_driver.close()
+
+        # self.web_driver.close()
         self.web_driver.quit()
         #this is required as undetected chromedriver is using this atexit
         # method to kill some processes...
         atexit._run_exitfuncs()
+        if self.process:
+            self.process.kill()
 
