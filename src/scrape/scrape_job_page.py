@@ -1,6 +1,6 @@
 from src.scrape.browser_automation.automation_interface import \
     AutomationInterface
-from datetime import datetime
+from datetime import datetime, date
 from datetime import timedelta
 from src.models.job_model import JobModel
 from bs4 import BeautifulSoup, NavigableString
@@ -39,7 +39,7 @@ class JobPageScraper:
         if len(potential_titles_list) != 1:
             log.warning("Found multiple potential titles. Choosing most "
                         "likely")
-            assert 'Roboto Condensed' in potential_titles_list[0]['style'],\
+            assert 'Roboto Condensed' in potential_titles_list[0]['style'], \
                 "Unable to decide which is the title!"
 
         job.title = str(potential_titles_list[0].string)
@@ -51,8 +51,7 @@ class JobPageScraper:
         iterator = tag.children
         iterator.__next__()
         t = iterator.__next__()
-        job.closing_date_pretty = t.string
-        job.closing_date = self._parse_string_for_date(job.closing_date_pretty)
+        job.closing_date = self._parse_string_for_date(t.string)
 
         # get tags
         job.tags = [x.a.string for x in soup.find_all("div",
@@ -169,7 +168,7 @@ class JobPageScraper:
                     job.job_type = 'Full Time '
 
     @staticmethod
-    def _parse_string_for_date(closing_date_pretty: str) -> str:
+    def _parse_string_for_date(closing_date_pretty: str) -> date:
         my_hash = {
             'January': '01',
             'February': '02',
@@ -188,14 +187,16 @@ class JobPageScraper:
             chunks = closing_date_pretty.split()
             if len(chunks[3]) == 1: chunks[3] = '0' + chunks[
                 3]  # so date is dd.mm.YYYY
-            return chunks[3] + '.' + my_hash[chunks[4]] + '.' + chunks[5]
+            return datetime.strptime(
+                chunks[3] + '.' + my_hash[chunks[4]] + '.' +
+                chunks[5], '%d.%m.%Y').date()
         except AttributeError as e:
             now = datetime.now()
-            FAKE_DATE = (now + timedelta(weeks=8)).strftime("%d.%m.%Y")
+            FAKE_DATE = (now + timedelta(weeks=8)).date()
             log.error(
                 "Unable to find closing date for job. Setting artificial "
                 "closing date in two months from now. FAKE_DATE = " +
-                FAKE_DATE)
+                str(FAKE_DATE))
             return FAKE_DATE
 
     @staticmethod

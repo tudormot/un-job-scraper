@@ -1,6 +1,10 @@
 import time
+from typing import List
+
 import requests
 import logging
+
+from src.models.job_model import JobModel
 
 
 class RESTAdapter:
@@ -31,21 +35,20 @@ class RESTAdapter:
         return result
 
     @staticmethod
-    def upload_jobs(jobs):
+    def upload_jobs(jobs: List[JobModel]):
         RESTAdapter._request_with_retry(
             lambda: RESTAdapter._upload_jobs_once(jobs)
         )
 
     @staticmethod
-    def delete_jobs(jobs):
+    def delete_jobs(jobs: List[JobModel]):
         RESTAdapter._request_with_retry(
             lambda: RESTAdapter._delete_jobs_once(jobs)
         )
 
-
     @staticmethod
-    def _upload_jobs_once(jobs):
-        jobs_dict = RESTAdapter._jobs_to_dict(jobs)
+    def _upload_jobs_once(jobs: List[JobModel]):
+        jobs_dict = RESTAdapter._jobs_to_icf_valid_dict(jobs)
         r = requests.post(
             'https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs',
             auth=(RESTAdapter.USERNAME, RESTAdapter.PASSWORD),
@@ -54,10 +57,9 @@ class RESTAdapter:
         logging.info(r.text)
         r.json()
 
-
     @staticmethod
-    def _delete_jobs_once(jobs):
-        json = RESTAdapter._jobs_to_delete_dict(jobs)
+    def _delete_jobs_once(jobs: List[JobModel]):
+        json = RESTAdapter._jobs_to_icf_valid_delete_dict(jobs)
         r = requests.delete(
             'https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs',
             auth=(RESTAdapter.USERNAME, RESTAdapter.PASSWORD),
@@ -67,14 +69,15 @@ class RESTAdapter:
         return r.json()
 
     @staticmethod
-    def _jobs_to_dict(jobs):
+    def _jobs_to_icf_valid_dict(jobs: List[JobModel]):
         """expecting a list of dictionaries"""
         return {
             "jobs":
-                [job for job in jobs]
+                [job.as_dict() for job in jobs]
         }
+
     @staticmethod
-    def _jobs_to_delete_dict(jobs):
+    def _jobs_to_icf_valid_delete_dict(jobs: List[JobModel]):
         """creating a 'json' dict which contains only the job ids"""
         return {
             "jobs":

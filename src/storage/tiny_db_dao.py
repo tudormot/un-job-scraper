@@ -1,30 +1,42 @@
-from tinydb import TinyDB, Query
+from typing import List
+
+from tinydb import TinyDB, Query, where
 import os
 import logging as log
 from datetime import datetime
+import jsonpickle
+
+from src.models.job_model import JobModel
 
 
 class TinyDBDAO:
-    def __init__(self):
+    def __init__(self, db_name, enable_asserts=True):
+
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        self.db = TinyDB(os.path.join(dir_path, 'db.json'))
+        self.db_path = os.path.join(dir_path, db_name)
+        self.db = TinyDB(self.db_path)
         self.query = Query()
         self.init_database()
         self.delete_all_expired_jobs()
 
+        # this flag enables some db assertions which are useful for
+        # debugging, but might slow dows the program
+        self.enable_asserts = enable_asserts
+
     def init_database(self):
         # if db does not contain a last parse date (can happen if db was just
         # created), then populate it here
-        if self.db.search(self.query.last_updated.exists()) is None:
+        if len(self.db.search(self.query.last_updated.exists())) == 0:
             log.warning('Detected that DB does not contain last parsing '
                         'date. This means that DB was just creating. '
                         'populating with very old last_parsing_date')
-            self.db.insert({'last_updated': datetime(1, 1, 1)})  # year 1AD
+            self.db.insert({'last_updated':
+                                jsonpickle.encode(datetime(1, 1, 1))})  # 1AD
 
     def delete_all_expired_jobs(self):
         log.info("INFO: deleting expired jobs from TinyDB:")
-        curr = datetime.datetime.now()
-        test_func = lambda s: self._closingdatestr_to_date(s) < curr
+        curr = datetime.now()
+        test_func = lambda s: jsonpickle.decode(s) < curr
         response = self.db.search(self.query.closing_date.test(test_func))
         log.info("INFO: deleting " + str(len(response)) + " expired jobs.")
         self.db.remove(self.query.closing_date.test(test_func))
@@ -35,30 +47,55 @@ class TinyDBDAO:
 
     def get_last_update(self):
         response = self.db.search(self.query.last_updated.exists())
-        return self._str_to_date(response[0]['last_updated'])
+        assert len(response) == 1, "got more than one last_updated date in db"
+        return jsonpickle.decode(response[0]['last_updated'])
 
-    def insert_job(self, job):
-        self.db.insert(job)
+    def insert_jobs(self, jobs: List[JobModel]):
+        for job in jobs:
+            if self.enable_asserts:
+                assert len(self.db.search(where('id') == job.id)) == 0, \
+                    "this job already exists, why are we reinserting it in " \
+                    "the db?"
+            self.db.insert(job.as_dict())
 
-    def delete_jobs(self, job):
-        self.db.remove(job)
+    def delete_jobs(self, jobs: List[JobModel]):
+        for job in jobs:
+            if self.enable_asserts:
+                in_db_count = len(self.db.search(where('id') == job.id))
+                assert in_db_count != 1, \
+                    "wanted to delete a job, but found it " + str(
+                        in_db_count) + "times in the database"
+            self.db.remove(where('id') == job.id)
 
-    @staticmethod
-    def _str_to_date(s):
-        "eg date : 2021-01-15 09:20:06"
-        return datetime.datetime(year=int(s[0:4]),
-                                 month=int(s[5:7]),
-                                 day=int(s[8:10]),
-                                 hour=int(s[11:13]),
-                                 minute=int(s[14:16]),
-                                 second=int(s[17:19]))
+    def terminate(self):
+        self.db.close()
 
-    @staticmethod
-    def _closingdatestr_to_date(s):
-        list = s.split('.')
-        return datetime.datetime(year=int(list[2]),
-                                 month=int(list[1]),
-                                 day=int(list[0]),
-                                 hour=int(23),
-                                 minute=int(59),
-                                 second=int(59))
+    def _delete_underlying_database(self):
+        """should not be used for normal operation, but useful for clean
+        testing"""
+        log.warning("Deleting db from filesystem!")
+        os.remove(self.db_path)
+
+    # @staticmethod
+    # def _str_to_date(s):
+    #     "eg date : 2021-01-15 09:20:06"
+    #     return datetime(year=int(s[0:4]),
+    #                     month=int(s[5:7]),
+    #                     day=int(s[8:10]),
+    #                     hour=int(s[11:13]),
+    #                     minute=int(s[14:16]),
+    #                     second=int(s[17:19]))
+
+    # @staticmethod
+    # def _closingdatestr_to_date(s):
+    #     list = s.split('.')
+    #     return datetime(year=int(list[2]),
+    #                     month=int(list[1]),
+    #                     day=int(list[0]),
+    #                     hour=int(23),
+    #                     minute=int(59),
+    #                     second=int(59))
+
+    # @staticmethod
+    # def _datetime_to_str(date:datetime):
+    #     return date.strftime('')

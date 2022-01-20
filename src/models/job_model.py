@@ -1,4 +1,5 @@
-from datetime import date, datetime
+from dataclasses import dataclass
+from datetime import date
 from typing import Optional
 
 
@@ -12,8 +13,8 @@ class JobModel:
         self.city = ''
         self.office = ''
         self.grade = ''
-        self.closing_date = ''
-        self.closing_date_pretty = ''
+        # no timezoneinfo given by unjobs.org, hence storing as datetime.date
+        self.closing_date: Optional[date] = None
         self.tags = []
         self.original_job_link = ''
         self.extra_information = ''
@@ -29,7 +30,8 @@ class JobModel:
             "city": self.city,
             "office": self.office,
             "grade": self.grade,
-            "closing_date": self.closing_date,
+            "closing_date": self.closing_date_to_icf_str_closing_date(
+                self.closing_date),
             "tags": self.tags,
             "original_job_link": self.original_job_link,
             "extra_information": self.extra_information,
@@ -40,9 +42,8 @@ class JobModel:
         return {k: job_dict[k] for k in job_dict if job_dict[k] is not None}
 
     @staticmethod
-    def closing_date_icf_str_to_datetime(icf_date) -> date:
-        print('debug type of arg = ', type(icf_date))
-        return datetime.strptime(icf_date, '%d.%m.%Y').date()
+    def closing_date_to_icf_str_closing_date(d: date) -> str:
+        return d.strftime("%d.%m.%Y")
 
     def __str__(self):
         dict_repr = self.as_dict()
