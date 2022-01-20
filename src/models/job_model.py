@@ -1,3 +1,7 @@
+from datetime import date, datetime
+from typing import Optional
+
+
 class JobModel:
     """dataclass that contains all information regarding a job"""
 
@@ -17,7 +21,7 @@ class JobModel:
         self.job_category = 'Search All Jobs'
         self.job_type = None
 
-    def as_dict(self)->dict:
+    def as_dict(self) -> dict:
         job_dict = {
             "title": self.title,
             "organisation": self.organisation,
@@ -34,6 +38,11 @@ class JobModel:
             "job_type": self.job_type
         }
         return {k: job_dict[k] for k in job_dict if job_dict[k] is not None}
+
+    @staticmethod
+    def closing_date_icf_str_to_datetime(icf_date) -> date:
+        print('debug type of arg = ', type(icf_date))
+        return datetime.strptime(icf_date, '%d.%m.%Y').date()
 
     def __str__(self):
         dict_repr = self.as_dict()

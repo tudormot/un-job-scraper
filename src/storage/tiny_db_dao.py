@@ -1,7 +1,7 @@
 from tinydb import TinyDB, Query
 import os
 import logging as log
-import datetime
+from datetime import datetime
 
 
 class TinyDBDAO:
@@ -9,7 +9,17 @@ class TinyDBDAO:
         dir_path = os.path.dirname(os.path.realpath(__file__))
         self.db = TinyDB(os.path.join(dir_path, 'db.json'))
         self.query = Query()
+        self.init_database()
         self.delete_all_expired_jobs()
+
+    def init_database(self):
+        # if db does not contain a last parse date (can happen if db was just
+        # created), then populate it here
+        if self.db.search(self.query.last_updated.exists()) is None:
+            log.warning('Detected that DB does not contain last parsing '
+                        'date. This means that DB was just creating. '
+                        'populating with very old last_parsing_date')
+            self.db.insert({'last_updated': datetime(1, 1, 1)})  # year 1AD
 
     def delete_all_expired_jobs(self):
         log.info("INFO: deleting expired jobs from TinyDB:")

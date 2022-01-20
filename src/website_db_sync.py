@@ -1,13 +1,12 @@
 import logging as log
 
-from src.rest_adapter import RESTAdapter
 from src.storage.tiny_db_dao import TinyDBDAO
 
 
 class WebsiteToDBSynchronizer:
-    def __init__(self):
-        self.db = TinyDBDAO()
-        self.icf_adapter = RESTAdapter()
+    def __init__(self, db_dao, icf_adapter):
+        self.db: TinyDBDAO = db_dao()
+        self.icf_adapter = icf_adapter()
 
     def create(self, jobs):
         results = self.icf_adapter.upload_jobs(jobs)
