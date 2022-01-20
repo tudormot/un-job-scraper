@@ -1,9 +1,10 @@
+from functools import partial
 from typing import List
 
 from tinydb import TinyDB, Query, where
 import os
 import logging as log
-from datetime import datetime
+from datetime import datetime, date
 import jsonpickle
 
 from src.models.job_model import JobModel
@@ -36,10 +37,15 @@ class TinyDBDAO:
     def delete_all_expired_jobs(self):
         log.info("INFO: deleting expired jobs from TinyDB:")
         curr = datetime.now()
-        test_func = lambda s: jsonpickle.decode(s) < curr
-        response = self.db.search(self.query.closing_date.test(test_func))
+        response = self.db.search(self.query.closing_date.test(partial(
+            self._check_job_expired, current_date=curr)))
         log.info("INFO: deleting " + str(len(response)) + " expired jobs.")
-        self.db.remove(self.query.closing_date.test(test_func))
+        self.db.remove(self.query.closing_date.test(partial(
+            self._check_job_expired, current_date=curr)))
+
+    @staticmethod
+    def _check_job_expired(date_string: str, current_date: date) -> bool:
+        return datetime.strptime(date_string, "%d.%m.%Y") < current_date
 
     def set_last_update(self, update):
         self.db.remove(self.query.last_updated.exists())

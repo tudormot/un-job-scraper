@@ -14,7 +14,7 @@ class WebsiteToDBSynchronizer:
         results = self.icf_adapter.upload_jobs(jobs)
         for i, result in enumerate(results):
             if 'success' in result:
-                self.db.insert_job(jobs[i])
+                self.db.insert_jobs([jobs[i]])
         return results
 
     def update_or_create(self, jobs: List[JobModel]):
@@ -27,7 +27,7 @@ class WebsiteToDBSynchronizer:
         for i, result in enumerate(results):
             if 'success' in result or ('type' in result and result['type']
                                        == "not_exists"):
-                self.db.delete_jobs(self.query.id == jobs[i]["id"])
+                self.db.delete_jobs([jobs[i]])
 
     def terminate(self):
         self.db.terminate()
