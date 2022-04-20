@@ -15,6 +15,7 @@ from src.scrape.browser_automation.selenium.common import \
 class SeleniumAutomation(AutomationInterface):
     def __init__(self):
         self.web_driver = uc.Chrome()
+        self.web_driver.minimize_window()
         self.process = None
 
     def get_html_from_url(self, url: str,
@@ -99,6 +100,7 @@ class SeleniumAutomation(AutomationInterface):
                     if self.web_driver is not None:
                         self.web_driver.quit()
                     self.web_driver = uc.Chrome()
+                    self.web_driver.minimize_window()
                     self.web_driver.get(un_jobs_url)
                 else:
                     # in cases there are problems with this new method of

@@ -7,8 +7,8 @@ from src.storage.tiny_db_dao import TinyDBDAO
 
 class WebsiteToDBSynchronizer:
     def __init__(self, db_dao, icf_adapter):
-        self.db: TinyDBDAO = db_dao()
-        self.icf_adapter = icf_adapter()
+        self.db: TinyDBDAO = db_dao
+        self.icf_adapter = icf_adapter
 
     def create(self, jobs: List[JobModel]):
         results = self.icf_adapter.upload_jobs(jobs)

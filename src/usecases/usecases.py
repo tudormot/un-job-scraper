@@ -1,11 +1,11 @@
 import logging as log
-from collections import Generator
+from collections.abc import Generator
 from typing import List
 
 from src.rest_adapter_mock import RESTAdapterMock
 from src.scrape.browser_automation.selenium.selenium_automation import \
     SeleniumAutomation
-from src.scrape.un_jobs_scraper import UNJobsScraper, ScraperUnrecoverableError
+from src.scrape.un_jobs_scraper import UNJobsScraper
 from src.storage.tiny_db_dao import TinyDBDAO
 from src.website_db_sync import WebsiteToDBSynchronizer
 from functools import partial

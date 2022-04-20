@@ -11,7 +11,7 @@ from src.models.job_model import JobModel
 
 
 class TinyDBDAO:
-    def __init__(self, db_name, enable_asserts=True):
+    def __init__(self, db_name, enable_asserts=False):
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
         self.db_path = os.path.join(dir_path, db_name)
