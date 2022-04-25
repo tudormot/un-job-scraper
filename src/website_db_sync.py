@@ -19,7 +19,7 @@ class WebsiteToDBSynchronizer:
 
     def update_or_create(self, jobs: List[JobModel]):
         self.delete(jobs)
-        self.create(jobs)
+        return self.create(jobs)
 
     def delete(self, jobs: List[JobModel]):
         log.info('INFO.Deleting jobs.')

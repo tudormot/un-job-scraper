@@ -22,6 +22,7 @@ class MainPageScraper:
     def get_job_urls_since_date(self, date: datetime) -> Generator[JobURLModel,
                                                                None, None]:
         # first get to UNJobs page which contains first job already scraped
+        print("get_job_urls_since_date was called")
         page_nr = 1
         while True:
             job_list = \

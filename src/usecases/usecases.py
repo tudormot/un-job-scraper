@@ -1,7 +1,9 @@
 import logging as log
 from collections.abc import Generator
+from datetime import datetime
 from typing import List
 
+from src.rest_adapter import RESTAdapter
 from src.rest_adapter_mock import RESTAdapterMock
 from src.scrape.browser_automation.selenium.selenium_automation import \
     SeleniumAutomation
@@ -70,11 +72,15 @@ def scrape_from_job_generator(scraper, job_generator):
     time) is the job generator fun called from the scraper"""
     db_icf_syncer = WebsiteToDBSynchronizer(TinyDBDAO('db.json'),
                                             RESTAdapterMock())
+                                            # RESTAdapter())
+
     unjobs_initial_update_date = scraper.main_page_scraper.get_last_update_time()
-    last_successful_parse_upload_date = None
+    last_successful_parse_upload_date = datetime(1, 1, 1)
     try:
         for job, url_model in job_generator():
             print("yay seems like we scraped a job")
+            assert "unjobs.ord" not in job.original_job_link, "bad job link " \
+                                                              "problem still here for job " + job.original_job_link
             db_icf_syncer.update_or_create([job])
             last_successful_parse_upload_date = url_model.upload_date
     finally:

@@ -8,6 +8,7 @@ from datetime import datetime, date
 import jsonpickle
 
 from src.models.job_model import JobModel
+from src.scrape.scrape_main_page import MainPageScraper
 
 
 class TinyDBDAO:
@@ -49,11 +50,12 @@ class TinyDBDAO:
 
     def set_last_update(self, update):
         self.db.remove(self.query.last_updated.exists())
-        self.db.insert({'last_updated': str(update)})
+        self.db.insert({'last_updated': jsonpickle.encode(update)})
 
     def get_last_update(self):
         response = self.db.search(self.query.last_updated.exists())
         assert len(response) == 1, "got more than one last_updated date in db"
+
         return jsonpickle.decode(response[0]['last_updated'])
 
     def insert_jobs(self, jobs: List[JobModel]):
@@ -62,7 +64,12 @@ class TinyDBDAO:
                 assert len(self.db.search(where('id') == job.id)) == 0, \
                     "this job already exists, why are we reinserting it in " \
                     "the db?"
-            self.db.insert(job.as_dict())
+            self.db.insert({
+                "id":job.id,
+                "closing_date":job.closing_date_to_icf_str_closing_date(
+                    job.closing_date),
+                "title":job.title
+            })
 
     def delete_jobs(self, jobs: List[JobModel]):
         for job in jobs:

@@ -11,11 +11,21 @@ from src.scrape.browser_automation.selenium.button_clicker_process import \
 from src.scrape.browser_automation.selenium.common import \
     check_for_cookie_consent_button_and_clear, fuzzy_delay
 
-
+#also see: https://blog.adblockplus.org/development-builds/suppressing-the-first-run-page-on-chrome
+ADBLOCK_EXTENSION_DIR='/home/tudor/.config/google-chrome/Default/Extensions/gighmmpiobklfepjocnamgkkbiglidom/4.46.0_0'
 class SeleniumAutomation(AutomationInterface):
+    def _get_web_driver(self):
+        options = uc.ChromeOptions()
+        options.add_argument('--load-extension='+ADBLOCK_EXTENSION_DIR)
+
+        driver = uc.Chrome(options=options)
+        driver.minimize_window()
+        driver.minimize_window()
+
+        return driver
+
     def __init__(self):
-        self.web_driver = uc.Chrome()
-        self.web_driver.minimize_window()
+        self.web_driver = self._get_web_driver()
         self.process = None
 
     def get_html_from_url(self, url: str,
@@ -99,8 +109,7 @@ class SeleniumAutomation(AutomationInterface):
                 if True:
                     if self.web_driver is not None:
                         self.web_driver.quit()
-                    self.web_driver = uc.Chrome()
-                    self.web_driver.minimize_window()
+                    self.web_driver = self._get_web_driver()
                     self.web_driver.get(un_jobs_url)
                 else:
                     # in cases there are problems with this new method of
@@ -124,8 +133,6 @@ class SeleniumAutomation(AutomationInterface):
         return link
 
     def terminate(self):
-
-
         # self.web_driver.close()
         self.web_driver.quit()
         #this is required as undetected chromedriver is using this atexit

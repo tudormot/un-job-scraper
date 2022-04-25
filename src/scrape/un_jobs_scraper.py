@@ -43,10 +43,16 @@ class UNJobsScraper:
                 log.warning("could not parse job at url: " + job_url_model.URL)
                 log.info("no biggie, continuing with next job")
                 pass
+            except (WebDriverException, StaleElementReferenceException) \
+                    as e:
+                print("We caught this error, ", e)
+                print("Not sure how to handle, waiting a bit, "
+                      "then continuing with next job")
+                fuzzy_delay(2)
 
     def get_jobs_from_un_jobs_since_date(self, date: datetime) -> Generator[
         Tuple[JobModel, JobURLModel], None, None]:
-        if self.main_page_scraper.get_last_update_time() < date:
+        if self.main_page_scraper.get_last_update_time() > date:
             for job_url_model in \
                     self.main_page_scraper.get_job_urls_since_date(date):
                 try:
@@ -64,7 +70,6 @@ class UNJobsScraper:
                           "then continuing with next job")
                     fuzzy_delay(2)
 
-        pass
 
     def terminate(self):
         self.web_automation.terminate()

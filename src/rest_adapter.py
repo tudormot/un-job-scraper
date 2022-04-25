@@ -8,8 +8,10 @@ from src.models.job_model import JobModel
 
 
 class RESTAdapter:
-    PASSWORD = 'cVbr S0fX FM03 BAPe ylgH LpGt'
-    USERNAME = 'admin'
+    # PASSWORD = 'cVbr S0fX FM03 BAPe ylgH LpGt'
+    # USERNAME = 'admin'
+    PASSWORD = 'Jobimporter2022'
+    USERNAME = 'adminnew'
 
     @staticmethod
     def _request_with_retry(request_function):
@@ -21,9 +23,9 @@ class RESTAdapter:
                 result = request_function()
             except Exception as e:
                 logging.error(
-                    "Problem with REST request. Perhaps lost internet connection. Exception: ",
+                    "Problem with REST request. . Exception: ",
                     e)
-                logging.info("Retrying...")
+                logging.info("Perhaps lost internet connection. Retrying...")
                 time.sleep(300)
                 retry += 1
                 continue
@@ -36,13 +38,13 @@ class RESTAdapter:
 
     @staticmethod
     def upload_jobs(jobs: List[JobModel]):
-        RESTAdapter._request_with_retry(
+        return RESTAdapter._request_with_retry(
             lambda: RESTAdapter._upload_jobs_once(jobs)
         )
 
     @staticmethod
     def delete_jobs(jobs: List[JobModel]):
-        RESTAdapter._request_with_retry(
+        return RESTAdapter._request_with_retry(
             lambda: RESTAdapter._delete_jobs_once(jobs)
         )
 
@@ -55,7 +57,7 @@ class RESTAdapter:
             json=jobs_dict)
         logging.info("Website response after upload request:")
         logging.info(r.text)
-        r.json()
+        return r.json()
 
     @staticmethod
     def _delete_jobs_once(jobs: List[JobModel]):
@@ -81,5 +83,5 @@ class RESTAdapter:
         """creating a 'json' dict which contains only the job ids"""
         return {
             "jobs":
-                [{'id': job['id']} for job in jobs]
+                [{'id': job.id} for job in jobs]
         }
