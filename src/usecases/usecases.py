@@ -71,8 +71,8 @@ def scrape_from_job_generator(scraper, job_generator):
     different in our two usecased (scrape since date and since beginning of
     time) is the job generator fun called from the scraper"""
     db_icf_syncer = WebsiteToDBSynchronizer(TinyDBDAO('db.json'),
-                                            RESTAdapterMock())
-                                            # RESTAdapter())
+                                            # RESTAdapterMock())
+                                            RESTAdapter())
 
     unjobs_initial_update_date = scraper.main_page_scraper.get_last_update_time()
     last_successful_parse_upload_date = datetime(1, 1, 1)

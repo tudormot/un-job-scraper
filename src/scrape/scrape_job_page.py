@@ -130,9 +130,9 @@ class JobPageScraper:
         else:
             # we are probably in pdf job mode.
             log.warning(
-                "Could not scrape main text content. Possibly pdf content. "
-                "Leaving blank")
-            job.extra_information = None
+                "Could not scrape main text content. Possibly pdf content.")
+            job.extra_information = "Please follow original job link for " \
+                                    "more information"
 
     @staticmethod
     def _decide_job_category(job):

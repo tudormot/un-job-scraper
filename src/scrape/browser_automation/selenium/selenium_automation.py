@@ -12,15 +12,19 @@ from src.scrape.browser_automation.selenium.common import \
     check_for_cookie_consent_button_and_clear, fuzzy_delay
 
 #also see: https://blog.adblockplus.org/development-builds/suppressing-the-first-run-page-on-chrome
-ADBLOCK_EXTENSION_DIR='/home/tudor/.config/google-chrome/Default/Extensions/gighmmpiobklfepjocnamgkkbiglidom/4.46.0_0'
+# go to abp-background.js and search for "suppress_first_run_page" to close
+# annoying page
+ADBLOCK_EXTENSION_DIR='/home/tudor/.config/google-chrome/Default/Extensions' \
+                      '/gighmmpiobklfepjocnamgkkbiglidom/4.46.1_1'
 class SeleniumAutomation(AutomationInterface):
+    ANNOYING_JOB_DETAIL_LINK = "https://unjobs.org/job_detail"
     def _get_web_driver(self):
         options = uc.ChromeOptions()
         options.add_argument('--load-extension='+ADBLOCK_EXTENSION_DIR)
 
-        driver = uc.Chrome(options=options)
-        driver.minimize_window()
-        driver.minimize_window()
+        driver = uc.Chrome(options=options,version_main=101)
+        # driver.minimize_window()
+        # driver.set_window_size(1, 1)
 
         return driver
 
@@ -41,29 +45,14 @@ class SeleniumAutomation(AutomationInterface):
         while True:
             html = self.web_driver.page_source
             soup = BeautifulSoup(html, 'html.parser')
-            try:
-                if soup.head.title.string in cloudflare_title_strings:
-                    if retry == 0:
-                        log.warning("detected cloudflare.")
-                    else:
-                        log.warning("Still detected cloudflare...")
-                    is_cloudflare = True
-                    fuzzy_delay(3)
+            if soup.head.title.string in cloudflare_title_strings:
+                if retry == 0:
+                    log.warning("detected cloudflare.")
                 else:
-                    is_cloudflare = False
-            except Exception as e:
-                # todo: remove this try/except if error never gets thrown, this is
-                # for debugging purposes. I got a soup.title.string = None
-                # exception once, now i modified it to
-                print("unexpected exception in checking for cloudflare: ", e)
-                print("soup.head.title.string: ", soup.head.title.string)
-                print("url = ", url)
-                print('html = \n', soup.prettify())
-                raise e
-
-            if not is_cloudflare:
+                    log.warning("Still detected cloudflare...")
+                fuzzy_delay(3)
+            else:
                 break
-
             if retry == MAX_RETRIES_CLOUDFLARE_CHECK:
                 raise Exception(
                     "could not scrape,maximum retries reached in wait for "
@@ -79,57 +68,66 @@ class SeleniumAutomation(AutomationInterface):
     def get_url_after_button_press(self, initial_url,
                                    button_id='more-info-button') -> str:
         if initial_url != self.web_driver.current_url:
+            # this code was added for testing purposes..
             log.warning("warning, during normal scraping workflow selenium "
                         "should be at " +
                         initial_url + " but now it is instead "
                                       "at " + self.web_driver.current_url)
             self.web_driver.get(initial_url)
-            check_for_cookie_consent_button_and_clear(self.web_driver)
 
         un_jobs_url = self.web_driver.current_url
+        check_for_cookie_consent_button_and_clear(self.web_driver)
 
-        link = "https://unjobs.org/job_detail"
         MAX_NR_RETRIES = 5
         retry = 0
-        while link == "https://unjobs.org/job_detail" and retry < \
+        while retry < \
                 MAX_NR_RETRIES:
+            self.process = ButtonClickerProcess(args=(self.web_driver,
+                                                      un_jobs_url))
+
+            fuzzy_delay(0.2)
             try:
-                self.process = ButtonClickerProcess(args=(self.web_driver,
-                                                          un_jobs_url))
-                fuzzy_delay(0.2)
                 self.process.start()
-                self.process.join(timeout=10)
+                self.process.join(timeout=20)
             except Exception as e:
-                print("no idea what we caught from spawned process: ", e)
+                log.warning("Unknown exception thrown by the button clicker "
+                            "process!")
+                self.process.kill()
                 raise e
 
             if self.process.exitcode is None:
-                print("process has not terminated!")
-                self.process.kill()
-                if True:
-                    if self.web_driver is not None:
-                        self.web_driver.quit()
-                    self.web_driver = self._get_web_driver()
-                    self.web_driver.get(un_jobs_url)
-                else:
-                    # in cases there are problems with this new method of
-                    # fixing web_automator getting stuck, use the method in
-                    # the other branch of this if statement
-                    self.web_driver.reconnect()
-                check_for_cookie_consent_button_and_clear(self.web_driver)
-            else:
-                link = self.web_driver.current_url
-
-            if link == "https://unjobs.org/job_detail":
-                print("Landed on https://unjobs.org/job_detail.. retrying: "
-                      "", retry)
+                print("Process has not terminated!")
+                if self.web_driver is not None:
+                    self.web_driver.quit()
+                self.web_driver = self._get_web_driver()
                 self.web_driver.get(un_jobs_url)
-                fuzzy_delay(0.2)
-            retry += 1
+                check_for_cookie_consent_button_and_clear(self.web_driver)
+                retry += 1
+                continue
+            else:
+                print("DEBUG. Process terminated normally")
+
+            link = self.web_driver.current_url
+            if link == self.ANNOYING_JOB_DETAIL_LINK:
+                fuzzy_delay(2)
+                if link == self.ANNOYING_JOB_DETAIL_LINK:
+                    link = self.web_driver.get(un_jobs_url)
+                    log.warning("Even after witing 2 seconds, we still on "
+                                "job_details page")
+                    retry += 1
+                    continue
+                else:
+                    #SUCCESS!
+                    break
+            else:
+                # SUCCESS!
+                break
+
         if retry == MAX_NR_RETRIES:
             # could not get the damned link, so giving up on parsing this job
             raise UnableToParseJobException("We could not get the original "
                                             "job application link")
+        print("### link we got after button pressed: ", link)
         return link
 
     def terminate(self):
