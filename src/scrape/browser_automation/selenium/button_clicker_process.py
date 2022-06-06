@@ -1,5 +1,4 @@
 import multiprocessing as mp
-import time
 
 from selenium.common.exceptions import TimeoutException, \
     ElementClickInterceptedException, StaleElementReferenceException
@@ -10,7 +9,8 @@ from selenium.webdriver.common.by import By
 import logging as log
 
 from src.scrape.browser_automation.selenium.common import \
-    check_for_cookie_consent_button_and_clear, click_through_to_new_page
+    check_for_cookie_consent_button_and_clear, click_through_to_new_page, \
+    ButtonNotStaleException
 
 MAX_NR_BUTTON_CLICK_REATTEMPTS = 5
 
@@ -22,6 +22,7 @@ class ButtonClickerProcess(mp.Process):
 
     def _attempt_button_click(self, web_driver, un_jobs_url, reattempt_nr=0):
         button = None
+        should_reattempt= False
         if reattempt_nr > MAX_NR_BUTTON_CLICK_REATTEMPTS:
             raise TooManyButtonClickAttemptsException("tried to click the "
                                                       "more info button too "
@@ -36,22 +37,27 @@ class ButtonClickerProcess(mp.Process):
                       un_jobs_url)
             raise e
         try:
-            click_through_to_new_page(button, web_driver)
+            click_through_to_new_page(button)
+        except ButtonNotStaleException as e:
+            print(e)
+            print("Not sure exactly what causes this, but retrying")
+            should_reattempt = True
         except ElementClickInterceptedException as e:
             log.warning("Clicking of button was intercepted..")
             if 'qc-cmp2-summary-buttons' in e.msg:
                 check_for_cookie_consent_button_and_clear(web_driver)
-                self._attempt_button_click(web_driver, un_jobs_url,
-                                           reattempt_nr=reattempt_nr + 1)
+                should_reattempt = True
             elif 'data-google-container-id' in e.msg:
                 # i suspect this is due to google ads? rerun function
                 log.warning("google ads detected. Isn't adblocker installed?"
                             " It should be")
-                self._attempt_button_click(web_driver, un_jobs_url,
-                                           reattempt_nr=reattempt_nr + 1)
+                raise e
             else:
                 # we don't even know what obstructed the button..
                 raise e
+        if should_reattempt:
+            self._attempt_button_click(web_driver, un_jobs_url,
+                                       reattempt_nr=reattempt_nr + 1)
 
 
 

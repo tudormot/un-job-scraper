@@ -31,8 +31,7 @@ def check_for_cookie_consent_button_and_clear(web_driver):
                                                 "css-1hy2vtq"))
             )
             log.info("Consenting to cookies!")
-            click_through_to_new_page(button=cookie_consent_button,
-                                      web_driver=web_driver)
+            click_through_to_new_page(button=cookie_consent_button)
             fuzzy_delay(0.2)
         except TimeoutException as e:
             raise Exception("Could not click the accept cookies button "
@@ -41,48 +40,36 @@ def check_for_cookie_consent_button_and_clear(web_driver):
         # not found cookie consent, no biggie
         pass
 
-# def click_through_to_new_page(button, web_driver, window_maximization = False):
-def click_through_simple(button, web_driver):
-    # a simpler variant of the function waiting for the button to become
-    # stale, lets see if it works
-    button.click()
-    fuzzy_delay(2)
-    pass
+# def click_through_simple(button, web_driver):
+#     # a simpler variant of the function waiting for the button to become
+#     # stale, lets see if it works
+#     button.click()
+#     fuzzy_delay(2)
+#     pass
 
-def click_through_to_new_page(button, web_driver, window_maximization =
-False):
-    if window_maximization:
-        # this functionality is introduced for consenting to cookies. Not
-        # sure why, but the cookie banner disappears only when button is
-        # clicked in maximised_window mode
-        web_driver.maximize_window()
-    button.click()
-
+def click_through_to_new_page(button):
     def button_has_gone_stale():
         try:
             # poll the link with an arbitrary call
             button.find_elements(by=By.ID, value='doesnt-matter')
-            print("DEBUGGY, button has not gotten stale!")
-            web_driver.refresh()
             return False
         except StaleElementReferenceException:
-            print("DEBUGGY, button is stale!")
             return True
 
-    def wait_for(condition_function,timeout = 3):
+    def wait_for(condition_function,timeout = 20):
         start_time = time.time()
         while time.time() < start_time + timeout:
             if condition_function():
                 return True
             else:
-                time.sleep(0.1)
-        raise Exception(
+                time.sleep(0.2)
+        raise ButtonNotStaleException(
             'Timeout waiting for {}'.format(condition_function.__name__)
         )
 
+    button.click()
     wait_for(button_has_gone_stale)
-    if window_maximization:
-        web_driver.minimize_window()
 
 
-
+class ButtonNotStaleException(Exception):
+    pass

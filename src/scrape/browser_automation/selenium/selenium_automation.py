@@ -1,21 +1,36 @@
 import atexit
+import subprocess
 
 from src.scrape.browser_automation.automation_interface import \
     AutomationInterface, UnableToParseJobException
 import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 import logging as log
+import os
 
 from src.scrape.browser_automation.selenium.button_clicker_process import \
     ButtonClickerProcess
 from src.scrape.browser_automation.selenium.common import \
     check_for_cookie_consent_button_and_clear, fuzzy_delay
 
-#also see: https://blog.adblockplus.org/development-builds/suppressing-the-first-run-page-on-chrome
-# go to abp-background.js and search for "suppress_first_run_page" to close
-# annoying page
-ADBLOCK_EXTENSION_DIR='/home/tudor/.config/google-chrome/Default/Extensions' \
-                      '/gighmmpiobklfepjocnamgkkbiglidom/4.46.1_1'
+
+def adblocker_monkey_patch():
+    # also see: https://blog.adblockplus.org/development-builds/suppressing-the-first-run-page-on-chrome
+    # go to abp-background.js and search for "suppress_first_run_page" to close
+    # annoying page
+    sed_cmd = ["sed", "-i", "s/defaults\.suppress_first_run_page = "
+                            "false;/defaults\.suppress_first_run_page = "
+                            "true;/",
+               ADBLOCK_EXTENSION_DIR + '/abp-background.js']
+    process = subprocess.Popen(sed_cmd, stdout=subprocess.PIPE)
+    output, error = process.communicate()
+
+ADBLOCK_EXTENSION_PREDIR = '/home/tudor/.config/google-chrome/Default/Extensions' \
+                      '/gighmmpiobklfepjocnamgkkbiglidom'
+ADBLOCK_EXTENSION_DIR= ADBLOCK_EXTENSION_PREDIR + '/' + str(os.listdir(ADBLOCK_EXTENSION_PREDIR)[0])
+adblocker_monkey_patch()
+
+
 class SeleniumAutomation(AutomationInterface):
     ANNOYING_JOB_DETAIL_LINK = "https://unjobs.org/job_detail"
     def _get_web_driver(self):
@@ -88,7 +103,7 @@ class SeleniumAutomation(AutomationInterface):
             fuzzy_delay(0.2)
             try:
                 self.process.start()
-                self.process.join(timeout=20)
+                self.process.join(timeout=120)
             except Exception as e:
                 log.warning("Unknown exception thrown by the button clicker "
                             "process!")

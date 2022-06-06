@@ -22,13 +22,12 @@ class WebsiteToDBSynchronizer:
         return self.create(jobs)
 
     def delete(self, jobs: List[JobModel]):
-        pass
-        # log.info('INFO.Deleting jobs.')
-        # results = self.icf_adapter.delete_jobs(jobs)
-        # for i, result in enumerate(results):
-        #     if 'success' in result or ('type' in result and result['type']
-        #                                == "not_exists"):
-        #         self.db.delete_jobs([jobs[i]])
+        log.info('INFO.Deleting jobs.')
+        results = self.icf_adapter.delete_jobs(jobs)
+        for i, result in enumerate(results):
+            if 'success' in result or ('type' in result and result['type']
+                                       == "not_exists"):
+                self.db.delete_jobs([jobs[i]])
 
     def terminate(self):
         self.db.terminate()
