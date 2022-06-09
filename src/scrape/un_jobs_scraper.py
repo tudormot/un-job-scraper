@@ -48,7 +48,7 @@ class UNJobsScraper:
                 print("We caught this error, ", e)
                 print("Not sure how to handle, waiting a bit, "
                       "then continuing with next job")
-                fuzzy_delay(2)
+                fuzzy_delay(1)
 
     def get_jobs_from_un_jobs_since_date(self, date: datetime) -> Generator[
         Tuple[JobModel, JobURLModel], None, None]:
@@ -68,7 +68,7 @@ class UNJobsScraper:
                     print("We caught this error, ", e)
                     print("Not sure how to handle, waiting a bit, "
                           "then continuing with next job")
-                    fuzzy_delay(2)
+                    fuzzy_delay(1)
 
 
     def terminate(self):

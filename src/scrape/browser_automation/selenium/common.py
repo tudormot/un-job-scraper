@@ -20,7 +20,6 @@ def fuzzy_delay(s):
     time.sleep(delay)
 
 def check_for_cookie_consent_button_and_clear(web_driver):
-    print("DEBUG. checking for cookies!!!")
     #first check if the cookie consent form is there:
     soup = BeautifulSoup(web_driver.page_source, 'html.parser')
     if soup.find("h2",string="We value your privacy") is not None:

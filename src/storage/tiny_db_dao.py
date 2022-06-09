@@ -55,8 +55,10 @@ class TinyDBDAO:
     def get_last_update(self):
         response = self.db.search(self.query.last_updated.exists())
         assert len(response) == 1, "got more than one last_updated date in db"
-
-        return jsonpickle.decode(response[0]['last_updated'])
+        last_update = jsonpickle.decode(response[0]['last_updated'])
+        log.info("The last job present in db was updated on unjobs.org at: "
+                 ""+ str(last_update))
+        return last_update
 
     def insert_jobs(self, jobs: List[JobModel]):
         for job in jobs:

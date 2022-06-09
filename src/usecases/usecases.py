@@ -75,7 +75,7 @@ def scrape_from_job_generator(scraper, job_generator):
                                             RESTAdapter())
 
     unjobs_initial_update_date = scraper.main_page_scraper.get_last_update_time()
-    last_successful_parse_upload_date = datetime(1, 1, 1)
+    last_successful_parse_upload_date = None
     try:
         for job, url_model in job_generator():
             print("yay seems like we scraped a job")
@@ -84,19 +84,22 @@ def scrape_from_job_generator(scraper, job_generator):
             db_icf_syncer.update_or_create([job])
             last_successful_parse_upload_date = url_model.upload_date
     finally:
-        log.info("Setting last update in DB from unjobs upload date of last "
-                 "successfully scraped job: " +
-                 str(last_successful_parse_upload_date))
-        db_icf_syncer.db.set_last_update(last_successful_parse_upload_date)
-        unjobs_final_update_date = \
-            scraper.main_page_scraper.get_last_update_time()
-        if unjobs_final_update_date != unjobs_initial_update_date:
-            log.warning("the update time reported by unjobs.com was modified "
-                        "from the begining of the parsing to the end of it. "
-                        "This means that unjobs.com has been updated with "
-                        "mode jobs during our scraping. This should not be a "
-                        "big problem, it should just mean that we missed "
-                        "scraping a few jobs..but no biggie")
+        if last_successful_parse_upload_date:
+            log.info("Setting last update in DB from unjobs upload date of last "
+                     "successfully scraped job: " +
+                     str(last_successful_parse_upload_date))
+            db_icf_syncer.db.set_last_update(last_successful_parse_upload_date)
+            unjobs_final_update_date = \
+                scraper.main_page_scraper.get_last_update_time()
+            if unjobs_final_update_date != unjobs_initial_update_date:
+                log.warning("the update time reported by unjobs.com was modified "
+                            "from the begining of the parsing to the end of it. "
+                            "This means that unjobs.com has been updated with "
+                            "mode jobs during our scraping. This should not be a "
+                            "big problem, it should just mean that we missed "
+                            "scraping a few jobs..but no biggie")
+        else:
+            log.info("Did not scrape any jobs")
 
         scraper.terminate()
         db_icf_syncer.terminate()

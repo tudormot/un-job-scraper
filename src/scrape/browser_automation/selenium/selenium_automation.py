@@ -1,6 +1,9 @@
 import atexit
 import subprocess
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from src.scrape.browser_automation.automation_interface import \
     AutomationInterface, UnableToParseJobException
 import undetected_chromedriver as uc
@@ -50,7 +53,17 @@ class SeleniumAutomation(AutomationInterface):
     def get_html_from_url(self, url: str,
                           drop_consent_button: bool = True) -> str:
         self.web_driver.get(url)
-        fuzzy_delay(1)
+        try:
+            WebDriverWait(self.web_driver, 30).until(
+                EC.presence_of_element_located((By.TAG_NAME, "title"))
+                # This is a dummy element
+            )
+        except Exception as e:
+            log.error("HTML somehow didn't load properly after 30 s, here is "
+                      "the html: "
+                      ""+ str(self.web_driver.page_source))
+            raise e
+
 
         cloudflare_title_strings = [
             "Access denied | unjobs.org used Cloudflare to restrict access",
@@ -120,8 +133,8 @@ class SeleniumAutomation(AutomationInterface):
                 retry += 1
                 continue
             else:
-                print("DEBUG. Process terminated normally")
-
+                #process terminated normally
+                pass
             link = self.web_driver.current_url
             if link == self.ANNOYING_JOB_DETAIL_LINK:
                 fuzzy_delay(2)
