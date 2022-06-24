@@ -11,7 +11,7 @@ from src.models.job_model import JobModel
 class RESTAdapter:
     # PASSWORD = 'cVbr S0fX FM03 BAPe ylgH LpGt'
     # USERNAME = 'admin'
-    PASSWORD = 'Jobimporter2022'
+    PASSWORD = '6gP7 hmbq UsET twiT ezIW C8rR'
     USERNAME = 'adminnew'
 
     @staticmethod

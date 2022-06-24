@@ -40,7 +40,7 @@ class SeleniumAutomation(AutomationInterface):
         options = uc.ChromeOptions()
         options.add_argument('--load-extension='+ADBLOCK_EXTENSION_DIR)
 
-        driver = uc.Chrome(options=options,version_main=101)
+        driver = uc.Chrome(options=options)
         # driver.minimize_window()
         # driver.set_window_size(1, 1)
 
@@ -53,16 +53,28 @@ class SeleniumAutomation(AutomationInterface):
     def get_html_from_url(self, url: str,
                           drop_consent_button: bool = True) -> str:
         self.web_driver.get(url)
-        try:
-            WebDriverWait(self.web_driver, 30).until(
-                EC.presence_of_element_located((By.TAG_NAME, "title"))
-                # This is a dummy element
-            )
-        except Exception as e:
-            log.error("HTML somehow didn't load properly after 30 s, here is "
-                      "the html: "
-                      ""+ str(self.web_driver.page_source))
-            raise e
+
+        #sometimes need to rety fetching web_page, as un_jobs returns server
+        # errors
+        MAX_RETRIES = 4
+        retry = 0
+        while retry <MAX_RETRIES:
+            try:
+                WebDriverWait(self.web_driver, 30).until(
+                    EC.presence_of_element_located((By.TAG_NAME, "title"))
+                    # This is a dummy element
+                )
+                break
+            except Exception as e:
+                log.error("HTML somehow didn't load properly after 30 s, here is "
+                          "the html: "
+                          ""+ str(self.web_driver.page_source))
+                retry += 1
+                log.info("Retrying..." + str(retry))
+
+        if retry == MAX_RETRIES:
+            raise Exception("Could not fetch html after multiple retries, "
+                            "aborting")
 
 
         cloudflare_title_strings = [
