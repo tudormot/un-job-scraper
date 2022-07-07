@@ -52,7 +52,6 @@ class SeleniumAutomation(AutomationInterface):
 
     def get_html_from_url(self, url: str,
                           drop_consent_button: bool = True) -> str:
-        self.web_driver.get(url)
 
         #sometimes need to rety fetching web_page, as un_jobs returns server
         # errors
@@ -60,7 +59,8 @@ class SeleniumAutomation(AutomationInterface):
         retry = 0
         while retry <MAX_RETRIES:
             try:
-                WebDriverWait(self.web_driver, 30).until(
+                self.web_driver.get(url)
+                WebDriverWait(self.web_driver, 15).until(
                     EC.presence_of_element_located((By.TAG_NAME, "title"))
                     # This is a dummy element
                 )
@@ -118,7 +118,7 @@ class SeleniumAutomation(AutomationInterface):
         un_jobs_url = self.web_driver.current_url
         check_for_cookie_consent_button_and_clear(self.web_driver)
 
-        MAX_NR_RETRIES = 5
+        MAX_NR_RETRIES = 2
         retry = 0
         while retry < \
                 MAX_NR_RETRIES:

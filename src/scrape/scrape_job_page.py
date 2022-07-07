@@ -36,6 +36,10 @@ class JobPageScraper:
         job.id = job_id
         potential_titles_list = soup.find_all(
             JobPageScraper._has_h2_class_but_also_style)
+        if len(potential_titles_list) == 0:
+            log.error("Could not find job title. Here is the html: ")
+            log.error(soup.prettify())
+            raise Exception("Could not parse job title")
         if len(potential_titles_list) != 1:
             log.warning("Found multiple potential titles. Choosing most "
                         "likely")

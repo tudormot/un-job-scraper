@@ -90,7 +90,6 @@ def click_through_to_new_page(button, alternative_clicking_fun=None):
             if condition_function():
                 return True
             else:
-                print("debug,sleeping 0.2")
                 time.sleep(0.2)
         raise ButtonNotStaleException(
             'Timeout waiting for {}'.format(condition_function.__name__)
