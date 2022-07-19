@@ -62,10 +62,10 @@ class SeleniumAutomation(AutomationInterface):
                 self.web_driver.get(url)
                 WebDriverWait(self.web_driver, 15).until(
                     EC.presence_of_element_located((By.TAG_NAME, "title"))
-                    # This is a dummy element
                 )
                 break
             except Exception as e:
+                log.error("Here is the exception: " + str(e))
                 log.error("HTML somehow didn't load properly after 30 s, here is "
                           "the html: "
                           ""+ str(self.web_driver.page_source))
@@ -73,7 +73,7 @@ class SeleniumAutomation(AutomationInterface):
                 log.info("Retrying..." + str(retry))
 
         if retry == MAX_RETRIES:
-            raise Exception("Could not fetch html after multiple retries, "
+            raise UnableToParseJobException("Could not fetch html after multiple retries, "
                             "aborting")
 
 
