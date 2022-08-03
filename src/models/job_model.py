@@ -19,7 +19,7 @@ class JobModel:
         self.original_job_link = ''
         self.extra_information = ''
         self.id = None
-        self.job_category = 'Search All Jobs'
+        self.job_category = []
         self.job_type = None
 
     def as_dict(self) -> dict:

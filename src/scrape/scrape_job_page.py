@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as log
 
+from src.scrape.postprocessing import postprocess_job_add_categories
+
 
 class JobPageScraper:
     def __init__(self, browser_automator):
@@ -18,6 +20,7 @@ class JobPageScraper:
         job = JobModel()
         self._populate_job_from_main_url(job, url)
         self._populate_job_from_button_click_result(job, url)
+        postprocess_job_add_categories(job)
         return job
 
     @staticmethod
