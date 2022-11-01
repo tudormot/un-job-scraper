@@ -16,12 +16,35 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: Cache conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if etc/example-environment.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key:
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+            hashFiles('un_scraping_conda_env.yml') }}
+
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('un_scraping_conda_env.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+
       - name: conda_setup
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: un_scraping
           environment-file: un_scraping_conda_env.yml
           auto-activate-base: false
-      - run: |
+          use-only-tar-bz2: true
+      - name: conda_info_display
+        run: |
+          conda activate un_scraping
           conda info
           conda list
