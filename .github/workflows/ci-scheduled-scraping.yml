@@ -10,12 +10,19 @@ on:
 jobs:
   run_scraper:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     defaults:
       run:
         shell: bash -l {0}
     steps:
       - name: checkout
         uses: actions/checkout@v3
+
+      - name: debug display chrome version 1
+        run: |
+          google-chrome --version
+          whereis google-chrome
 
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
@@ -58,6 +65,11 @@ jobs:
           conda activate un_scraping
           conda info
           conda list
+
+      - name: debug display chrome version 2
+        run: |
+          google-chrome --version
+          whereis google-chrome
 
       - name: Run headless scraper
         run: |
