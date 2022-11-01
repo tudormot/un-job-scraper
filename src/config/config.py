@@ -10,6 +10,11 @@ import argparse
 # f.close()
 
 parser = argparse.ArgumentParser(description='scrape some un jobs ;)')
+parser.add_argument('--chrome_version', required=False,
+                    help='A specific version of chrome to be used. If not, '
+                         'the latest version will be used. (note, if you do '
+                         'not specify this, program assues that latest '
+                         'google chrome is instsalled on the machine)')
 parser.add_argument('--adblocker_dir', required=False,
                     help='To be used with github actions, in order to '
                          'specify a custom dir where adblocker resides')

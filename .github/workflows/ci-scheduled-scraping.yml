@@ -74,7 +74,7 @@ jobs:
       - name: Run headless scraper
         run: |
           sudo apt-get -y install xvfb
-          xvfb-run python . --adblocker_dir adblocker_extension --chrome_version `google-chrome --version`
+          xvfb-run python . --adblocker_dir adblocker_extension --chrome_version "`google-chrome --version`"
 
 
       # - name: Run headless scraping
