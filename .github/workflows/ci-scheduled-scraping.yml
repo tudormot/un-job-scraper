@@ -16,6 +16,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+
       - name: Cache conda
         uses: actions/cache@v3
         env:
@@ -45,6 +48,6 @@ jobs:
           use-only-tar-bz2: true
       - name: conda_info_display
         run: |
-          conda activate un_scraping
+          conda env list
           conda info
           conda list
