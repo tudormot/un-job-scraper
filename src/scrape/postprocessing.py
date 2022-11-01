@@ -14,7 +14,6 @@ def postprocess_job_add_categories(job: JobModel):
             continue
         else:
             category = category.iloc[0]
-            print("TESTING. Found subcategorY: ", category)
             categories.append(category)
 
     if len(categories) == 0:

@@ -52,12 +52,6 @@ class RESTAdapter:
     @staticmethod
     def _upload_jobs_once(jobs: List[JobModel]):
         jobs_dict = RESTAdapter._jobs_to_icf_valid_dict(jobs)
-        print("DEBUG. Categories: ")
-        print(jobs_dict["jobs"][0]["job_category"])
-        print("END DEBUG####")
-        print("full_json:")
-        print(json.dumps(jobs_dict))
-        print("##end of full_dict###")
         r = requests.post(
             'https://internationalcareerfinder.com/wp-json/wp/v2/icf-jobs',
             auth=(RESTAdapter.USERNAME, RESTAdapter.PASSWORD),

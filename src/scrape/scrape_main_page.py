@@ -28,11 +28,12 @@ class MainPageScraper:
             job_list = \
                 self._get_urls_from_page(
                     self.main_page_url + str(page_nr))
-            print("debug. Latest job from db date: ", date)
-            print("debug. Oldest job from this page : ", job_list[-1].upload_date)
+            log.debug("debug. Latest job from db date: " + str(date))
+            log.debug("debug. Oldest job from this page : " + str(job_list[
+                -1].upload_date))
             if job_list[-1].upload_date < date:
-                print("debug, date on page is older than our date. Starting "
-                      "to scrape from page nr: ", page_nr)
+                log.info("Date on page is older than our date. Starting "
+                      "to scrape from page nr: " + str(page_nr))
                 first_non_scraped_page = page_nr
                 break
             elif page_nr == 40:
@@ -41,7 +42,8 @@ class MainPageScraper:
                 first_non_scraped_page = page_nr
                 break
             else:
-                print("debug. page nr: ", page_nr, " seems to have a more "
+                log.debug("debug. page nr: "+ page_nr + " seems to have a "
+                                                        "more "
                                                    "recent date than what is in our database")
                 page_nr += 1
 
