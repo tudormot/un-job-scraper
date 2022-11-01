@@ -50,5 +50,12 @@ jobs:
       - name: conda_info_display
         run: |
           conda env list
+          conda activate un_scraping
           conda info
           conda list
+
+      - name: Run headless scraping
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: python . --adblocker_dir adblocker_extension
+          options: #optional
