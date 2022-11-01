@@ -10,6 +10,7 @@ import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 import logging as log
 import os
+from src.config.config import args
 
 from src.scrape.browser_automation.selenium.button_clicker_process import \
     ButtonClickerProcess
@@ -28,9 +29,13 @@ def adblocker_monkey_patch():
     process = subprocess.Popen(sed_cmd, stdout=subprocess.PIPE)
     output, error = process.communicate()
 
-ADBLOCK_EXTENSION_PREDIR = '/home/tudor/.config/google-chrome/Default/Extensions' \
-                      '/gighmmpiobklfepjocnamgkkbiglidom'
-ADBLOCK_EXTENSION_DIR= ADBLOCK_EXTENSION_PREDIR + '/' + str(os.listdir(ADBLOCK_EXTENSION_PREDIR)[0])
+if args.adblocker_dir is not None:
+    ADBLOCK_EXTENSION_PREDIR = args.adblocker_dir
+else:
+    ADBLOCK_EXTENSION_PREDIR = '/home/tudor/.config/google-chrome/Default/Extensions' \
+                          '/gighmmpiobklfepjocnamgkkbiglidom'
+ADBLOCK_EXTENSION_DIR = ADBLOCK_EXTENSION_PREDIR + '/' + str(os.listdir(
+    ADBLOCK_EXTENSION_PREDIR)[0])
 adblocker_monkey_patch()
 
 

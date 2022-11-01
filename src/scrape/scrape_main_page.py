@@ -42,7 +42,7 @@ class MainPageScraper:
                 first_non_scraped_page = page_nr
                 break
             else:
-                log.debug("debug. page nr: "+ page_nr + " seems to have a "
+                log.debug("debug. page nr: "+ str(page_nr) + " seems to have a "
                                                         "more "
                                                    "recent date than what is in our database")
                 page_nr += 1
