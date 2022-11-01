@@ -46,7 +46,7 @@ class SeleniumAutomation(AutomationInterface):
         options.add_argument('--load-extension='+ADBLOCK_EXTENSION_DIR)
 
         if args.chrome_version is not None:
-            big_version = args.chrome_version.split(' ')[-1].split('.')[0]
+            big_version = int(args.chrome_version.split(' ')[2].split('.')[0])
             driver = uc.Chrome(options=options, version_main=big_version)
         else:
             driver = uc.Chrome(options=options)
