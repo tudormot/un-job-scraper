@@ -6,3 +6,6 @@ scraper.log
 *temp
 *db.json
 
+# temp files of libreoffice:
+.~* 
+
