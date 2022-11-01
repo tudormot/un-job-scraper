@@ -20,8 +20,8 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
 
-      - name: Setup xvfb
-        uses: GabrielBB/xvfb-action@v1
+      # - name: Setup xvfb
+      #   uses: GabrielBB/xvfb-action@v1
 
       - name: Cache conda
         uses: actions/cache@v3
@@ -56,7 +56,12 @@ jobs:
           conda activate un_scraping
           conda info
           conda list
+
+      - name: Run headless scraper
+        run: |
+          sudo apt-get -y install xvfb
           xvfb-run python . --adblocker_dir adblocker_extension
+
 
       # - name: Run headless scraping
       #   uses: GabrielBB/xvfb-action@v1
