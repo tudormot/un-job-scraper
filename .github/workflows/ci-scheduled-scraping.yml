@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
 
+#should be noted that xvfb and google-chrome are already installed in the default github runner
 
 jobs:
   run_scraper:
@@ -19,18 +20,15 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      # - name: debug display chrome version 1
-      #   run: |
-      #     google-chrome --version
-      #     whereis google-chrome
-
-      # - name: Setup Chrome
-      #   uses: browser-actions/setup-chrome@latest
-      #   with:
-      #     chrome-version: stable
-
-      # - name: Setup xvfb
-      #   uses: GabrielBB/xvfb-action@v1
+        - name: Cache Database
+        uses: actions/cache@v3
+        env:
+          # Increase this value to reset cache
+          DB_CACHE_NUMBER: 0
+        with:
+          path: ~/tiny_db_dir
+          key:
+            env.DB_CACHE_NUMBER
 
       - name: Cache conda
         uses: actions/cache@v3
@@ -74,12 +72,4 @@ jobs:
       - name: Run headless scraper
         run: |
           sudo apt-get -y install xvfb
-          xvfb-run python . --adblocker_dir adblocker_extension --chrome_version "`google-chrome --version`"
-
-
-      # - name: Run headless scraping
-      #   uses: GabrielBB/xvfb-action@v1
-        # with:
-        #   run: python . --adblocker_dir adblocker_extension
-        #   options: #optional
-      # -run: xvfb-run python . --adblocker_dir adblocker_extension
+          xvfb-run python . --adblocker_dir adblocker_extension --db_dir ~/tiny_db_dir --chrome_version "`google-chrome --version`"

@@ -6,15 +6,19 @@ import os
 import logging as log
 from datetime import datetime, date
 import jsonpickle
-
+from pathlib import Path
+from src.config.config import args
 from src.models.job_model import JobModel
-from src.scrape.scrape_main_page import MainPageScraper
 
 
 class TinyDBDAO:
     def __init__(self, db_name, enable_asserts=False):
+        if args.db_dir is not None:
+            dir_path = args.db_dir
+        else:
+            dir_path = os.path.dirname(os.path.realpath(__file__))
+        Path(dir_path).mkdir(parents=True, exist_ok=True)
 
-        dir_path = os.path.dirname(os.path.realpath(__file__))
         self.db_path = os.path.join(dir_path, db_name)
         self.db = TinyDB(self.db_path)
         self.query = Query()

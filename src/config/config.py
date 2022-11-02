@@ -18,5 +18,10 @@ parser.add_argument('--chrome_version', required=False,
 parser.add_argument('--adblocker_dir', required=False,
                     help='To be used with github actions, in order to '
                          'specify a custom dir where adblocker resides')
+parser.add_argument('--db_dir', required=False,
+                    help='To be used with github actions, in order to '
+                         'specify a custom dir where the database should '
+                         'reside. this directory should be cached with '
+                         'github action')
 
 args = parser.parse_args()

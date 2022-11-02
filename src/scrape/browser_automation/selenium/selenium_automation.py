@@ -50,8 +50,6 @@ class SeleniumAutomation(AutomationInterface):
             driver = uc.Chrome(options=options, version_main=big_version)
         else:
             driver = uc.Chrome(options=options)
-
-
         return driver
 
     def __init__(self):
