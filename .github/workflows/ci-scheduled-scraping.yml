@@ -20,7 +20,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-        - name: Cache Database
+      - name: Cache Database
         uses: actions/cache@v3
         env:
           # Increase this value to reset cache
