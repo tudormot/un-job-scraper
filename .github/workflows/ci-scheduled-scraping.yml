@@ -6,7 +6,10 @@ on:
   push:
     branches: [main]
 
-#should be noted that xvfb and google-chrome are already installed in the default github runner
+env:
+  DB_ARTIFACT_NAME: tinydb_json
+  DB_DIR: ~/tiny_db_dir
+  CONDA_ENV_FILE: un_scraping_conda_env.yml
 
 jobs:
   run_scraper:
@@ -17,18 +20,24 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Cache Database
-        uses: actions/cache@v3
-        env:
-          # Increase this value to reset cache
-          DB_CACHE_NUMBER: 0
+      # - name: Cache Database
+      #   uses: actions/cache@v3
+      #   env:
+      #     # Increase this value to reset cache
+      #     DB_CACHE_NUMBER: 0
+      #   with:
+      #     path: ~/tiny_db_dir
+      #     key:
+      #       env.DB_CACHE_NUMBER
+
+      - name: Get tinyDB JSON
+        uses: actions/download-artifact@v3
         with:
-          path: ~/tiny_db_dir
-          key:
-            env.DB_CACHE_NUMBER
+          name: env.DB_ARTIFACT_NAME
+          path: env.DB_DIR
 
       - name: Cache conda
         uses: actions/cache@v3
@@ -39,22 +48,22 @@ jobs:
           path: ~/conda_pkgs_dir
           key:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-            hashFiles('un_scraping_conda_env.yml') }}
+            hashFiles(env.CONDA_ENV_FILE) }}
 
       - name: Cache pip
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('un_scraping_conda_env.yml') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles(env.CONDA_ENV_FILE) }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
 
-      - name: conda_setup
+      - name: Seturp Conda
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: un_scraping
-          environment-file: un_scraping_conda_env.yml
+          environment-file: env.CONDA_ENV_FILE
           auto-activate-base: false
           use-only-tar-bz2: true
       - name: conda_info_display
@@ -64,12 +73,13 @@ jobs:
           conda info
           conda list
 
-      - name: debug display chrome version 2
+      - name: Run scraper in xvfb
+        #should be noted that xvfb and google-chrome are already installed in the default github runner
         run: |
-          google-chrome --version
-          whereis google-chrome
+          xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
 
-      - name: Run headless scraper
-        run: |
-          sudo apt-get -y install xvfb
-          xvfb-run python . --adblocker_dir adblocker_extension --db_dir ~/tiny_db_dir --chrome_version "`google-chrome --version`"
+      - name: Upload TinyDB JSON
+        uses: actions/upload-artifact@v3
+        with:
+          name: env.DB_ARTIFACT_NAME
+          path: env.DB_DIR
