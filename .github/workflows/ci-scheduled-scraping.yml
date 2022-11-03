@@ -38,7 +38,7 @@ jobs:
       #   with:
       #     name: ${{env.DB_ARTIFACT_NAME}}
       #     path: ${{env.DB_DIR}}
-          
+
 
       - name: Cache conda
         uses: actions/cache@v3
@@ -60,7 +60,7 @@ jobs:
             ${{ runner.os }}-pip-
 
 
-      - name: Seturp Conda
+      - name: Setup Conda
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: un_scraping
@@ -74,10 +74,12 @@ jobs:
           conda info
           conda list
 
-      - name: Run scraper in xvfb
-        #should be noted that xvfb and google-chrome are already installed in the default github runner
-        run: |
-          xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
+      # - name: Run scraper in xvfb
+      #   #should be noted that xvfb and google-chrome are already installed in the default github runner
+      #   run: |
+      #     xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
+
+      - run: touch ~/tiny_db_dir/db.json
 
       - name: Upload TinyDB JSON
         uses: actions/upload-artifact@v3
