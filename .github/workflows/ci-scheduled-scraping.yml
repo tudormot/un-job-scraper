@@ -36,8 +36,8 @@ jobs:
       - name: Get tinyDB JSON
         uses: actions/download-artifact@v3
         with:
-          name: env.DB_ARTIFACT_NAME
-          path: env.DB_DIR
+          name: ${{env.DB_ARTIFACT_NAME}}
+          path: ${{env.DB_DIR}}
 
       - name: Cache conda
         uses: actions/cache@v3
@@ -63,7 +63,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: un_scraping
-          environment-file: env.CONDA_ENV_FILE
+          environment-file: ${{env.CONDA_ENV_FILE}}
           auto-activate-base: false
           use-only-tar-bz2: true
       - name: conda_info_display
@@ -81,5 +81,5 @@ jobs:
       - name: Upload TinyDB JSON
         uses: actions/upload-artifact@v3
         with:
-          name: env.DB_ARTIFACT_NAME
-          path: env.DB_DIR
+          name: ${{env.DB_ARTIFACT_NAME}}
+          path: ${{env.DB_DIR}}
