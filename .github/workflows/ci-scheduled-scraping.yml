@@ -33,11 +33,12 @@ jobs:
       #     key:
       #       env.DB_CACHE_NUMBER
 
-      - name: Get tinyDB JSON
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{env.DB_ARTIFACT_NAME}}
-          path: ${{env.DB_DIR}}
+      # - name: Get tinyDB JSON
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: ${{env.DB_ARTIFACT_NAME}}
+      #     path: ${{env.DB_DIR}}
+          
 
       - name: Cache conda
         uses: actions/cache@v3
