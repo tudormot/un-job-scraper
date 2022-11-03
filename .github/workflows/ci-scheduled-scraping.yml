@@ -23,21 +23,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Cache Database
-      #   uses: actions/cache@v3
-      #   env:
-      #     # Increase this value to reset cache
-      #     DB_CACHE_NUMBER: 0
-      #   with:
-      #     path: ~/tiny_db_dir
-      #     key:
-      #       env.DB_CACHE_NUMBER
-
-      - name: Get tinyDB JSON
-        uses: actions/download-artifact@v3
+      - name: Cache Database
+        uses: actions/cache@v3
         with:
-          name: ${{env.DB_ARTIFACT_NAME}}
           path: ${{env.DB_DIR}}
+          key:
+            ${{ github.run_id }}
+
+      # - name: Get tinyDB JSON
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: ${{env.DB_ARTIFACT_NAME}}
+      #     path: ${{env.DB_DIR}}
 
 
       - name: Cache conda
@@ -79,12 +76,9 @@ jobs:
         run: |
           xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
 
-      # - run: |
-      #     mkdir ~/tiny_db_dir
-      #     touch ~/tiny_db_dir/db.json
 
-      - name: Upload TinyDB JSON
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{env.DB_ARTIFACT_NAME}}
-          path: ${{env.DB_DIR}}
+      # - name: Upload TinyDB JSON
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: ${{env.DB_ARTIFACT_NAME}}
+      #     path: ${{env.DB_DIR}}
