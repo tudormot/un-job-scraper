@@ -40,46 +40,48 @@ jobs:
       #     path: ${{env.DB_DIR}}
 
 
-      - name: Cache conda
-        uses: actions/cache@v3
-        env:
-          # Increase this value to reset cache if etc/example-environment.yml has not changed
-          CACHE_NUMBER: 0
-        with:
-          path: ~/conda_pkgs_dir
-          key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-            hashFiles(env.CONDA_ENV_FILE) }}
+      # - name: Cache conda
+      #   uses: actions/cache@v3
+      #   env:
+      #     # Increase this value to reset cache if etc/example-environment.yml has not changed
+      #     CACHE_NUMBER: 0
+      #   with:
+      #     path: ~/conda_pkgs_dir
+      #     key:
+      #       ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+      #       hashFiles(env.CONDA_ENV_FILE) }}
 
-      - name: Cache pip
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles(env.CONDA_ENV_FILE) }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      # - name: Cache pip
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.cache/pip
+      #     key: ${{ runner.os }}-pip-${{ hashFiles(env.CONDA_ENV_FILE) }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pip-
 
 
-      - name: Setup Conda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: un_scraping
-          environment-file: ${{env.CONDA_ENV_FILE}}
-          auto-activate-base: false
-          use-only-tar-bz2: true
-      - name: conda_info_display
-        run: |
-          conda env list
-          conda activate un_scraping
-          conda info
-          conda list
+      # - name: Setup Conda
+      #   uses: conda-incubator/setup-miniconda@v2
+      #   with:
+      #     activate-environment: un_scraping
+      #     environment-file: ${{env.CONDA_ENV_FILE}}
+      #     auto-activate-base: false
+      #     use-only-tar-bz2: true
+      # - name: conda_info_display
+      #   run: |
+      #     conda env list
+      #     conda activate un_scraping
+      #     conda info
+      #     conda list
 
       # - name: Run scraper in xvfb
       #   #should be noted that xvfb and google-chrome are already installed in the default github runner
       #   run: |
       #     xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
 
-      - run: touch ~/tiny_db_dir/db.json
+      - run: |
+          mkdir ~/tiny_db_dir
+          touch ~/tiny_db_dir/db.json
 
       - name: Upload TinyDB JSON
         uses: actions/upload-artifact@v3
