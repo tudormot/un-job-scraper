@@ -8,7 +8,7 @@ on:
 
 env:
   DB_ARTIFACT_NAME: tinydb_json
-  DB_DIR: ~/tiny_db_dir
+  DB_DIR: ${{env.HOME}}/tiny_db_dir
   CONDA_ENV_FILE: un_scraping_conda_env.yml
 
 jobs:
@@ -43,7 +43,7 @@ jobs:
           # Increase this value to reset cache if etc/example-environment.yml has not changed
           CACHE_NUMBER: 0
         with:
-          path: ~/conda_pkgs_dir
+          path: ${{env.HOME}}/conda_pkgs_dir
           key:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
             hashFiles(env.CONDA_ENV_FILE) }}
@@ -51,7 +51,7 @@ jobs:
       - name: Cache pip
         uses: actions/cache@v3
         with:
-          path: ~/.cache/pip
+          path: ${{env.HOME}}/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles(env.CONDA_ENV_FILE) }}
           restore-keys: |
             ${{ runner.os }}-pip-
@@ -78,12 +78,11 @@ jobs:
 
       - name: debug prints
         run: |
-          cd ~
-          echo "after cd ~ and ls"
+          cd $HOME
+          echo "after cd $HOME and ls"
           ls
           cd $DB_DIR
           echo "after cd $DB_DIR and ls"
-
           ls
 
 
