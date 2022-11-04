@@ -76,6 +76,17 @@ jobs:
         run: |
           xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
 
+      - name: debug prints
+        run: |
+          cd ~
+          echo "after cd ~ and ls"
+          ls
+          cd $DB_DIR
+          echo "after cd $DB_DIR and ls"
+
+          ls
+
+
 
       # - name: Upload TinyDB JSON
       #   uses: actions/upload-artifact@v3
