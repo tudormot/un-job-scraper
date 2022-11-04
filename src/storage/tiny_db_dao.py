@@ -18,9 +18,7 @@ class TinyDBDAO:
         else:
             dir_path = os.path.dirname(os.path.realpath(__file__))
         Path(dir_path).mkdir(parents=True, exist_ok=True)
-        print("creating the following directory: ", dir_path)
         db_path = os.path.join(dir_path, db_name)
-        print("creating following db file: ",db_path)
         self.db_path = db_path
         self.db = TinyDB(self.db_path)
         self.query = Query()
