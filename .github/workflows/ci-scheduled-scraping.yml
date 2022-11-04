@@ -8,7 +8,7 @@ on:
 
 env:
   DB_ARTIFACT_NAME: tinydb_json
-  DB_DIR: ${{env.HOME}}/tiny_db_dir
+  DB_DIR_NAME: tiny_db_dir
   CONDA_ENV_FILE: un_scraping_conda_env.yml
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
       - name: Cache Database
         uses: actions/cache@v3
         with:
-          path: ${{env.DB_DIR}}
+          path: ${{env.HOME}}/${{env.DB_DIR_NAME}}
           key:
             ${{ github.run_id }}
 
@@ -74,14 +74,14 @@ jobs:
       - name: Run scraper in xvfb
         #should be noted that xvfb and google-chrome are already installed in the default github runner
         run: |
-          xvfb-run python . --adblocker_dir adblocker_extension --db_dir $DB_DIR --chrome_version "`google-chrome --version`"
+          xvfb-run python . --adblocker_dir adblocker_extension --db_dir ${HOME}/${DB_DIR_NAME} --chrome_version "`google-chrome --version`"
 
       - name: debug prints
         run: |
           cd $HOME
           echo "after cd $HOME and ls"
           ls
-          cd $DB_DIR
+          cd ${HOME}/${DB_DIR_NAME}
           echo "after cd $DB_DIR and ls"
           ls
 
