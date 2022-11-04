@@ -7,8 +7,7 @@ on:
     branches: [main]
 
 env:
-  DB_ARTIFACT_NAME: tinydb_json
-  DB_DIR_NAME: tiny_db_dir
+  # DB_DIR_NAME: tiny_db_dir
   CONDA_ENV_FILE: un_scraping_conda_env.yml
 
 jobs:
@@ -26,7 +25,7 @@ jobs:
       - name: Cache Database
         uses: actions/cache@v3
         with:
-          path: ${{env.HOME}}/${{env.DB_DIR_NAME}}
+          path: ~/tiny_db_dir
           key:
             ${{ github.run_id }}
 
@@ -43,7 +42,7 @@ jobs:
           # Increase this value to reset cache if etc/example-environment.yml has not changed
           CACHE_NUMBER: 0
         with:
-          path: ${{env.HOME}}/conda_pkgs_dir
+          path: ~/conda_pkgs_dir
           key:
             ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
             hashFiles(env.CONDA_ENV_FILE) }}
@@ -51,7 +50,7 @@ jobs:
       - name: Cache pip
         uses: actions/cache@v3
         with:
-          path: ${{env.HOME}}/.cache/pip
+          path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles(env.CONDA_ENV_FILE) }}
           restore-keys: |
             ${{ runner.os }}-pip-
@@ -74,15 +73,15 @@ jobs:
       - name: Run scraper in xvfb
         #should be noted that xvfb and google-chrome are already installed in the default github runner
         run: |
-          xvfb-run python . --adblocker_dir adblocker_extension --db_dir ${HOME}/${DB_DIR_NAME} --chrome_version "`google-chrome --version`"
+          xvfb-run python . --adblocker_dir adblocker_extension --db_dir ~/tiny_db_dir --chrome_version "`google-chrome --version`"
 
       - name: debug prints
         run: |
-          cd $HOME
-          echo "after cd $HOME and ls"
+          cd ~
+          echo "after cd ~ and ls"
           ls
-          cd ${HOME}/${DB_DIR_NAME}
-          echo "after cd $DB_DIR and ls"
+          cd ~/tiny_db_dir
+          echo "after cd ~/tiny_db_dir and ls"
           ls
 
 
