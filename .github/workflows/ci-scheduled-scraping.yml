@@ -7,7 +7,6 @@ on:
     branches: [main]
 
 env:
-  # DB_DIR_NAME: tiny_db_dir
   CONDA_ENV_FILE: un_scraping_conda_env.yml
 
 jobs:
@@ -28,13 +27,6 @@ jobs:
           path: ~/tiny_db_dir
           key:
             ${{ github.run_id }}
-
-      # - name: Get tinyDB JSON
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: ${{env.DB_ARTIFACT_NAME}}
-      #     path: ${{env.DB_DIR}}
-
 
       - name: Cache conda
         uses: actions/cache@v3
@@ -75,19 +67,3 @@ jobs:
         run: |
           xvfb-run python . --adblocker_dir adblocker_extension --db_dir ~/tiny_db_dir --chrome_version "`google-chrome --version`"
 
-      - name: debug prints
-        run: |
-          cd ~
-          echo "after cd ~ and ls"
-          ls
-          cd ~/tiny_db_dir
-          echo "after cd ~/tiny_db_dir and ls"
-          ls
-
-
-
-      # - name: Upload TinyDB JSON
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: ${{env.DB_ARTIFACT_NAME}}
-      #     path: ${{env.DB_DIR}}
