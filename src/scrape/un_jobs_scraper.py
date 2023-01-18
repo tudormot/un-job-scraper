@@ -39,16 +39,16 @@ class UNJobsScraper:
             try:
                 yield (self.job_page_scraper.scrape_job_from_job_page(
                     job_url_model.URL), job_url_model)
-            except (UnableToParseJobException, TimeoutException) as e:
-                log.warning("could not parse job at url: " + job_url_model.URL)
-                log.info("no biggie, continuing with next job")
-                pass
             except (WebDriverException, StaleElementReferenceException) \
                     as e:
                 print("We caught this error, ", e)
                 print("Not sure how to handle, waiting a bit, "
                       "then continuing with next job")
                 fuzzy_delay(1)
+            except Exception as e:
+                log.warning(
+                    "could not parse job at url: " + job_url_model.URL)
+                log.info("no biggie, continuing with next job")
 
     def get_jobs_from_un_jobs_since_date(self, date: datetime) -> Generator[
         Tuple[JobModel, JobURLModel], None, None]:
@@ -59,16 +59,17 @@ class UNJobsScraper:
                     yield (self.job_page_scraper.scrape_job_from_job_page(
                         job_url_model.URL), job_url_model)
 
-                except (UnableToParseJobException, TimeoutException) as e:
-                    log.warning(
-                        "could not parse job at url: " + job_url_model.URL)
-                    log.info("no biggie, continuing with next job")
                 except (WebDriverException, StaleElementReferenceException) \
                         as e:
                     print("We caught this error, ", e)
                     print("Not sure how to handle, waiting a bit, "
                           "then continuing with next job")
                     fuzzy_delay(1)
+                except Exception as e:
+                    log.warning(
+                        "could not parse job at url: " + job_url_model.URL)
+                    log.info("no biggie, continuing with next job")
+
 
 
     def terminate(self):
