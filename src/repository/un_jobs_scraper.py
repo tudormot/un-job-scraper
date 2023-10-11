@@ -70,7 +70,5 @@ class UNJobsScraper:
                         "could not parse job at url: " + job_url_model.URL)
                     log.info("no biggie, continuing with next job")
 
-
-
     def terminate(self):
         self.web_automation.terminate()

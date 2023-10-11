@@ -1,8 +1,8 @@
 from src.models.job_model import JobModel
-from src.rest_adapter import RESTAdapter
+from src.storage.rest_adapter import RESTAdapter
 from src.scrape.browser_automation.selenium.common import fuzzy_delay
 from src.storage.tiny_db_dao import TinyDBDAO
-from src.website_db_sync import WebsiteToDBSynchronizer
+from src.storage.website_db_sync import WebsiteToDBSynchronizer
 
 
 def delete_all_jobs():

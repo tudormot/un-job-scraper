@@ -1,15 +1,13 @@
 import logging as log
 from collections.abc import Generator
-from datetime import datetime
 from typing import List
 
-from src.rest_adapter import RESTAdapter
-from src.rest_adapter_mock import RESTAdapterMock
+from src.storage.rest_adapter import RESTAdapter
 from src.scrape.browser_automation.selenium.selenium_automation import \
     SeleniumAutomation
 from src.scrape.un_jobs_scraper import UNJobsScraper
 from src.storage.tiny_db_dao import TinyDBDAO
-from src.website_db_sync import WebsiteToDBSynchronizer
+from src.storage.website_db_sync import WebsiteToDBSynchronizer
 from functools import partial
 
 
@@ -68,7 +66,7 @@ def scrape_since_last_update_usecase():
 
 def scrape_from_job_generator(scraper, job_generator):
     """this function is meant to avoid code duplication. The only thing
-    different in our two usecased (scrape since date and since beginning of
+    different in our two usecased (repository since date and since beginning of
     time) is the job generator fun called from the scraper"""
     db_icf_syncer = WebsiteToDBSynchronizer(TinyDBDAO('db.json'),
                                             # RESTAdapterMock())
@@ -79,7 +77,7 @@ def scrape_from_job_generator(scraper, job_generator):
     try:
         for job, url_model in job_generator():
             print("yay seems like we scraped a job")
-            assert "unjobs.ord" not in job.original_job_link, "bad job link " \
+            assert "unjobs.org" not in job.original_job_link, "bad job link " \
                                                               "problem still here for job " + job.original_job_link
             db_icf_syncer.update_or_create([job])
             last_successful_parse_upload_date = url_model.upload_date
@@ -93,13 +91,13 @@ def scrape_from_job_generator(scraper, job_generator):
                 scraper.main_page_scraper.get_last_update_time()
             if unjobs_final_update_date != unjobs_initial_update_date:
                 log.warning("the update time reported by unjobs.com was modified "
-                            "from the begining of the parsing to the end of it. "
+                            "from the beginning of the parsing to the end of it. "
                             "This means that unjobs.com has been updated with "
                             "mode jobs during our scraping. This should not be a "
                             "big problem, it should just mean that we missed "
                             "scraping a few jobs..but no biggie")
         else:
-            log.info("Did not scrape any jobs")
+            log.info("Did not repository any jobs")
 
         scraper.terminate()
         db_icf_syncer.terminate()

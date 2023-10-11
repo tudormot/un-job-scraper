@@ -33,7 +33,7 @@ class MainPageScraper:
                 -1].upload_date))
             if job_list[-1].upload_date < date:
                 log.info("Date on page is older than our date. Starting "
-                      "to scrape from page nr: " + str(page_nr))
+                      "to repository from page nr: " + str(page_nr))
                 first_non_scraped_page = page_nr
                 break
             elif page_nr == 40:

@@ -1,3 +1,5 @@
+raise Exception("playwright automation deprecated as it gets detected by cloudflare, but idea could be useful "
+                "in the future")
 import time
 import numpy as np
 from src.scrape.browser_automation.automation_interface import \

@@ -137,7 +137,7 @@ class JobPageScraper:
         else:
             # we are probably in pdf job mode.
             log.warning(
-                "Could not scrape main text content. Possibly pdf content.")
+                "Could not repository main text content. Possibly pdf content.")
             job.extra_information = "Please follow original job link for " \
                                     "more information"
 

@@ -94,27 +94,3 @@ class TinyDBDAO:
         testing"""
         log.warning("Deleting db from filesystem!")
         os.remove(self.db_path)
-
-    # @staticmethod
-    # def _str_to_date(s):
-    #     "eg date : 2021-01-15 09:20:06"
-    #     return datetime(year=int(s[0:4]),
-    #                     month=int(s[5:7]),
-    #                     day=int(s[8:10]),
-    #                     hour=int(s[11:13]),
-    #                     minute=int(s[14:16]),
-    #                     second=int(s[17:19]))
-
-    # @staticmethod
-    # def _closingdatestr_to_date(s):
-    #     list = s.split('.')
-    #     return datetime(year=int(list[2]),
-    #                     month=int(list[1]),
-    #                     day=int(list[0]),
-    #                     hour=int(23),
-    #                     minute=int(59),
-    #                     second=int(59))
-
-    # @staticmethod
-    # def _datetime_to_str(date:datetime):
-    #     return date.strftime('')

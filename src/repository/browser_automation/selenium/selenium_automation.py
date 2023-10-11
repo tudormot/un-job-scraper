@@ -59,11 +59,11 @@ class SeleniumAutomation(AutomationInterface):
     def get_html_from_url(self, url: str,
                           drop_consent_button: bool = True) -> str:
 
-        #sometimes need to rety fetching web_page, as un_jobs returns server
+        # sometimes need to rety fetching web_page, as un_jobs returns server
         # errors
         MAX_RETRIES = 4
         retry = 0
-        while retry <MAX_RETRIES:
+        while retry < MAX_RETRIES:
             try:
                 self.web_driver.get(url)
                 WebDriverWait(self.web_driver, 15).until(
@@ -101,7 +101,7 @@ class SeleniumAutomation(AutomationInterface):
                 break
             if retry == MAX_RETRIES_CLOUDFLARE_CHECK:
                 raise Exception(
-                    "could not scrape,maximum retries reached in wait for "
+                    "could not repository,maximum retries reached in wait for "
                     "cloudflare.. Maybe cloudflare protection got better? "
                     + str(url))
             retry += 1
@@ -114,7 +114,6 @@ class SeleniumAutomation(AutomationInterface):
     def get_url_after_button_press(self, initial_url,
                                    button_id='more-info-button') -> str:
         if initial_url != self.web_driver.current_url:
-            # this code was added for testing purposes..
             log.warning("warning, during normal scraping workflow selenium "
                         "should be at " +
                         initial_url + " but now it is instead "
@@ -151,7 +150,7 @@ class SeleniumAutomation(AutomationInterface):
                 retry += 1
                 continue
             else:
-                #process terminated normally
+                # process terminated normally
                 pass
             link = self.web_driver.current_url
             if link == self.ANNOYING_JOB_DETAIL_LINK:
@@ -163,7 +162,7 @@ class SeleniumAutomation(AutomationInterface):
                     retry += 1
                     continue
                 else:
-                    #SUCCESS!
+                    # SUCCESS!
                     break
             else:
                 # SUCCESS!

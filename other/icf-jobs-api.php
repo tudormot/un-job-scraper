@@ -10,6 +10,8 @@ Author URI:  https://www.fiverr.com/ketion/
 License:     GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 Text Domain: icf-jobs-api
+
+TUDOR: this code not used in this projet per-se, just kept here for referece
 */
 
 defined('ABSPATH') || exit;
