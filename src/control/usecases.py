@@ -3,35 +3,14 @@ from collections.abc import Generator
 from typing import List
 
 from src.storage.rest_adapter import RESTAdapter
-from src.scrape.browser_automation.selenium.selenium_automation import \
+from src.repository.browser_automation.selenium.selenium_automation import \
     SeleniumAutomation
-from src.scrape.un_jobs_scraper import UNJobsScraper
+from src.repository.un_jobs_scraper import UNJobsScraper
+
+from src.storage.rest_adapter_mock import RESTAdapterMock
 from src.storage.tiny_db_dao import TinyDBDAO
 from src.storage.website_db_sync import WebsiteToDBSynchronizer
 from functools import partial
-
-
-def upload_from_urls(url_list, model):
-    raise Exception("needs refactoring and updating")
-    CHUNK = 5  # upload only 5 jobs at once
-    gen = chunks(url_list, CHUNK)
-    while True:
-        try:
-            urls = next(gen)
-            jobs = []
-            for url in urls:
-                try:
-                    job = read_job_from_url(url).as_dict()
-                    jobs.append(job)
-                    print("DEBUG. Job title: " + job['title'])
-                except Exception as e:
-                    logging.error("Not able to parse following url : ", url)
-                    logging.error("Here is the exception : ", str(e))
-
-            model.update_or_create(jobs)
-
-        except StopIteration as e:
-            break
 
 
 def chunk_generator(initial_gen:Generator, n)->Generator[List,None,None]:
@@ -69,8 +48,8 @@ def scrape_from_job_generator(scraper, job_generator):
     different in our two usecased (repository since date and since beginning of
     time) is the job generator fun called from the scraper"""
     db_icf_syncer = WebsiteToDBSynchronizer(TinyDBDAO('db.json'),
-                                            # RESTAdapterMock())
-                                            RESTAdapter())
+                                            RESTAdapterMock())
+                                            # RESTAdapter()) using a mocked RESTAdapter, as internationalcareerfinder.com is gone
 
     unjobs_initial_update_date = scraper.main_page_scraper.get_last_update_time()
     last_successful_parse_upload_date = None

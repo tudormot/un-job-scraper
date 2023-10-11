@@ -3,16 +3,16 @@ from datetime import datetime
 from typing import Generator, Tuple
 import logging as log
 
-from selenium.common.exceptions import TimeoutException, WebDriverException, \
+from selenium.common.exceptions import WebDriverException, \
     StaleElementReferenceException
 
 from src.models.job_model import JobModel
-from src.scrape.browser_automation.automation_interface import \
-    UnableToParseJobException, AutomationInterface
-from src.scrape.scrape_job_page import JobPageScraper
-from src.scrape.scrape_main_page import MainPageScraper, JobURLModel
+from src.repository.browser_automation.automation_interface import \
+    AutomationInterface
+from src.repository.html_parsing.scrape_job_page import JobPageScraper
+from src.repository.html_parsing.scrape_main_page import MainPageScraper, JobURLModel
 
-from src.scrape.browser_automation.selenium.common import fuzzy_delay
+from src.repository.browser_automation.selenium.common import fuzzy_delay
 
 import tracemalloc
 
