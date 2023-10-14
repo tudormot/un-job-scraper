@@ -1,6 +1,6 @@
 from src.models.job_model import JobModel
 from src.storage.rest_adapter import RESTAdapter
-from src.scrape.browser_automation.selenium.common import fuzzy_delay
+from src.repository.browser_automation.selenium.common import fuzzy_delay
 from src.storage.tiny_db_dao import TinyDBDAO
 from src.storage.website_db_sync import WebsiteToDBSynchronizer
 

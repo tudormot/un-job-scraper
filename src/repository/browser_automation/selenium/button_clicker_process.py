@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 import logging as log
 
-from src.scrape.browser_automation.selenium.common import \
+from src.repository.browser_automation.selenium.common import \
     check_for_cookie_consent_button_and_clear, click_through_to_new_page, \
     ButtonNotStaleException
 

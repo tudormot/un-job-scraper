@@ -6,7 +6,7 @@ import logging as log
 from bs4 import BeautifulSoup
 
 from selenium.common.exceptions import TimeoutException, \
-    StaleElementReferenceException
+    StaleElementReferenceException, NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -80,6 +80,8 @@ def click_through_to_new_page(button, alternative_clicking_fun=None):
         try:
             # poll the link with an arbitrary call
             button.find_elements(by=By.ID, value='doesnt-matter')
+            return False
+        except NoSuchElementException:
             return False
         except StaleElementReferenceException:
             return True

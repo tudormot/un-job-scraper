@@ -1,4 +1,4 @@
-from src.scrape.browser_automation.automation_interface import \
+from src.repository.browser_automation.automation_interface import \
     AutomationInterface
 from datetime import datetime, date
 from datetime import timedelta
@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup, NavigableString
 import re
 import logging as log
 
-from src.scrape.postprocessing import postprocess_job_add_categories
+from src.repository.html_parsing.postprocessing import postprocess_job_add_categories
 
 
 class JobPageScraper:

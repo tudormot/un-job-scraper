@@ -5,4 +5,4 @@ from src.config.logging_config import config_log
 
 
 config_log()
-scrape_since_last_update_usecase()
+scrape_all_website_usecase()

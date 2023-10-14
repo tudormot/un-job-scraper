@@ -4,7 +4,7 @@ import subprocess
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from src.scrape.browser_automation.automation_interface import \
+from src.repository.browser_automation.automation_interface import \
     AutomationInterface, UnableToParseJobException
 import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
@@ -12,9 +12,9 @@ import logging as log
 import os
 from src.config.config import args
 
-from src.scrape.browser_automation.selenium.button_clicker_process import \
+from src.repository.browser_automation.selenium.button_clicker_process import \
     ButtonClickerProcess
-from src.scrape.browser_automation.selenium.common import \
+from src.repository.browser_automation.selenium.common import \
     check_for_cookie_consent_button_and_clear, fuzzy_delay
 
 
@@ -29,11 +29,12 @@ def adblocker_monkey_patch():
     process = subprocess.Popen(sed_cmd, stdout=subprocess.PIPE)
     output, error = process.communicate()
 
+
 if args.adblocker_dir is not None:
     ADBLOCK_EXTENSION_PREDIR = args.adblocker_dir
 else:
     ADBLOCK_EXTENSION_PREDIR = '/home/tudor/.config/google-chrome/Default/Extensions' \
-                          '/gighmmpiobklfepjocnamgkkbiglidom'
+                               '/gighmmpiobklfepjocnamgkkbiglidom'
 ADBLOCK_EXTENSION_DIR = ADBLOCK_EXTENSION_PREDIR + '/' + str(os.listdir(
     ADBLOCK_EXTENSION_PREDIR)[0])
 adblocker_monkey_patch()
@@ -41,15 +42,19 @@ adblocker_monkey_patch()
 
 class SeleniumAutomation(AutomationInterface):
     ANNOYING_JOB_DETAIL_LINK = "https://unjobs.org/job_detail"
+
     def _get_web_driver(self):
         options = uc.ChromeOptions()
-        options.add_argument('--load-extension='+ADBLOCK_EXTENSION_DIR)
+        options.headless = False
+        options.add_argument('--load-extension=' + ADBLOCK_EXTENSION_DIR)
 
         if args.chrome_version is not None:
             big_version = int(args.chrome_version.split(' ')[2].split('.')[0])
-            driver = uc.Chrome(options=options, version_main=big_version)
+            driver = uc.Chrome(driver_executable_path='/usr/bin/chromedriver', options=options,
+                               version_main=big_version)
         else:
-            driver = uc.Chrome(options=options)
+            driver = uc.Chrome(driver_executable_path='/usr/bin/chromedriver', options=options)
+
         return driver
 
     def __init__(self):
@@ -61,6 +66,7 @@ class SeleniumAutomation(AutomationInterface):
 
         # sometimes need to rety fetching web_page, as un_jobs returns server
         # errors
+
         MAX_RETRIES = 4
         retry = 0
         while retry < MAX_RETRIES:
@@ -74,14 +80,13 @@ class SeleniumAutomation(AutomationInterface):
                 log.error("Here is the exception: " + str(e))
                 log.error("HTML somehow didn't load properly after 30 s, here is "
                           "the html: "
-                          ""+ str(self.web_driver.page_source))
+                          "" + str(self.web_driver.page_source))
                 retry += 1
                 log.info("Retrying..." + str(retry))
 
         if retry == MAX_RETRIES:
             raise UnableToParseJobException("Could not fetch html after multiple retries, "
-                            "aborting")
-
+                                            "aborting")
 
         cloudflare_title_strings = [
             "Access denied | unjobs.org used Cloudflare to restrict access",
@@ -178,9 +183,8 @@ class SeleniumAutomation(AutomationInterface):
     def terminate(self):
         # self.web_driver.close()
         self.web_driver.quit()
-        #this is required as undetected chromedriver is using this atexit
+        # this is required as undetected chromedriver is using this atexit
         # method to kill some processes...
         atexit._run_exitfuncs()
         if self.process:
             self.process.kill()
-

@@ -76,7 +76,7 @@ def scrape_from_job_generator(scraper, job_generator):
                             "big problem, it should just mean that we missed "
                             "scraping a few jobs..but no biggie")
         else:
-            log.info("Did not repository any jobs")
+            log.info("Did not scrape any jobs")
 
         scraper.terminate()
         db_icf_syncer.terminate()

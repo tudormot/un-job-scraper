@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Generator, Iterable
 
-from src.scrape.browser_automation.automation_interface import \
+from src.repository.browser_automation.automation_interface import \
     AutomationInterface
 from bs4 import BeautifulSoup
 import logging as log
